@@ -1,11 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
-def index_2(request):
+def fixed_instructor_dashboard(request):
     datas = {
 
     }
-    return render(request,'pages/index-2.html',datas)
+    return render(request,'pages/fixed-instructor-dashboard.html',datas)
 
 def fixed_instructor_account_edit(request):
     datas = {
@@ -38,7 +38,6 @@ def fixed_instructor_courses(request):
     }
     return render(request,'pages/fixed-instructor-courses.html',datas)
 
-def fixed_instructor_dashboard(request):
     datas = {
 
     }

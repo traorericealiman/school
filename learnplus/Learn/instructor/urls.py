@@ -2,13 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index_2, name='index-2'),
+    path('', views.fixed_instructor_dashboard, name='fixed-instructor-dashboard'),
     path('fixed_instructor_account_edit', views.fixed_instructor_account_edit, name='fixed-instructor-account-edit'),
     path('fixed_instructor_browse_courses', views.fixed_instructor_browse_courses, name='fixed-instructor-browse-courses'),
     path('fixed_instructor_carts', views.fixed_instructor_carts, name='fixed-instructor-cart'),
     path('fixed_instructor_course_edit', views.fixed_instructor_course_edit, name='fixed-instructor-course-edit'),
     path('fixed_instructor_courses', views.fixed_instructor_courses, name='fixed-instructor-courses'),
-    path('fixed_instructor_dashboard', views.fixed_instructor_dashboard, name='fixed-instructor-dashboard'),
     path('fixed_instructor_earnings', views.fixed_instructor_earnings, name='fixed-instructor-earnings'),
     path('fixed_instructor_edit_invoice', views.fixed_instructor_edit_invoice, name='fixed-instructor-edit-invoice'),
     path('fixed_instructor_forum', views.fixed_instructor_forum, name='fixed-instructor-forum'),
