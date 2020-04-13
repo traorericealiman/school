@@ -1,167 +1,167 @@
 from django.shortcuts import render
 
 # Create your views here.
-def fixed_instructor_dashboard(request):
+def instructor_dashboard(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-dashboard.html',datas)
+    return render(request,'pages/instructor-dashboard.html',datas)
 
-def fixed_instructor_account_edit(request):
+def instructor_account_edit(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-account-edit.html',datas)
+    return render(request,'pages/instructor-account-edit.html',datas)
 
-def fixed_instructor_browse_courses(request):
+def instructor_browse_courses(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-browse-courses.html',datas)
+    return render(request,'pages/instructor-browse-courses.html',datas)
 
-def fixed_instructor_carts(request):
+def instructor_carts(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-cart.html',datas)
+    return render(request,'pages/instructor-cart.html',datas)
 
-def fixed_instructor_course_edit(request):
+def instructor_course_edit(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-course-edit.html',datas)
+    return render(request,'pages/instructor-course-edit.html',datas)
 
 
-def fixed_instructor_courses(request):
+def instructor_courses(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-courses.html',datas)
+    return render(request,'pages/instructor-courses.html',datas)
 
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-dashboardx.html',datas)
+    return render(request,'pages/instructor-dashboardx.html',datas)
 
-def fixed_instructor_earnings(request):
+def instructor_earnings(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-earnings.html',datas)
+    return render(request,'pages/instructor-earnings.html',datas)
 
-def fixed_instructor_edit_invoice(request):
+def instructor_edit_invoice(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-edit-invoice',datas)
+    return render(request,'pages/instructor-edit-invoice',datas)
 
-def fixed_instructor_forum(request):
+def instructor_forum(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-forum.html',datas)
+    return render(request,'pages/instructor-forum.html',datas)
 
-def fixed_instructor_forum_ask(request):
+def instructor_forum_ask(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-forum-ask.html',datas)
+    return render(request,'pages/instructor-forum-ask.html',datas)
 
-def fixed_instructor_forum_thread(request):
+def instructor_forum_thread(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-forum-thread.html',datas)
+    return render(request,'pages/instructor-forum-thread.html',datas)
 
-def fixed_instructor_invoice(request):
+def instructor_invoice(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-invoice.html',datas)
+    return render(request,'pages/instructor-invoice.html',datas)
 
-def fixed_instructor_invoice_settings(request):
+def instructor_invoice_settings(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-invoice-settings.html',datas)
+    return render(request,'pages/instructor-invoice-settings.html',datas)
 
-def fixed_instructor_lesson_add(request):
+def instructor_lesson_add(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-lesson-add.html',datas)
+    return render(request,'pages/instructor-lesson-add.html',datas)
 
-def fixed_instructor_messages(request):
+def instructor_messages(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-messages.html',datas)
+    return render(request,'pages/instructor-messages.html',datas)
 
-def fixed_instructor_messages_2(request):
+def instructor_messages_2(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-messages-2.html',datas)
+    return render(request,'pages/instructor-messages-2.html',datas)
 
-def fixed_instructor_my_courses(request):
+def instructor_my_courses(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-my-courses.html',datas)
+    return render(request,'pages/instructor-my-courses.html',datas)
 
-def fixed_instructor_profile(request):
+def instructor_profile(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-profile.html',datas)
+    return render(request,'pages/instructor-profile.html',datas)
 
-def fixed_instructor_quiz_edit(request):
+def instructor_quiz_edit(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-quiz-edit.html',datas)
+    return render(request,'pages/instructor-quiz-edit.html',datas)
 
-def fixed_instructor_quiz_results(request):
+def instructor_quiz_results(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-quiz-results.html',datas)
+    return render(request,'pages/instructor-quiz-results.html',datas)
 
-def fixed_instructor_quizzes(request):
+def instructor_quizzes(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-quizzes.html',datas)
+    return render(request,'pages/instructor-quizzes.html',datas)
 
-def fixed_instructor_review_quiz(request):
+def instructor_review_quiz(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-review-quiz.html',datas)
+    return render(request,'pages/instructor-review-quiz.html',datas)
 
-def fixed_instructor_statement(request):
+def instructor_statement(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-statementr.html',datas)
+    return render(request,'pages/instructor-statementr.html',datas)
 
-def fixed_instructor_take_course(request):
+def instructor_take_course(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-take-course.html',datas)
+    return render(request,'pages/instructor-take-course.html',datas)
 
-def fixed_instructor_take_quiz(request):
+def instructor_take_quiz(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-take-quiz.html',datas)
+    return render(request,'pages/instructor-take-quiz.html',datas)
 
-def fixed_instructor_view_course(request):
+def instructor_view_course(request):
     datas = {
 
     }
-    return render(request,'pages/fixed-instructor-view-course.html',datas)
+    return render(request,'pages/instructor-view-course.html',datas)
 
 
 
