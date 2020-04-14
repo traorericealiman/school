@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Specialite(models.Model):
+class Filiere(models.Model):
     nom = models.CharField(max_length=255)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -9,16 +9,16 @@ class Specialite(models.Model):
 
 
     class Meta:
-        verbose_name = 'Specialite'
-        verbose_name_plural = 'Specialites'
+        verbose_name = 'Filiere'
+        verbose_name_plural = 'Filieres'
 
     def __str__(self):
         return self.nom
 
 class Matiere(models.Model):
     nom = models.CharField(max_length=255)
-    coefficient = models.FloatField(max_length=255)
-    specialite = models.ForeignKey(Specialite,on_delete=models.CASCADE,related_name='matiere_specialite')
+    coefficient = models.IntegerField(max_length=255)
+    filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='matiere_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -31,11 +31,24 @@ class Matiere(models.Model):
     def __str__(self):
         return self.nom
 
+class Niveau(models.Model):
+    nom = models.CharField(max_length=255)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+    status = models.BooleanField(default=True)
+
+
+    class Meta:
+        verbose_name = 'Niveau'
+        verbose_name_plural = 'Niveaux'
+
+    def __str__(self):
+        return self.nom
+
 class Classe(models.Model):
-    niveau = models.CharField(max_length=255)
-    emploiTemps = models.CharField(max_length=255)
-    numeroClasse = models.FloatField(max_length=255)
-    specialite = models.ForeignKey(Specialite,on_delete=models.CASCADE,related_name='classe_specialite')
+    niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE,related_name='classe_niveau')
+    numeroClasse = models.IntegerField(max_length=255)
+    filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='classe_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -51,7 +64,7 @@ class Classe(models.Model):
 class Chapitre(models.Model):
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')
     titre = models.CharField(max_length=255)
-    nombreCours = models.FloatField(max_length=255)
+    nombreCours = models.IntegerField (max_length=255)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -67,7 +80,7 @@ class Chapitre(models.Model):
 
 class Cours(models.Model):
     titre = models.CharField(max_length=255)
-    chapitre = models.ForeignKey(Specialite,on_delete=models.CASCADE,related_name='cours_chapitre')
+    chapitre = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='cours_chapitre')
     duree = models.CharField(max_length=255)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -81,18 +94,5 @@ class Cours(models.Model):
     def __str__(self):
         return self.titre
 
-class Niveau(models.Model):
-    nom = models.CharField(max_length=255)
-    classe = models.ForeignKey(Classe,on_delete=models.CASCADE,related_name='classe_niveau')
-    date_add = models.DateTimeField(auto_now_add=True)
-    date_update = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=True)
 
-
-    class Meta:
-        verbose_name = 'Niveau'
-        verbose_name_plural = 'Niveaux'
-
-    def __str__(self):
-        return self.nom
 
