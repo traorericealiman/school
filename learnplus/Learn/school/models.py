@@ -17,7 +17,7 @@ class Filiere(models.Model):
 
 class Matiere(models.Model):
     nom = models.CharField(max_length=255)
-    coefficient = models.IntegerField(max_length=255)
+    coefficient = models.IntegerField()
     filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='matiere_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -47,7 +47,7 @@ class Niveau(models.Model):
 
 class Classe(models.Model):
     niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE,related_name='classe_niveau')
-    numeroClasse = models.IntegerField(max_length=255)
+    numeroClasse = models.IntegerField()
     filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='classe_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -64,7 +64,7 @@ class Classe(models.Model):
 class Chapitre(models.Model):
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')
     titre = models.CharField(max_length=255)
-    nombreCours = models.IntegerField (max_length=255)
+    nombreCours = models.IntegerField ()
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
