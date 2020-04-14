@@ -1,21 +1,21 @@
 from django.shortcuts import render
 
 # Create your views here.
-def guest_login(request):
+def login(request):
 
     datas = {
 
     }
     return render(request, 'pages/guest-login.html', datas)
 
-def guest_signup(request):
+def signup(request):
 
     datas = {
 
     }
     return render(request, 'pages/guest-signup.html', datas) 
 
-def guest_forgot_password(request):
+def forgot_password(request):
 
     datas = {
 

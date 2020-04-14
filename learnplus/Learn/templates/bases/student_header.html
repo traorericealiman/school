@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
 
 
-<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/fixed-student-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2020 14:27:20 GMT -->
+<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2020 14:27:20 GMT -->
 
 <head>
     <meta charset="utf-8">
@@ -64,7 +64,7 @@
                         </button>
 
                         <!-- Brand -->
-                        <a href="fixed-student-dashboard.html" class="navbar-brand">
+                        <a href="{'% url index' %}" class="navbar-brand">
                             <img src="/static/assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
                             <span class="d-none d-xs-md-block">LearnPlus</span>
                         </a>
@@ -82,10 +82,10 @@
                         <!-- Menu -->
                         <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                             <li class="nav-item">
-                                <a class="nav-link" href="fixed-student-forum.html">Forum</a>
+                                <a class="nav-link" href="forum">Forum</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="fixed-student-help-center.html">Get Help</a>
+                                <a class="nav-link" href="help-center">Get Help</a>
                             </li>
                         </ul>
 
@@ -93,7 +93,7 @@
                         <ul class="nav navbar-nav flex-nowrap">
 
                             <li class="nav-item d-none d-md-flex">
-                                <a href="fixed-student-cart.html" class="nav-link">
+                                <a href="cart" class="nav-link">
                                     <i class="material-icons">shopping_cart</i>
                                 </a>
                             </li>
@@ -114,7 +114,7 @@
                                         <div class="dropdown-header"><strong>Messages</strong></div>
                                         <div class="list-group list-group-flush mb-0">
 
-                                            <a href="fixed-student-messages.html"
+                                            <a href="messages"
                                                 class="list-group-item list-group-item-action unread">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 minutes ago</small>
@@ -134,7 +134,7 @@
                                                 </span>
                                             </a>
 
-                                            <a href="fixed-student-messages.html"
+                                            <a href="{% url 'messages' %}"
                                                 class="list-group-item list-group-item-action unread">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 minutes ago</small>
@@ -159,7 +159,7 @@
                                         <div class="dropdown-header"><strong>System notifications</strong></div>
                                         <div class="list-group list-group-flush mb-0">
 
-                                            <a href="fixed-student-messages.html"
+                                            <a href="messages"
                                                 class="list-group-item list-group-item-action border-left-3 border-left-danger">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">3 minutes ago</small>
@@ -180,7 +180,7 @@
                                                 </span>
                                             </a>
 
-                                            <a href="fixed-student-messages.html"
+                                            <a href="messages"
                                                 class="list-group-item list-group-item-action">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 hours ago</small>
@@ -201,7 +201,7 @@
                                                 </span>
                                             </a>
 
-                                            <a href="fixed-student-messages.html"
+                                            <a href="messages"
                                                 class="list-group-item list-group-item-action">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">1 day ago</small>
@@ -232,13 +232,13 @@
                                         src="/static/assets/images/people/50/guy-6.jpg" alt="Avatar" class="rounded-circle"
                                         width="40"></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="fixed-student-account-edit.html">
+                                    <a class="dropdown-item" href="account-edit">
                                         <i class="material-icons">edit</i> Edit Account
                                     </a>
-                                    <a class="dropdown-item" href="fixed-student-profile.html">
+                                    <a class="dropdown-item" href="profile">
                                         <i class="material-icons">person</i> Public Profile
                                     </a>
-                                    <a class="dropdown-item" href="guest-login.html">
+                                    <a class="dropdown-item" href="{% url 'login'%}">
                                         <i class="material-icons">lock</i> Logout
                                     </a>
                                 </div>
@@ -269,108 +269,87 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item active"
-                                            href="fixed-student-dashboard.html">Dashboard</a>
-                                        <a class="dropdown-item" href="fixed-student-browse-courses.html">Browse
+                                            href="dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="browse-courses">Browse
                                             Courses</a>
-                                        <a class="dropdown-item" href="fixed-student-view-course.html">View Course</a>
-                                        <a class="dropdown-item" href="fixed-student-take-course.html">Take Course</a>
-                                        <a class="dropdown-item" href="fixed-student-take-quiz.html">Take a Quiz</a>
-                                        <a class="dropdown-item" href="fixed-student-quiz-results.html">Quiz Results</a>
-                                        <a class="dropdown-item" href="fixed-student-my-courses.html">My Courses</a>
-                                        <a class="dropdown-item" href="fixed-student-billing.html">Billing</a>
-                                        <a class="dropdown-item" href="fixed-student-pay.html">Payment</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Instructor</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-instructor-dashboard.html">Dashboard</a>
-                                        <a class="dropdown-item" href="fixed-instructor-courses.html">Course Manager</a>
-                                        <a class="dropdown-item" href="fixed-instructor-quizzes.html">Quiz Manager</a>
-                                        <a class="dropdown-item" href="fixed-instructor-earnings.html">Earnings</a>
-                                        <a class="dropdown-item" href="fixed-instructor-statement.html">Statement</a>
+                                        <a class="dropdown-item" href="view-course">View Course</a>
+                                        <a class="dropdown-item" href="take-course">Take Course</a>
+                                        <a class="dropdown-item" href="take-quiz">Take a Quiz</a>
+                                        <a class="dropdown-item" href="quiz-results">Quiz Results</a>
+                                        <a class="dropdown-item" href="my-courses">My Courses</a>
+                                        <a class="dropdown-item" href="billing">Billing</a>
+                                        <a class="dropdown-item" href="pay">Payment</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-student-account-edit.html">Edit Account</a>
-                                        <a class="dropdown-item" href="fixed-student-account-edit-basic.html">Basic
+                                        <a class="dropdown-item" href="account-edit">Edit Account</a>
+                                        <a class="dropdown-item" href="account-edit-basic">Basic
                                             Information</a>
-                                        <a class="dropdown-item" href="fixed-student-account-edit-profile.html">Profile
+                                        <a class="dropdown-item" href="account-edit-profile">Profile
                                             &amp; Privacy</a>
                                         <a class="dropdown-item"
-                                            href="fixed-student-account-billing-subscription.html">Subscription</a>
+                                            href="account-billing-subscription">Subscription</a>
                                         <a class="dropdown-item"
-                                            href="fixed-student-account-billing-upgrade.html">Upgrade Account</a>
+                                            href="account-billing-upgrade">Upgrade Account</a>
                                         <a class="dropdown-item"
-                                            href="fixed-student-account-billing-payment-information.html">Payment
+                                            href="account-billing-payment-information">Payment
                                             Information</a>
-                                        <a class="dropdown-item" href="fixed-student-billing.html">Payment History</a>
-                                        <a class="dropdown-item" href="fixed-student-invoice.html">Student Invoice</a>
-                                        <a class="dropdown-item" href="fixed-instructor-invoice.html">Instructor
+                                        <a class="dropdown-item" href="billing">Payment History</a>
+                                        <a class="dropdown-item" href="invoice">Student Invoice</a>
+                                        <a class="dropdown-item" href="fixed-instructor-edit-invoice">Edit
                                             Invoice</a>
-                                        <a class="dropdown-item" href="fixed-instructor-edit-invoice.html">Edit
-                                            Invoice</a>
-                                        <a class="dropdown-item" href="fixed-student-messages.html">Messages</a>
+                                        <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="guest-login.html">Login</a>
-                                        <a class="dropdown-item" href="guest-signup.html">Signup</a>
-                                        <a class="dropdown-item" href="guest-forgot-password.html">Forgot Password</a>
+                                        <a class="dropdown-item" href="{% url 'login'%}">Login</a>
+                                        <a class="dropdown-item" href=" {% url 'signup'%}">Signup</a>
+                                        <a class="dropdown-item" href="{% url 'forgot_password'%}">Forgot Password</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Community</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-student-forum.html">Forum</a>
-                                        <a class="dropdown-item" href="fixed-student-forum-thread.html">Discussion</a>
-                                        <a class="dropdown-item" href="fixed-student-forum-ask.html">Ask Question</a>
+                                        <a class="dropdown-item" href="{% url 'forum' %}">Forum</a>
+                                        <a class="dropdown-item" href="{% url 'forum-thread' %}">Discussion</a>
+                                        <a class="dropdown-item" href="{% url 'forum-ask' %}">Ask Question</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="fixed-student-profile.html">Student Profile -
+                                        <a class="dropdown-item" href="{% url 'profile' %}">Student Profile -
                                             Courses</a>
-                                        <a class="dropdown-item" href="fixed-student-profile-posts.html">Student Profile
+                                        <a class="dropdown-item" href="{% url 'profile-posts' %}">Student Profile
                                             - Posts</a>
-                                        <a class="dropdown-item" href="fixed-instructor-profile.html">Instructor
-                                            Profile</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="fixed-student-help-center.html">Help Center</a>
+                                        <a class="dropdown-item" href="{% url 'help-center' %}">Help Center</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Components</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-ui-avatars.html">Avatars</a>
-                                        <a class="dropdown-item" href="fixed-ui-forms.html">Forms</a>
-                                        <a class="dropdown-item" href="fixed-ui-loaders.html">Loaders</a>
-                                        <a class="dropdown-item" href="fixed-ui-tables.html">Tables</a>
-                                        <a class="dropdown-item" href="fixed-ui-cards.html">Cards</a>
-                                        <a class="dropdown-item" href="fixed-ui-tabs.html">Tabs</a>
-                                        <a class="dropdown-item" href="fixed-ui-icons.html">Icons</a>
-                                        <a class="dropdown-item" href="fixed-ui-buttons.html">Buttons</a>
-                                        <a class="dropdown-item" href="fixed-ui-alerts.html">Alerts</a>
-                                        <a class="dropdown-item" href="fixed-ui-badges.html">Badges</a>
-                                        <!-- <a class="dropdown-item" href="fixed-ui-modals.html">- Modals</a> -->
-                                        <a class="dropdown-item" href="fixed-ui-progress.html">Progress</a>
-                                        <a class="dropdown-item" href="fixed-ui-pagination.html">Pagination</a>
+                                        <a class="dropdown-item" href="fixed-ui-avatars">Avatars</a>
+                                        <a class="dropdown-item" href="fixed-ui-forms">Forms</a>
+                                        <a class="dropdown-item" href="fixed-ui-loaders">Loaders</a>
+                                        <a class="dropdown-item" href="fixed-ui-tables">Tables</a>
+                                        <a class="dropdown-item" href="fixed-ui-cards">Cards</a>
+                                        <a class="dropdown-item" href="fixed-ui-tabs">Tabs</a>
+                                        <a class="dropdown-item" href="fixed-ui-icons">Icons</a>
+                                        <a class="dropdown-item" href="fixed-ui-buttons">Buttons</a>
+                                        <a class="dropdown-item" href="fixed-ui-alerts">Alerts</a>
+                                        <a class="dropdown-item" href="fixed-ui-badges">Badges</a>
+                                        <!-- <a class="dropdown-item" href="fixed-ui-modals">- Modals</a> -->
+                                        <a class="dropdown-item" href="fixed-ui-progress">Progress</a>
+                                        <a class="dropdown-item" href="fixed-ui-pagination">Pagination</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Plugins</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="fixed-ui-charts.html">Charts</a>
-                                        <a class="dropdown-item" href="fixed-ui-drag.html">Drag &amp; Drop</a>
-                                        <a class="dropdown-item" href="fixed-ui-calendar.html">Calendar</a>
-                                        <a class="dropdown-item" href="fixed-ui-nestable.html">Nestable</a>
-                                        <a class="dropdown-item" href="fixed-ui-tree.html">Tree</a>
-                                        <a class="dropdown-item" href="fixed-ui-maps-vector.html">Vector Maps</a>
-                                        <a class="dropdown-item" href="fixed-ui-sweet-alert.html">Sweet Alert</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Layouts</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="student-dashboard.html">Fluid</a>
-                                        <a class="dropdown-item active" href="fixed-student-dashboard.html">Fixed</a>
+                                        <a class="dropdown-item" href="fixed-ui-charts">Charts</a>
+                                        <a class="dropdown-item" href="fixed-ui-drag">Drag &amp; Drop</a>
+                                        <a class="dropdown-item" href="fixed-ui-calendar">Calendar</a>
+                                        <a class="dropdown-item" href="fixed-ui-nestable">Nestable</a>
+                                        <a class="dropdown-item" href="fixed-ui-tree">Tree</a>
+                                        <a class="dropdown-item" href="fixed-ui-maps-vector">Vector Maps</a>
+                                        <a class="dropdown-item" href="fixed-ui-sweet-alert">Sweet Alert</a>
                                     </div>
                                 </li>
                             </ul>
@@ -408,12 +387,12 @@
                 <div class="sidebar-heading">APPLICATIONS</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="fixed-student-dashboard.html">
+                        <a class="sidebar-menu-button" href="dashboard">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-instructor-dashboard.html">
+                        <a class="sidebar-menu-button" href="fixed-instructor-dashboard">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
                         </a>
                     </li>
@@ -429,68 +408,68 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-login.html">
+                                <a class="sidebar-menu-button" href="{% url 'login'%}">
                                     <span class="sidebar-menu-text">Login</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-signup.html">
+                                <a class="sidebar-menu-button" href="{% url 'signup'%}">
                                     <span class="sidebar-menu-text">Sign Up</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-forgot-password.html">
+                                <a class="sidebar-menu-button" href="{% url 'forgot_password'%}">
                                     <span class="sidebar-menu-text">Forgot Password</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-account-edit.html">
+                                <a class="sidebar-menu-button" href="account-edit">
                                     <span class="sidebar-menu-text">Edit Account</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-account-edit-basic.html">
+                                <a class="sidebar-menu-button" href="account-edit-basic">
                                     <span class="sidebar-menu-text">Basic Information</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-account-edit-profile.html">
+                                <a class="sidebar-menu-button" href="account-edit-profile">
                                     <span class="sidebar-menu-text">Profile &amp; Privacy</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-account-billing-subscription.html">
+                                <a class="sidebar-menu-button" href="account-billing-subscription">
                                     <span class="sidebar-menu-text">Subscription</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-account-billing-upgrade.html">
+                                <a class="sidebar-menu-button" href="account-billing-upgrade">
                                     <span class="sidebar-menu-text">Upgrade Account</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                    href="fixed-student-account-billing-payment-information.html">
+                                    href="account-billing-payment-information">
                                     <span class="sidebar-menu-text">Payment Information</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-billing.html">
+                                <a class="sidebar-menu-button" href="billing">
                                     <span class="sidebar-menu-text">Payment History</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-invoice.html">
+                                <a class="sidebar-menu-button" href="invoice">
                                     <span class="sidebar-menu-text">Student Invoice</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-invoice.html">
+                                <a class="sidebar-menu-button" href="fixed-instructor-invoice">
                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-edit-invoice.html">
+                                <a class="sidebar-menu-button" href="fixed-instructor-edit-invoice">
                                     <span class="sidebar-menu-text">Edit Invoice</span>
                                 </a>
                             </li>
@@ -503,14 +482,14 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-messages.html">
+                                <a class="sidebar-menu-button" href="messages">
                                     <span class="sidebar-menu-text">Conversation</span>
                                     <span
                                         class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-messages-2.html">
+                                <a class="sidebar-menu-button" href="messages-2">
                                     <span class="sidebar-menu-text">Conversation - 2</span>
                                 </a>
                             </li>
@@ -520,35 +499,35 @@
                 <div class="sidebar-heading">Student</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-browse-courses.html">
+                        <a class="sidebar-menu-button" href="browse-courses">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> Browse
                             Courses
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-view-course.html">
+                        <a class="sidebar-menu-button" href="view-course">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View
                             Course
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-take-course.html">
+                        <a class="sidebar-menu-button" href="take-course">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
                             <span class="sidebar-menu-badge badge badge-primary ml-auto">PRO</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-take-quiz.html">
+                        <a class="sidebar-menu-button" href="take-quiz">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take a Quiz
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-quiz-results.html">
+                        <a class="sidebar-menu-button" href="quiz-results">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-my-courses.html">
+                        <a class="sidebar-menu-button" href="my-courses">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
                         </a>
                     </li>
@@ -560,44 +539,44 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-forum.html">
+                                <a class="sidebar-menu-button" href="forum">
                                     <span class="sidebar-menu-text">Forum</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-forum-thread.html">
+                                <a class="sidebar-menu-button" href="forum-thread">
                                     <span class="sidebar-menu-text">Discussion</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-forum-ask.html">
+                                <a class="sidebar-menu-button" href="forum-ask">
                                     <span class="sidebar-menu-text">Ask Question</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-profile.html">
+                                <a class="sidebar-menu-button" href="profile">
                                     <span class="sidebar-menu-text">Student Profile - Courses</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-student-profile-posts.html">
+                                <a class="sidebar-menu-button" href="profile-posts">
                                     <span class="sidebar-menu-text">Student Profile - Posts</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-profile.html">
+                                <a class="sidebar-menu-button" href="fixed-instructor-profile">
                                     <span class="sidebar-menu-text">Instructor Profile</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="fixed-student-help-center.html">
+                        <a class="sidebar-menu-button" href="help-center">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Get Help
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="guest-login.html">
+                        <a class="sidebar-menu-button" href="{% url 'login'%}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
                         </a>
                     </li>
@@ -614,67 +593,67 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="components_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-avatars.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-avatars">
                                     <span class="sidebar-menu-text">Avatars</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-forms.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-forms">
                                     <span class="sidebar-menu-text">Forms</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-loaders.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-loaders">
                                     <span class="sidebar-menu-text">Loaders</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-tables.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-tables">
                                     <span class="sidebar-menu-text">Tables</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-cards.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-cards">
                                     <span class="sidebar-menu-text">Cards</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-tabs.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-tabs">
                                     <span class="sidebar-menu-text">Tabs</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-icons.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-icons">
                                     <span class="sidebar-menu-text">Icons</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-buttons.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-buttons">
                                     <span class="sidebar-menu-text">Buttons</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-alerts.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-alerts">
                                     <span class="sidebar-menu-text">Alerts</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-badges.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-badges">
                                     <span class="sidebar-menu-text">Badges</span>
                                 </a>
                             </li>
                             <!-- <li class="sidebar-menu-item">
-        <a class="sidebar-menu-button" href="fixed-ui-modals.html">
+        <a class="sidebar-menu-button" href="fixed-ui-modals">
           <span class="sidebar-menu-text">- Modals</span>
         </a>
       </li> -->
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-progress.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-progress">
                                     <span class="sidebar-menu-text">Progress Bars</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-pagination.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-pagination">
                                     <span class="sidebar-menu-text">Pagination</span>
                                 </a>
                             </li>
@@ -688,37 +667,37 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="plugins_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-charts.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-charts">
                                     <span class="sidebar-menu-text">Charts</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-drag.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-drag">
                                     <span class="sidebar-menu-text">Drag &amp; Drop</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-calendar.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-calendar">
                                     <span class="sidebar-menu-text">Calendar</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-nestable.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-nestable">
                                     <span class="sidebar-menu-text">Nestable</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-tree.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-tree">
                                     <span class="sidebar-menu-text">Tree</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-maps-vector.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-maps-vector">
                                     <span class="sidebar-menu-text">Vector Maps</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-ui-sweet-alert.html">
+                                <a class="sidebar-menu-button" href="fixed-ui-sweet-alert">
                                     <span class="sidebar-menu-text">Sweet Alert</span>
                                 </a>
                             </li>
@@ -730,13 +709,13 @@
                 <div class="sidebar-heading">Layout</div>
                 <ul class="sidebar-menu">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-dashboard.html">
+                        <a class="sidebar-menu-button" href="student-dashboard">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fluid
                             Layout
                         </a>
                     </li>
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="fixed-student-dashboard.html">
+                        <a class="sidebar-menu-button" href="dashboard">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fixed
                             Layout
                         </a>
@@ -752,8 +731,8 @@
 <!-- App Settings FAB -->
 <div id="app-settings">
     <app-settings layout-active="fixed" :layout-location="{
-      'fixed': 'fixed-student-dashboard.html',
-      'default': 'student-dashboard.html'
+      'fixed': 'dashboard',
+      'default': 'student-dashboard'
     }" sidebar-variant="bg-transparent border-0"></app-settings>
 </div>
 <!-- jQuery -->
@@ -804,6 +783,6 @@
 </body>
 
 
-<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/fixed-student-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2020 14:27:27 GMT -->
+<!-- Mirrored from learnplus-bootstrap.frontendmatter.com/dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 10 Apr 2020 14:27:27 GMT -->
 
 </html>

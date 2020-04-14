@@ -1,38 +1,38 @@
 from django.shortcuts import render
 
 # Create your views here.
-def instructor_dashboard(request):
+def dashboard(request):
     datas = {
 
     }
     return render(request,'pages/instructor-dashboard.html',datas)
 
-def instructor_account_edit(request):
+def account_edit(request):
     datas = {
 
     }
     return render(request,'pages/instructor-account-edit.html',datas)
 
-def instructor_browse_courses(request):
+def browse_courses(request):
     datas = {
 
     }
     return render(request,'pages/instructor-browse-courses.html',datas)
 
-def instructor_carts(request):
+def carts(request):
     datas = {
 
     }
     return render(request,'pages/instructor-cart.html',datas)
 
-def instructor_course_edit(request):
+def course_edit(request):
     datas = {
 
     }
     return render(request,'pages/instructor-course-edit.html',datas)
 
 
-def instructor_courses(request):
+def courses(request):
     datas = {
 
     }
@@ -43,121 +43,121 @@ def instructor_courses(request):
     }
     return render(request,'pages/instructor-dashboardx.html',datas)
 
-def instructor_earnings(request):
+def earnings(request):
     datas = {
 
     }
     return render(request,'pages/instructor-earnings.html',datas)
 
-def instructor_edit_invoice(request):
+def edit_invoice(request):
     datas = {
 
     }
     return render(request,'pages/instructor-edit-invoice',datas)
 
-def instructor_forum(request):
+def forum(request):
     datas = {
 
     }
     return render(request,'pages/instructor-forum.html',datas)
 
-def instructor_forum_ask(request):
+def forum_ask(request):
     datas = {
 
     }
     return render(request,'pages/instructor-forum-ask.html',datas)
 
-def instructor_forum_thread(request):
+def forum_thread(request):
     datas = {
 
     }
     return render(request,'pages/instructor-forum-thread.html',datas)
 
-def instructor_invoice(request):
+def invoice(request):
     datas = {
 
     }
     return render(request,'pages/instructor-invoice.html',datas)
 
-def instructor_invoice_settings(request):
+def invoice_settings(request):
     datas = {
 
     }
     return render(request,'pages/instructor-invoice-settings.html',datas)
 
-def instructor_lesson_add(request):
+def lesson_add(request):
     datas = {
 
     }
     return render(request,'pages/instructor-lesson-add.html',datas)
 
-def instructor_messages(request):
+def messages(request):
     datas = {
 
     }
     return render(request,'pages/instructor-messages.html',datas)
 
-def instructor_messages_2(request):
+def messages_2(request):
     datas = {
 
     }
     return render(request,'pages/instructor-messages-2.html',datas)
 
-def instructor_my_courses(request):
+def my_courses(request):
     datas = {
 
     }
     return render(request,'pages/instructor-my-courses.html',datas)
 
-def instructor_profile(request):
+def profile(request):
     datas = {
 
     }
     return render(request,'pages/instructor-profile.html',datas)
 
-def instructor_quiz_edit(request):
+def quiz_edit(request):
     datas = {
 
     }
     return render(request,'pages/instructor-quiz-edit.html',datas)
 
-def instructor_quiz_results(request):
+def quiz_results(request):
     datas = {
 
     }
     return render(request,'pages/instructor-quiz-results.html',datas)
 
-def instructor_quizzes(request):
+def quizzes(request):
     datas = {
 
     }
     return render(request,'pages/instructor-quizzes.html',datas)
 
-def instructor_review_quiz(request):
+def review_quiz(request):
     datas = {
 
     }
     return render(request,'pages/instructor-review-quiz.html',datas)
 
-def instructor_statement(request):
+def statement(request):
     datas = {
 
     }
     return render(request,'pages/instructor-statementr.html',datas)
 
-def instructor_take_course(request):
+def take_course(request):
     datas = {
 
     }
     return render(request,'pages/instructor-take-course.html',datas)
 
-def instructor_take_quiz(request):
+def take_quiz(request):
     datas = {
 
     }
     return render(request,'pages/instructor-take-quiz.html',datas)
 
-def instructor_view_course(request):
+def view_course(request):
     datas = {
 
     }
