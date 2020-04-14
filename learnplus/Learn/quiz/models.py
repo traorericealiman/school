@@ -6,7 +6,7 @@ class Quiz(models.Model):
     date = models.CharField(max_length=255)
     titre = models.CharField(max_length=255)
     cours = models.ForeignKey(school_models.Cours,on_delete=models.CASCADE,related_name='quiz_cours')
-    temps = models.IntegerField(max_length=255)
+    temps = models.IntegerField()
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -24,7 +24,7 @@ class Devoir(models.Model):
     dateDebut = models.DateTimeField()
     dateFermeture = models.DateTimeField()
     chapitre = models.ForeignKey(school_models.Chapitre,on_delete=models.CASCADE,related_name='quiz_chapitre')
-    coefficient = models.IntegerField(max_length=255)
+    coefficient = models.IntegerField()
     support = models.FileField(upload_to='fichier/import')
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -41,7 +41,7 @@ class Devoir(models.Model):
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz,on_delete=models.CASCADE,related_name='quiz_question')
     question = models.TextField(max_length=255)
-    point = models.IntegerField(max_length=255)
+    point = models.IntegerField()
     TYPEQUESTIONS = [
         ('qcm','qcm'),
         ('question-reponse','question-reponse'),
