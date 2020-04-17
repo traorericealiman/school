@@ -4,7 +4,7 @@ from school import models as school_models
 
 # Create your models here.
 class Instructor(models.Model):
-    user = models.OneToOneField(User,related_name='student',on_delete=models.CASCADE)
+    user = models.OneToOneField(User,related_name='instructor',on_delete=models.CASCADE)
     contact = models.CharField(max_length=255)
     adresse = models.CharField(max_length=255)
     matiere = models.ManyToManyField(school_models.Matiere,related_name='instructor_matiere')
