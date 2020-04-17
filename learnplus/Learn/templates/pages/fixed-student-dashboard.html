@@ -8,7 +8,7 @@
 
                 <div class="container page__container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                     <h1 class="h2">Dashboard</h1>
@@ -23,7 +23,7 @@
                                     Your subscription ends on <strong>25 February 2015</strong>
                                 </div>
                                 <div class="media-right mt-2 mt-xs-plus-0">
-                                    <a class="btn btn-success" href="fixed-student-account-billing-upgrade.html">Upgrade</a>
+                                    <a class="btn btn-success" href="{% url 'upgrade' %}">Upgrade</a>
                                 </div>
                             </div>
                         </div>

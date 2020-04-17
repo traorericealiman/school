@@ -7,7 +7,7 @@
                     <div class="row m-0">
                         <div class="col-lg container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
                                 <li class="breadcrumb-item active">Edit Account</li>
                             </ol>
 
@@ -20,7 +20,7 @@
                                             <label class="col-form-label form-label col-sm-3">Your current plan</label>
                                             <div class="col-sm-9 d-flex align-items-center">
                                                 <div class="flex">Basic, &dollar;9 per month</div>
-                                                <a href="fixed-student-account-billing-upgrade.html" class="text-secondary">Change plan</a>
+                                                <a href="{% url 'upgrade' %}" class="text-secondary">Change plan</a>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +44,7 @@
                                             <div class="col-sm-9 d-flex align-items-center">
                                                 <img src="assets/images/visa.svg" alt="visa" width="40" class="mr-16pt">
                                                 <div class="flex">Visa ending with 2819</div>
-                                                <a href="fixed-student-account-billing-payment-information.html" class="text-secondary">Change method</a>
+                                                <a href="{% url 'payment' %}" class="text-secondary">Change method</a>
                                             </div>
                                         </div>
                                     </div>
@@ -64,19 +64,19 @@
                                 <div class="page-section pt-lg-32pt">
                                     <ul class="nav page-nav__menu">
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-subscription.html" class="nav-link active">Subscription</a>
+                                            <a href="{% url 'subscription' %}" class="nav-link active">Subscription</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-upgrade.html" class="nav-link">Upgrade Account</a>
+                                            <a href="{% url 'upgrade' %}" class="nav-link">Upgrade Account</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-payment-information.html" class="nav-link">Payment Information</a>
+                                            <a href="{% url 'payment' %}" class="nav-link">Payment Information</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-billing.html" class="nav-link">Payment History</a>
+                                            <a href="{% url 'billing' %}" class="nav-link">Payment History</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-invoice.html" class="nav-link">Invoice</a>
+                                            <a href="{% url 'invoice' %}" class="nav-link">Invoice</a>
                                         </li>
                                     </ul>
                                 </div>

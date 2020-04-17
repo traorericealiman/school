@@ -3,9 +3,9 @@
         <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
             <div class="sidebar-p-y">
                 <div class="sidebar-heading">APPLICATIONS</div>
-                <ul class="sidebar-menu sm-active-button-bg">
+                <ul class="sidebar-menu sm-active-button-bg"> 
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="instructor-dashboard.html">
+                        <a class="sidebar-menu-button" href="{% url 'dashboard' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
                         </a>
                     </li>
@@ -21,26 +21,26 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-login.html">
+                                <a class="sidebar-menu-button" href="{% url 'login' %}">
                                     <span class="sidebar-menu-text">Login</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-signup.html">
+                                <a class="sidebar-menu-button" href="{% url 'guests_signup' %}">
                                     <span class="sidebar-menu-text">Sign Up</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="guest-forgot-password.html">
+                                <a class="sidebar-menu-button" href="{% url 'forgot_password' %}">
                                     <span class="sidebar-menu-text">Forgot Password</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-account-edit.html">
+                                <a class="sidebar-menu-button" href="{% url 'account_edit' %}">
                                     <span class="sidebar-menu-text">Edit Account</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item">
+                            <!-- <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="student-account-edit-basic.html">
                                     <span class="sidebar-menu-text">Basic Information</span>
                                 </a>
@@ -74,9 +74,9 @@
                                 <a class="sidebar-menu-button" href="student-invoice.html">
                                     <span class="sidebar-menu-text">Student Invoice</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-invoice.html">
+                                <a class="sidebar-menu-button" href="{% url 'invoice' %}">
                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                 </a>
                             </li>
@@ -94,14 +94,14 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-messages.html">
+                                <a class="sidebar-menu-button" href="{% url 'messages' %}">
                                     <span class="sidebar-menu-text">Conversation</span>
                                     <span
                                         class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-messages-2.html">
+                                <a class="sidebar-menu-button" href="{% url 'messages_2' %}">
                                     <span class="sidebar-menu-text">Conversation - 2</span>
                                 </a>
                             </li>
@@ -111,18 +111,18 @@
                 <div class="sidebar-heading">Instructor</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="instructor-courses.html">
+                        <a class="sidebar-menu-button" href="{% url 'courses' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>
                             Course Manager
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="instructor-quizzes.html">
+                        <a class="sidebar-menu-button" href="{% url 'quizzes' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> Quiz Manager
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="instructor-earnings.html">
+                        <a class="sidebar-menu-button" href="{% url 'earnings' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">trending_up</i> Earnings
                         </a>
                     </li>
@@ -139,21 +139,21 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-forum.html">
+                                <a class="sidebar-menu-button" href="{% url 'forum' %}">
                                     <span class="sidebar-menu-text">Forum</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-forum-thread.html">
+                                <a class="sidebar-menu-button" href="{% url 'forum_thread' %}">
                                     <span class="sidebar-menu-text">Discussion</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-forum-ask.html">
+                                <a class="sidebar-menu-button" href="{% url 'forum_ask' %}">
                                     <span class="sidebar-menu-text">Ask Question</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item">
+                            <!-- <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="student-profile.html">
                                     <span class="sidebar-menu-text">Student Profile - Courses</span>
                                 </a>
@@ -162,9 +162,9 @@
                                 <a class="sidebar-menu-button" href="student-profile-posts.html">
                                     <span class="sidebar-menu-text">Student Profile - Posts</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="instructor-profile.html">
+                                <a class="sidebar-menu-button" href="{% url 'profile' %}">
                                     <span class="sidebar-menu-text">Instructor Profile</span>
                                 </a>
                             </li>
@@ -177,7 +177,7 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="guest-login.html">
+                        <a class="sidebar-menu-button" href="{% url 'login' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
                         </a>
                     </li>

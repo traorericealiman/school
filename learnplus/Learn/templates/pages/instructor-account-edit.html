@@ -9,7 +9,7 @@
 
                     <div class="container-fluid page__container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
                             <li class="breadcrumb-item active">Edit Account</li>
                         </ol>
                         <h1 class="h2">Edit Account</h1>
@@ -206,13 +206,13 @@
                             <div class="sidebar-p-y">
                                 <div class="sidebar-heading">APPLICATIONS</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
-                                    <li class="sidebar-menu-item">
+                                    <!-- <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="student-dashboard.html">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="instructor-dashboard.html">
+                                        <a class="sidebar-menu-button" href="{% url 'dashboard' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
                                         </a>
                                     </li>
@@ -228,17 +228,17 @@
                                         </a>
                                         <ul class="sidebar-submenu sm-indent collapse show" id="account_menu">
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-login.html">
+                                                <a class="sidebar-menu-button" href="{% url 'login' %}">
                                                     <span class="sidebar-menu-text">Login</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-signup.html">
+                                                <a class="sidebar-menu-button" href="{% url 'guests_signup' %}">
                                                     <span class="sidebar-menu-text">Sign Up</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-forgot-password.html">
+                                                <a class="sidebar-menu-button" href="{% url 'forgot_password' %}">
                                                     <span class="sidebar-menu-text">Forgot Password</span>
                                                 </a>
                                             </li>
@@ -381,7 +381,7 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="guest-login.html">
+                                        <a class="sidebar-menu-button" href="{% url 'login' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
                                         </a>
                                     </li>

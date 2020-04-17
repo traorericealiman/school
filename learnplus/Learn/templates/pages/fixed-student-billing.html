@@ -7,7 +7,7 @@
                     <div class="row m-0">
                         <div class="col-lg container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
                                 <li class="breadcrumb-item active">Edit Account</li>
                             </ol>
 
@@ -53,7 +53,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-uppercase text-muted mr-2">Invoice</small>
-                                                    <a href="fixed-student-invoice.html" class="text-body small">#<span class="js-lists-values-document">12199</span></a>
+                                                    <a href="{% url 'invoice' %}" class="text-body small">#<span class="js-lists-values-document">12199</span></a>
                                                 </div>
                                             </td>
                                             <td class="text-center">
@@ -81,7 +81,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-uppercase text-muted mr-2">Invoice</small>
-                                                    <a href="fixed-student-invoice.html" class="text-body small">#<span class="js-lists-values-document">8331</span></a>
+                                                    <a href="{% url 'invoice' %}" class="text-body small">#<span class="js-lists-values-document">8331</span></a>
                                                 </div>
                                             </td>
                                             <td class="text-center">
@@ -109,7 +109,7 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-uppercase text-muted mr-2">Invoice</small>
-                                                    <a href="fixed-student-invoice.html" class="text-body small">#<span class="js-lists-values-document">2421</span></a>
+                                                    <a href="{% url 'invoice' %}" class="text-body small">#<span class="js-lists-values-document">2421</span></a>
                                                 </div>
                                             </td>
                                             <td class="text-center">
@@ -169,19 +169,19 @@
                                 <div class="page-section pt-lg-32pt">
                                     <ul class="nav page-nav__menu">
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-subscription.html" class="nav-link">Subscription</a>
+                                            <a href="{% url 'subscription' %}" class="nav-link">Subscription</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-upgrade.html" class="nav-link">Upgrade Account</a>
+                                            <a href="{% url 'upgrade' %}" class="nav-link">Upgrade Account</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-payment-information.html" class="nav-link">Payment Information</a>
+                                            <a href="{% url 'payment' %}" class="nav-link">Payment Information</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-billing.html" class="nav-link active">Payment History</a>
+                                            <a href="{% url 'billing' %}" class="nav-link active">Payment History</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-invoice.html" class="nav-link">Invoice</a>
+                                            <a href="{% url 'invoice' %}" class="nav-link">Invoice</a>
                                         </li>
                                     </ul>
                                 </div>

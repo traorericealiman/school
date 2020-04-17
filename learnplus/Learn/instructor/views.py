@@ -8,7 +8,7 @@ def dashboard(request):
 
     }
     return render(request,'pages/instructor-dashboard.html',datas)
-
+ 
 @login_required(login_url = 'login')
 def account_edit(request):
     datas = {

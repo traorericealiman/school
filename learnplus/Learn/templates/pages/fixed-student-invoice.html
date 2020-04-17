@@ -7,7 +7,7 @@
                     <div class="row m-0">
                         <div class="col-lg container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="fixed-student-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
                                 <li class="breadcrumb-item active">Edit Account</li>
                             </ol>
 
@@ -21,7 +21,7 @@
                                         <div class="media-right d-flex align-items-center">
                                             <a href="javascript:window.print()" class="btn btn-flush text-muted d-print-none mr-3"><i class="material-icons font-size-24pt">print</i></a>
 
-                                            <a href="fixed-student-account-billing-payment-information.html" class="btn btn-success d-print-none">Pay</a>
+                                            <a href="{% url 'payment' %}" class="btn btn-success d-print-none">Pay</a>
 
                                         </div>
                                     </div>
@@ -117,19 +117,19 @@
                                 <div class="page-section pt-lg-32pt">
                                     <ul class="nav page-nav__menu">
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-subscription.html" class="nav-link">Subscription</a>
+                                            <a href="{% url 'subscription' %}" class="nav-link">Subscription</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-upgrade.html" class="nav-link">Upgrade Account</a>
+                                            <a href="{% url 'upgrade' %}" class="nav-link">Upgrade Account</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-account-billing-payment-information.html" class="nav-link">Payment Information</a>
+                                            <a href="{% url 'payment' %}" class="nav-link">Payment Information</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-billing.html" class="nav-link">Payment History</a>
+                                            <a href="{% url 'billing' %}" class="nav-link">Payment History</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="fixed-student-invoice.html" class="nav-link active">Invoice</a>
+                                            <a href="{% url 'invoice' %}" class="nav-link active">Invoice</a>
                                         </li>
                                     </ul>
                                 </div>

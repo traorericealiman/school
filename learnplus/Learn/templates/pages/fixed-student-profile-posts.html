@@ -134,7 +134,7 @@
                     <div class="sidebar-heading">APPLICATIONS</div>
                     <ul class="sidebar-menu sm-active-button-bg">
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="fixed-student-dashboard.html">
+                            <a class="sidebar-menu-button" href="{% url 'index_student' %}">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
                             </a>
                         </li>
@@ -185,27 +185,27 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="fixed-student-account-billing-subscription.html">
+                                    <a class="sidebar-menu-button" href="{% url 'subscription' %}">
                                         <span class="sidebar-menu-text">Subscription</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="fixed-student-account-billing-upgrade.html">
+                                    <a class="sidebar-menu-button" href="{% url 'upgrade' %}">
                                         <span class="sidebar-menu-text">Upgrade Account</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="fixed-student-account-billing-payment-information.html">
+                                    <a class="sidebar-menu-button" href="{% url 'payment' %}">
                                         <span class="sidebar-menu-text">Payment Information</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="fixed-student-billing.html">
+                                    <a class="sidebar-menu-button" href="{% url 'billing' %}">
                                         <span class="sidebar-menu-text">Payment History</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="fixed-student-invoice.html">
+                                    <a class="sidebar-menu-button" href="{% url 'invoice' %}">
                                         <span class="sidebar-menu-text">Student Invoice</span>
                                     </a>
                                 </li>

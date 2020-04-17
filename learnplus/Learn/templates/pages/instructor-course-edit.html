@@ -9,8 +9,8 @@
 
                     <div class="container-fluid page__container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="instructor-courses.html">Courses</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'courses' %}">Courses</a></li>
                             <li class="breadcrumb-item active">Edit course</li>
                         </ol>
                         <div class="media align-items-center mb-headings">
@@ -48,7 +48,7 @@
                                         <h4 class="card-title">Lessons</h4>
                                     </div>
                                     <div class="card-body">
-                                        <p><a href="instructor-lesson-add.html" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
+                                        <p><a href="{% url 'lesson_add' %}" class="btn btn-primary">Add Lesson <i class="material-icons">add</i></a></p>
                                         <div class="nestable" id="nestable-handles-primary">
                                             <ul class="nestable-list">
                                                 <li class="nestable-item nestable-item-handle" data-id="2">
@@ -60,12 +60,12 @@
                                                             </div>
                                                             <div class="media-body">
                                                                 <h5 class="card-title h6 mb-0">
-                                                                    <a href="instructor-lesson-add.html">Awesome Vue.js with SASS Processing</a>
+                                                                    <a href="{% url 'lesson_add' %}">Awesome Vue.js with SASS Processing</a>
                                                                 </h5>
                                                                 <small class="text-muted">updated 1 month ago</small>
                                                             </div>
                                                             <div class="media-right">
-                                                                <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                <a href="{% url 'lesson_add' %}" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,12 +79,12 @@
                                                             </div>
                                                             <div class="media-body">
                                                                 <h4 class="card-title h6 mb-0">
-                                                                    <a href="instructor-lesson-add.html">Github Webhooks for Beginners</a>
+                                                                    <a href="{% url 'lesson_add' %}">Github Webhooks for Beginners</a>
                                                                 </h4>
                                                                 <small class="text-muted">updated 1 month ago</small>
                                                             </div>
                                                             <div class="media-right">
-                                                                <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                <a href="{% url 'lesson_add' %}" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -98,12 +98,12 @@
                                                             </div>
                                                             <div class="media-body">
                                                                 <h4 class="card-title h6 mb-0">
-                                                                    <a href="instructor-lesson-add.html">Browserify: Writing Modular JavaScript</a>
+                                                                    <a href="{% url 'lesson_add' %}">Browserify: Writing Modular JavaScript</a>
                                                                 </h4>
                                                                 <small class="text-muted">updated 1 month ago</small>
                                                             </div>
                                                             <div class="media-right">
-                                                                <a href="instructor-lesson-add.html" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
+                                                                <a href="{% url 'lesson_add' %}" class="btn btn-white btn-sm"><i class="material-icons">edit</i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -204,13 +204,13 @@
                             <div class="sidebar-p-y">
                                 <div class="sidebar-heading">APPLICATIONS</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
-                                    <li class="sidebar-menu-item">
+                                    <!-- <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button" href="student-dashboard.html">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
                                         </a>
-                                    </li>
+                                    </li> -->
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="instructor-dashboard.html">
+                                        <a class="sidebar-menu-button" href="{% url 'dashboard' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> Instructor
                                         </a>
                                     </li>
@@ -226,26 +226,26 @@
                                         </a>
                                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-login.html">
+                                                <a class="sidebar-menu-button" href="{% url 'login' %}">
                                                     <span class="sidebar-menu-text">Login</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-signup.html">
+                                                <a class="sidebar-menu-button" href="{% url 'guests_signup' %}">
                                                     <span class="sidebar-menu-text">Sign Up</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="guest-forgot-password.html">
+                                                <a class="sidebar-menu-button" href="{% url 'forgot_password' %}">
                                                     <span class="sidebar-menu-text">Forgot Password</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-account-edit.html">
+                                                <a class="sidebar-menu-button" href="{% url 'account_edit' %}">
                                                     <span class="sidebar-menu-text">Edit Account</span>
                                                 </a>
                                             </li>
-                                            <li class="sidebar-menu-item">
+                                            <!-- <li class="sidebar-menu-item">
                                                 <a class="sidebar-menu-button" href="student-account-edit-basic.html">
                                                     <span class="sidebar-menu-text">Basic Information</span>
                                                 </a>
@@ -279,9 +279,9 @@
                                                 <a class="sidebar-menu-button" href="student-invoice.html">
                                                     <span class="sidebar-menu-text">Student Invoice</span>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-invoice.html">
+                                                <a class="sidebar-menu-button" href="{% url 'invoice' %}">
                                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                                 </a>
                                             </li>
@@ -299,13 +299,13 @@
                                         </a>
                                         <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-messages.html">
+                                                <a class="sidebar-menu-button" href="{% url 'messages' %}">
                                                     <span class="sidebar-menu-text">Conversation</span>
                                                     <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-messages-2.html">
+                                                <a class="sidebar-menu-button" href="{% url 'messages_2' %}">
                                                     <span class="sidebar-menu-text">Conversation - 2</span>
                                                 </a>
                                             </li>
@@ -315,17 +315,17 @@
                                 <div class="sidebar-heading">Instructor</div>
                                 <ul class="sidebar-menu sm-active-button-bg">
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="instructor-courses.html">
+                                        <a class="sidebar-menu-button" href="{% url 'courses' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> Course Manager
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="instructor-quizzes.html">
+                                        <a class="sidebar-menu-button" href="{% url 'quizzes' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">help</i> Quiz Manager
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="instructor-earnings.html">
+                                        <a class="sidebar-menu-button" href="{% url 'earnings' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">trending_up</i> Earnings
                                         </a>
                                     </li>
@@ -342,21 +342,21 @@
                                         </a>
                                         <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-forum.html">
+                                                <a class="sidebar-menu-button" href="{% url 'forum' %}">
                                                     <span class="sidebar-menu-text">Forum</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-forum-thread.html">
+                                                <a class="sidebar-menu-button" href="{% url 'forum_thread' %}">
                                                     <span class="sidebar-menu-text">Discussion</span>
                                                 </a>
                                             </li>
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-forum-ask.html">
+                                                <a class="sidebar-menu-button" href="{% url 'forum_ask' %}">
                                                     <span class="sidebar-menu-text">Ask Question</span>
                                                 </a>
                                             </li>
-                                            <li class="sidebar-menu-item">
+                                            <!-- <li class="sidebar-menu-item">
                                                 <a class="sidebar-menu-button" href="student-profile.html">
                                                     <span class="sidebar-menu-text">Student Profile - Courses</span>
                                                 </a>
@@ -365,9 +365,9 @@
                                                 <a class="sidebar-menu-button" href="student-profile-posts.html">
                                                     <span class="sidebar-menu-text">Student Profile - Posts</span>
                                                 </a>
-                                            </li>
+                                            </li> -->
                                             <li class="sidebar-menu-item">
-                                                <a class="sidebar-menu-button" href="instructor-profile.html">
+                                                <a class="sidebar-menu-button" href="{% url 'profile' %}">
                                                     <span class="sidebar-menu-text">Instructor Profile</span>
                                                 </a>
                                             </li>
@@ -379,13 +379,13 @@
                                         </a>
                                     </li>
                                     <li class="sidebar-menu-item">
-                                        <a class="sidebar-menu-button" href="guest-login.html">
+                                        <a class="sidebar-menu-button" href="{% url 'login' %}">
                                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
                                         </a>
                                     </li>
                                 </ul>
                                 <!-- Components menu -->
-                                <div class="sidebar-heading">Components</div>
+                                <!-- <div class="sidebar-heading">Components</div>
                                 <ul class="sidebar-menu">
                                     <li class="sidebar-menu-item">
                                         <a class="sidebar-menu-button sidebar-js-collapse" data-toggle="collapse" href="#components_menu">
@@ -444,7 +444,7 @@
                                                     <span class="sidebar-menu-text">Badges</span>
                                                 </a>
                                             </li>
-                                            <!-- <li class="sidebar-menu-item">
+                                            <li class="sidebar-menu-item">
         <a class="sidebar-menu-button" href="ui-modals.html">
           <span class="sidebar-menu-text">- Modals</span>
         </a>
@@ -505,7 +505,7 @@
                                             </li>
                                         </ul>
                                     </li>
-                                </ul>
+                                </ul> -->
                                 <!-- // END Components Menu -->
 
                                 <div class="sidebar-heading">Layout</div>
