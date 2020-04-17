@@ -185,13 +185,7 @@ def quizzes(request):
 
     }
     return render(request,'pages/fixed-student-quizzes.html',datas)
-
-@login_required(login_url = 'login')
-def signup(request):
-    datas = {
-
-    }
-    return render(request,'pages/fixed-student-signup.html',datas)
+    
 
 @login_required(login_url = 'login')
 def statement(request):

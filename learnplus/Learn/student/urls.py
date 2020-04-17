@@ -27,7 +27,6 @@ urlpatterns = [
     path('profile_posts', views.profile_posts, name='profile-posts'),
     path('quiz_results', views.quiz_results, name='quiz-results'),
     path('quizzes', views.quizzes, name='quizzes'),
-    path('signup', views.signup, name='signup'),
     path('take_course', views.take_course, name='take-course'),
     path('take_course', views.take_course, name='take-course'),
     path('take_quiz', views.take_quiz, name='take-quiz'),

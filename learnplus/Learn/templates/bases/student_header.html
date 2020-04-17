@@ -82,7 +82,7 @@
                         <!-- Menu -->
                         <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                             <li class="nav-item">
-                                <a class="nav-link" href="forum">Forum</a>
+                                <a class="nav-link" href="{% url 'forum' %} ">Forum</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="help-center">Get Help</a>
@@ -184,7 +184,7 @@
                                                 class="list-group-item list-group-item-action">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 hours ago</small>
-
+  
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -298,13 +298,10 @@
                                             Information</a>
                                         <a class="dropdown-item" href="billing">Payment History</a>
                                         <a class="dropdown-item" href="invoice">Student Invoice</a>
-                                        <a class="dropdown-item" href="fixed-instructor-edit-invoice">Edit
+                                        <a class="dropdown-item" href="{% url  %} fixed-instructor-edit-invoice">Edit
                                             Invoice</a>
                                         <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'login'%}">Login</a>
-                                        <a class="dropdown-item" href=" {% url 'signup'%}">Signup</a>
-                                        <a class="dropdown-item" href="{% url 'forgot_password'%}">Forgot Password</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -373,21 +370,6 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'login'%}">
-                                    <span class="sidebar-menu-text">Login</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'signup'%}">
-                                    <span class="sidebar-menu-text">Sign Up</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'forgot_password'%}">
-                                    <span class="sidebar-menu-text">Forgot Password</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="account-edit">
                                     <span class="sidebar-menu-text">Edit Account</span>
                                 </a>
@@ -429,12 +411,12 @@
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-invoice">
+                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-invoice">
                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-edit-invoice">
+                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-edit-invoice">
                                     <span class="sidebar-menu-text">Edit Invoice</span>
                                 </a>
                             </li>
@@ -504,17 +486,17 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="forum">
+                                <a class="sidebar-menu-button" href="{% url  %} forum">
                                     <span class="sidebar-menu-text">Forum</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="forum-thread">
+                                <a class="sidebar-menu-button" href="{% url  %} forum-thread">
                                     <span class="sidebar-menu-text">Discussion</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="forum-ask">
+                                <a class="sidebar-menu-button" href="{% url  %} forum-ask">
                                     <span class="sidebar-menu-text">Ask Question</span>
                                 </a>
                             </li>
@@ -529,7 +511,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="fixed-instructor-profile">
+                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-profile">
                                     <span class="sidebar-menu-text">Instructor Profile</span>
                                 </a>
                             </li>
