@@ -39,16 +39,13 @@ def course_edit(request):
 
 
 @login_required(login_url = 'login')
+
 def courses(request):
     datas = {
 
     }
     return render(request,'pages/instructor-courses.html',datas)
 
-    datas = {
-
-    }
-    return render(request,'pages/instructor-dashboardx.html',datas)
 
 @login_required(login_url = 'login')
 def earnings(request):
@@ -189,6 +186,13 @@ def view_course(request):
 
     }
     return render(request,'pages/instructor-view-course.html',datas)
+
+@login_required(login_url = 'login')
+def statement(request):
+    datas = {
+
+    }
+    return render(request,'pages/instructor-statement.html',datas)
 
 
 

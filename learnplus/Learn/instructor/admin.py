@@ -20,7 +20,7 @@ class CustomAdmin(admin.ModelAdmin):
     desactivate.short_description = "permet de desactiver le champs selectionner"
 
 class InstructorAdmin(CustomAdmin):
-    list_display = ('user','contact','adresse','photo','status')
+    list_display = ('user','contact','adresse','image_view','status')
     search_fields = ('user',)
     ordering = ['user']
     list_display_links =['user']
@@ -30,7 +30,7 @@ class InstructorAdmin(CustomAdmin):
                  ("standard",{"fields":["status"]})
     ]
     def image_view(self,obj):
-        return mark_safe("<img src ='{url}' width='100px',height='50px'>".format(url=obj.image.url))
+        return mark_safe("<img src ='{url}' width='100px',height='50px'>".format(url=obj.photo.url))
 
 def _register(model,admin_class):
     admin.site.register(model,admin_class)
