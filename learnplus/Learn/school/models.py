@@ -59,7 +59,7 @@ class Classe(models.Model):
         verbose_name_plural = 'Classes'
 
     def __str__(self):
-        return self.niveau
+        return self.niveau.nom
 
 class Chapitre(models.Model):
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')

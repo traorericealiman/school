@@ -406,20 +406,20 @@
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="invoice">
+                                <a class="sidebar-menu-button" href="{% url 'invoice' %}">
                                     <span class="sidebar-menu-text">Student Invoice</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-invoice">
+                            <!-- <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{% url '' %} fixed-instructor-invoice">
                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                 </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-edit-invoice">
+                            </li> -->
+                            <!-- <li class="sidebar-menu-item">
+                                <a class="sidebar-menu-button" href="{% url '' %} fixed-instructor-edit-invoice">
                                     <span class="sidebar-menu-text">Edit Invoice</span>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
@@ -429,14 +429,14 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="messages">
+                                <a class="sidebar-menu-button" href="{% url 'messages' %}">
                                     <span class="sidebar-menu-text">Conversation</span>
                                     <span
                                         class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="messages-2">
+                                <a class="sidebar-menu-button" href="{% url 'messages_2' %}">
                                     <span class="sidebar-menu-text">Conversation - 2</span>
                                 </a>
                             </li>
