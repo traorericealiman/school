@@ -242,7 +242,7 @@
                                         <i class="material-icons">lock</i> Logout
                                     </a>
                                 </div>
-                            </li>
+                            </li> 
                             <!-- // END User dropdown -->
 
                         </ul>
@@ -272,29 +272,29 @@
                                             href="{% url 'index_student' %}">Dashboard</a>
                                         <a class="dropdown-item" href="browse-courses">Browse
                                             Courses</a>
-                                        <a class="dropdown-item" href="view-course">View Course</a>
-                                        <a class="dropdown-item" href="take-course">Take Course</a>
-                                        <a class="dropdown-item" href="take-quiz">Take a Quiz</a>
-                                        <a class="dropdown-item" href="quiz-results">Quiz Results</a>
-                                        <a class="dropdown-item" href="my-courses">My Courses</a>
-                                        <a class="dropdown-item" href="billing">Billing</a>
-                                        <a class="dropdown-item" href="pay">Payment</a>
+                                        <a class="dropdown-item" href=" {% url 'view-course' %} ">View Course</a>
+                                        <a class="dropdown-item" href="{% url 'take-course' %}">Take Course</a>
+                                        <a class="dropdown-item" href="{% url 'take-quiz' %}">Take a Quiz</a>
+                                        <a class="dropdown-item" href="{% url 'quiz-results' %}">Quiz Results</a>
+                                        <a class="dropdown-item" href="{% url 'my-courses' %}">My Courses</a>
+                                        <a class="dropdown-item" href="{% url 'billing' %}">Billing</a>
+                                        <a class="dropdown-item" href="{% url 'pay' %}">Payment</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="account-edit">Edit Account</a>
-                                        <a class="dropdown-item" href="account-edit-basic">Basic
+                                        <a class="dropdown-item" href=" {% url 'edit' %}">Edit Account</a>
+                                        <a class="dropdown-item" href="{% url 'edit-basic'%}">Basic
                                             Information</a>
-                                        <a class="dropdown-item" href="account-edit-profile">Profile
+                                        <a class="dropdown-item" href="{% url 'profile' %}">Profile
                                             &amp; Privacy</a>
                                         <a class="dropdown-item"
-                                            href="account-billing-subscription">Subscription</a>
+                                            href="{% url 'subscription' %}">Subscription</a>
                                         <a class="dropdown-item"
-                                            href="account-billing-upgrade">Upgrade Account</a>
+                                            href="{% url 'upgrade' %}">Upgrade Account</a>
                                         <a class="dropdown-item"
-                                            href="account-billing-payment-information">Payment
+                                            href="{% url 'payment' %}">Payment
                                             Information</a>
                                         <a class="dropdown-item" href="{% url 'billing' %}">Payment History</a>
                                         <a class="dropdown-item" href="{% url 'invoice' %}">Student Invoice</a>
