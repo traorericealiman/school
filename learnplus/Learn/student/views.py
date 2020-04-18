@@ -221,3 +221,10 @@ def view_course(request):
 
     }
     return render(request,'pages/fixed-student-view-course.html',datas)
+
+@login_required(login_url = 'login')
+def account_edit(request):
+    datas = {
+
+    }
+    return render(request,'pages/fixed-student-account-edit.html',datas)
