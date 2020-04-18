@@ -269,7 +269,7 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item active"
-                                            href="dashboard">Dashboard</a>
+                                            href="{% url 'index_student' %}">Dashboard</a>
                                         <a class="dropdown-item" href="browse-courses">Browse
                                             Courses</a>
                                         <a class="dropdown-item" href="view-course">View Course</a>
@@ -296,10 +296,8 @@
                                         <a class="dropdown-item"
                                             href="account-billing-payment-information">Payment
                                             Information</a>
-                                        <a class="dropdown-item" href="billing">Payment History</a>
-                                        <a class="dropdown-item" href="invoice">Student Invoice</a>
-                                        <a class="dropdown-item" href="{% url  %} fixed-instructor-edit-invoice">Edit
-                                            Invoice</a>
+                                        <a class="dropdown-item" href="{% url 'billing' %}">Payment History</a>
+                                        <a class="dropdown-item" href="{% url 'invoice' %}">Student Invoice</a>
                                         <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
@@ -354,7 +352,7 @@
                 <div class="sidebar-heading">APPLICATIONS</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="dashboard">
+                        <a class="sidebar-menu-button" href="{% url 'index_student' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
                         </a>
                     </li>
@@ -411,12 +409,12 @@
                                 </a>
                             </li>
                             <!-- <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url '' %} fixed-instructor-invoice">
+                                <a class="sidebar-menu-button" href="#} fixed-instructor-invoice">
                                     <span class="sidebar-menu-text">Instructor Invoice</span>
                                 </a>
                             </li> -->
                             <!-- <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url '' %} fixed-instructor-edit-invoice">
+                                <a class="sidebar-menu-button" href="# fixed-instructor-edit-invoice">
                                     <span class="sidebar-menu-text">Edit Invoice</span>
                                 </a>
                             </li> -->
@@ -436,7 +434,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'messages_2' %}">
+                                <a class="sidebar-menu-button" href="{% url 'messages-2' %}">
                                     <span class="sidebar-menu-text">Conversation - 2</span>
                                 </a>
                             </li>
@@ -486,39 +484,34 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="forum_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} forum">
+                                <a class="sidebar-menu-button" href="{% url 'forum' %} ">
                                     <span class="sidebar-menu-text">Forum</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} forum-thread">
+                                <a class="sidebar-menu-button" href="{% url 'forum-thread' %} ">
                                     <span class="sidebar-menu-text">Discussion</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} forum-ask">
+                                <a class="sidebar-menu-button" href="{% url 'forum-ask' %} ">
                                     <span class="sidebar-menu-text">Ask Question</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="profile">
+                                <a class="sidebar-menu-button" href="{% url 'profile' %}">
                                     <span class="sidebar-menu-text">Student Profile - Courses</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="profile-posts">
+                                <a class="sidebar-menu-button" href="{% url 'profile-posts' %}">
                                     <span class="sidebar-menu-text">Student Profile - Posts</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url  %} fixed-instructor-profile">
-                                    <span class="sidebar-menu-text">Instructor Profile</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="help-center">
+                        <a class="sidebar-menu-button" href="{% url 'help-center' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Get Help
                         </a>
                     </li>
@@ -531,13 +524,13 @@
                 <div class="sidebar-heading">Layout</div>
                 <ul class="sidebar-menu">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-dashboard">
+                        <a class="sidebar-menu-button" href="{% url 'index_student' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fluid
                             Layout
                         </a>
                     </li>
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="dashboard">
+                        <a class="sidebar-menu-button" href="{% url 'index_student' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fixed
                             Layout
                         </a>
