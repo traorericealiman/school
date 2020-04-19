@@ -8,11 +8,11 @@ def index(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -28,11 +28,11 @@ def payment(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -47,11 +47,11 @@ def subscription(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -66,11 +66,11 @@ def upgrade(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -86,11 +86,11 @@ def edit(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -105,11 +105,11 @@ def edit_basic(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -124,11 +124,11 @@ def edit_profile(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -144,11 +144,11 @@ def billing(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -163,11 +163,11 @@ def browse_courses(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -183,11 +183,11 @@ def cart(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -202,11 +202,11 @@ def courses(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -221,11 +221,11 @@ def dashboard(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -240,11 +240,11 @@ def earnings(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -260,11 +260,11 @@ def forum(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -279,11 +279,11 @@ def forum_ask(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -298,11 +298,11 @@ def forum_thread(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -318,11 +318,11 @@ def help_center(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -338,11 +338,11 @@ def invoice(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -357,11 +357,11 @@ def messages(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -376,11 +376,11 @@ def messages_2(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -395,11 +395,11 @@ def my_courses(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -414,11 +414,11 @@ def pay(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -433,11 +433,11 @@ def profile(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -452,11 +452,11 @@ def profile_posts(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -472,11 +472,11 @@ def quiz_results(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -491,11 +491,11 @@ def quizzes(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -511,11 +511,11 @@ def statement(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -531,11 +531,11 @@ def student_take_course(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -550,11 +550,11 @@ def take_course(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -570,11 +570,11 @@ def take_quiz(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -589,11 +589,11 @@ def view_course(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
@@ -608,11 +608,11 @@ def account_edit(request):
         try:
             try:
                 print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
+                if request.user.instructor:
+                    return redirect('dashboard')
             except:
                 print("2")
-                if request.user.instructor:
+                if request.user.student_user:
                     datas = {
 
                            }
