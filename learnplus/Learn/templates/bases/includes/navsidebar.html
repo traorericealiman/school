@@ -20,7 +20,7 @@
                             <span class="ml-auto sidebar-menu-toggle-icon"></span>
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
-                            <li class="sidebar-menu-item">
+                            <!-- <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="{% url 'login' %}">
                                     <span class="sidebar-menu-text">Login</span>
                                 </a>
@@ -34,7 +34,7 @@
                                 <a class="sidebar-menu-button" href="{% url 'forgot_password' %}">
                                     <span class="sidebar-menu-text">Forgot Password</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="{% url 'instructor-account-edit' %}">
                                     <span class="sidebar-menu-text">Edit Account</span>
@@ -88,24 +88,10 @@
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" data-toggle="collapse" href="#messages_menu">
+                        <a class="sidebar-menu-button"  href="{% url 'instructor-messages' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i> Messages
-                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                            <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                         </a>
-                        <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'instructor-messages' %}">
-                                    <span class="sidebar-menu-text">Conversation</span>
-                                    <span
-                                        class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'instructor-messages-2' %}">
-                                    <span class="sidebar-menu-text">Conversation - 2</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
                 <div class="sidebar-heading">Instructor</div>
@@ -132,7 +118,7 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" data-toggle="collapse" href="#forum-menu">
+                        <a class="sidebar-menu-button" data-toggle="collapse" href="#forum_menu">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">chat_bubble_outline</i>
                             Community
                             <span class="ml-auto sidebar-menu-toggle-icon"></span>
@@ -153,28 +139,13 @@
                                     <span class="sidebar-menu-text">Ask Question</span>
                                 </a>
                             </li>
-                            <!-- <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="student-profile.html">
-                                    <span class="sidebar-menu-text">Student Profile - Courses</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="student-profile-posts.html">
-                                    <span class="sidebar-menu-text">Student Profile - Posts</span>
-                                </a>
-                            </li> -->
+                           
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button" href="{% url 'instructor-profile' %}">
                                     <span class="sidebar-menu-text">Instructor Profile</span>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="instructor-help-center.html">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Help
-                            Center
-                        </a>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button" href="{% url 'deconnexion' %}">

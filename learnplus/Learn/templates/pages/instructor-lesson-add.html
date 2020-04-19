@@ -1,4 +1,16 @@
 {% extends 'bases/header_instructor.html' %}
+
+
+
+{% block style %}
+    <!-- Vendor Dropzone CSS -->
+    <link rel="stylesheet" href="/static/assets/vendor/dropzone.min.css">
+    <link rel="stylesheet" href="/static/assets/css/dropzone.css">
+    <link rel="stylesheet" href="/static/assets/css/dropzone.rtl.css">
+    <link rel="stylesheet" href="/static/assets/css/fancytree.css">
+    <link rel="stylesheet" href="/static/assets/css/fancytree.rtl.css">
+{% endblock style %}
+    
 {% block content %}
 
         <!-- Header Layout Content -->
@@ -80,11 +92,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <form id="my-awesome-dropzone" action="http://learnplus-bootstrap.frontendmatter.com/target" class="dropzone"></form>
+                                        <form id="my-awesome-dropzone" action="#" class="dropzone"></form>
                                     </div>
                                     <div class="col-md-6">
                                         <div data-toggle="tree">
-                                            <ul style="display: none;">
+                                            <ul >
                                                 <li class="folder expanded">
                                                     lesson files
                                                     <ul>
@@ -103,3 +115,15 @@
                 </div>
 
     {% endblock content %}
+
+
+    
+    {% block script %}
+        <!-- Required by Calendar (fullcalendar) -->
+        <script src="/static/assets/vendor/dropzone.min.js"></script>
+        <script src="/static/assets/vendor/jquery.fancytree-all.min.js"></script>
+        
+        <!-- Init -->
+        <script src="/static/assets/js/fancytree.js"></script>
+    {% endblock script %}
+        

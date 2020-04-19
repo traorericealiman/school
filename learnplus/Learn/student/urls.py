@@ -28,7 +28,6 @@ urlpatterns = [
     path('quiz_results', views.quiz_results, name='quiz-results'),
     path('quizzes', views.quizzes, name='quizzes'),
     path('take_course', views.take_course, name='take-course'),
-    path('take_course', views.take_course, name='take-course'),
     path('take_quiz', views.take_quiz, name='take-quiz'),
     path('view_course', views.view_course, name='view-course'),
 ]

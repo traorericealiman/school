@@ -17,7 +17,7 @@ def login(request):
                 print("2")
                 if request.user.instructor:
                     return redirect('dashboard')
-        except:
+        except Exception as e:
             print("3")
             return redirect("/admin/")
     else:
@@ -27,18 +27,45 @@ def login(request):
         return render(request, 'pages/guest-login.html', datas)
 
 def signup(request):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    return redirect('dashboard')
+        except:
+            print("3")
+            return redirect("/admin/")
+    else:
 
-    datas = {
+        datas = {
 
-    }
-    return render(request, 'pages/guest-signup.html', datas) 
+        }
+        return render(request, 'pages/guest-signup.html', datas) 
 
 def forgot_password(request):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    return redirect('dashboard')
+        except:
+            print("3")
+            return redirect("/admin/")
+    else:
+        datas = {
 
-    datas = {
-
-    }
-    return render(request, 'pages/guest-forgot-password.html', datas)
+        }
+        return render(request, 'pages/guest-forgot-password.html', datas)
 
 
 

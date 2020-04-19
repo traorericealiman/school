@@ -6,8 +6,8 @@
 
                     <div class="container-fluid page__container">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="instructor-forum.html">Forum</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'instructor-forum' %}">Forum</a></li>
                             <li class="breadcrumb-item active">Discussion</li>
                         </ol>
 
@@ -16,7 +16,7 @@
 
                                 <h1 class="h2 mb-2">Can someone help me with the basic setup of a Vue.js and Vuex project using Nuxt?</h1>
                                 <p class="text-muted d-flex align-items-center mb-4">
-                                    <a href="instructor-forum.html" class="mr-3">Back to Community</a>
+                                    <a href="{% url 'instructor-forum' %}" class="mr-3">Back to Community</a>
                                     <a href="#" class="mr-2 text-black-50">Mute</a>
                                     <a href="#" class="mr-2 text-black-50">Report</a>
                                     <a href="#" class="text-black-50" style="text-decoration: underline;">Edit</a>
@@ -29,7 +29,7 @@
                                         </a>
                                         <div class="flex">
                                             <p class="d-flex align-items-center mb-2">
-                                                <a href="instructor-profile.html" class="text-body mr-2"><strong>Jenell D. Matney</strong></a>
+                                                <a href="{% url 'instructor-profile' %}" class="text-body mr-2"><strong>Jenell D. Matney</strong></a>
                                                 <small class="text-muted">2 min ago</small>
                                             </p>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores beatae quisquam iste maiores libero, corrupti totam saepe itaque quidem perspiciatis?</p>
@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="d-flex mb-4">
-                                    <a href="instructor-profile.html" class="avatar mr-3">
+                                    <a href="{% url 'instructor-profile' %}" class="avatar mr-3">
                                         <img src="/static/assets/images/people/50/guy-6.jpg" alt="people" class="avatar-img rounded-circle">
                                     </a>
                                     <div class="flex">
@@ -57,11 +57,11 @@
                                 <div class="pt-3">
                                     <h4>2 Comments</h4>
                                     <div class="d-flex mb-3">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/256_rsz_karl-s-973833-unsplash.jpg" alt="people" class="avatar-img rounded-circle">
                                         </a>
                                         <div class="flex">
-                                            <a href="instructor-profile.html" class="text-body"><strong>Joseph S. Ferland</strong></a>
+                                            <a href="{% url 'instructor-profile' %}" class="text-body"><strong>Joseph S. Ferland</strong></a>
                                             <span class="text-black-70">How can I load Charts on a page?</span><br>
                                             <span class="text-black-50">on <a href="instructor-take-course.html" class="text-black-50" style="text-decoration: underline;">Data Visualization With Chart.js</a></span><br>
                                             <div class="d-flex align-items-center">
@@ -77,7 +77,7 @@
                                         </a>
                                         <div class="flex">
                                             <div class="d-flex align-items-center">
-                                                <a href="instructor-profile.html" class="text-body"><strong>FrontendMatter</strong></a>
+                                                <a href="{% url 'instructor-profile' %}" class="text-body"><strong>FrontendMatter</strong></a>
                                                 <small class="ml-auto text-muted">just now</small>
                                             </div>
                                             <p class="mt-1 mb-0 text-black-70">Hi Joseph,<br> Thank you for purchasing our course! <br><br>Please have a look at the charts library documentation <a href="#">here</a> and follow the instructions.</p>
@@ -95,55 +95,55 @@
                                 <div class="mb-4">
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/people/50/guy-1.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Luci Bryant</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Luci Bryant</strong></a>
                                         <span class="text-black-70 mr-2">105</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/people/50/guy-2.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Magnus Goldsmith</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Magnus Goldsmith</strong></a>
                                         <span class="text-black-70 mr-2">93</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/people/50/woman-1.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Katelyn Rankin</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Katelyn Rankin</strong></a>
                                         <span class="text-black-70 mr-2">55</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/256_rsz_nicolas-horn-689011-unsplash.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Jenell D. Matney</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Jenell D. Matney</strong></a>
                                         <span class="text-black-70 mr-2">32</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/256_rsz_sharina-mae-agellon-377466-unsplash.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Sherri J. Cardenas</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Sherri J. Cardenas</strong></a>
                                         <span class="text-black-70 mr-2">21</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
 
                                     <div class="d-flex align-items-center mb-2">
-                                        <a href="instructor-profile.html" class="avatar avatar-xs mr-3">
+                                        <a href="{% url 'instructor-profile' %}" class="avatar avatar-xs mr-3">
                                             <img src="/static/assets/images/256_rsz_karl-s-973833-unsplash.jpg" alt="course" class="avatar-img rounded-circle">
                                         </a>
-                                        <a href="instructor-profile.html" class="flex mr-2 text-body"><strong>Joseph S. Ferland</strong></a>
+                                        <a href="{% url 'instructor-profile' %}" class="flex mr-2 text-body"><strong>Joseph S. Ferland</strong></a>
                                         <span class="text-black-70 mr-2">16</span>
                                         <i class="text-muted material-icons font-size-16pt">forum</i>
                                     </div>
