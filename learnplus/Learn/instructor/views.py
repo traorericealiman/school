@@ -191,14 +191,16 @@ def forum(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-forum.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
     
