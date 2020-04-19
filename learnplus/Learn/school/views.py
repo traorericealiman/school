@@ -11,12 +11,12 @@ def login(request):
         try:
             try:
                 print("1")
-                if utilisateur.student_user:
-                    redirect('index_student')
+                if request.user.student_user:
+                    return redirect('index_student')
             except:
                 print("2")
-                if utilisateur.instructor:
-                    redirect('dashboard')
+                if request.user.instructor:
+                    return redirect('dashboard')
         except:
             print("3")
             return redirect("/admin/")

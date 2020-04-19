@@ -4,227 +4,620 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url = 'login')
 def index(request):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    datas = {
+                           }
+                return render(request,'pages/fixed-student-dashboard.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
-    }
-    return render(request, 'pages/fixed-student-dashboard.html', datas)
 
 @login_required(login_url = 'login')
 def payment(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-billing-payment-information.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-account-billing-payment-information.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+   
 @login_required(login_url = 'login')
 def subscription(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-billing-subscription.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-account-billing-subscription.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 @login_required(login_url = 'login')
 def upgrade(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-billing-upgrade.html',datas)
+                           }
+                return render(request,'pages/fixed-student-account-billing-upgrade.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 
 @login_required(login_url = 'login')
 def edit(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-edit.html',datas)
+                           }
+                return render(request,'pages/fixed-student-account-edit.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def edit_basic(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-edit-basic.html',datas)
+                           }
+                return render(request,'pages/fixed-student-account-edit-basic.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def edit_profile(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-edit-profile.html',datas)
+                           }
+                return render(request,'pages/fixed-student-account-edit-profile.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+
 
 @login_required(login_url = 'login')
 def billing(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-billing.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-billing.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 @login_required(login_url = 'login')
 def browse_courses(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-browse-courses.html',datas)
+                           }
+                return render(request,'pages/fixed-student-browse-courses.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+   
 
 @login_required(login_url = 'login')
 def cart(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-cart.html',datas)
+                           }
+                return render(request,'pages/fixed-student-cart.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def courses(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-courses.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-courses.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 @login_required(login_url = 'login')
 def dashboard(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-dashboard.html',datas)
+                           }
+                return render(request,'pages/fixed-student-dashboard.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def earnings(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-earnings.html',datas)
+                           }
+                return render(request,'pages/fixed-student-earnings.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 
 @login_required(login_url = 'login')
 def forum(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-forum.html',datas)
+                           }
+                return render(request,'pages/fixed-student-forum.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def forum_ask(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-forum-ask.html',datas)
+                           }
+                return render(request,'pages/fixed-student-forum-ask.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def forum_thread(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-forum-thread.html',datas)
+                           }
+                return render(request,'pages/fixed-student-forum-thread.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 
 @login_required(login_url = 'login')
 def help_center(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-help-center.html',datas)
+                           }
+                return render(request,'pages/fixed-student-help-center.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 
 @login_required(login_url = 'login')
 def invoice(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-invoice.html',datas)
+                           }
+                return render(request,'pages/fixed-student-invoice.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def messages(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-messages.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-messages.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 @login_required(login_url = 'login')
 def messages_2(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-messages-2.html',datas)
+                           }
+                return render(request,'pages/fixed-student-messages-2.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def my_courses(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-my-courses.html',datas)
+                           }
+                return render(request,'pages/fixed-student-my-courses.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def pay(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-pay.html',datas)
+                           }
+                return render(request,'pages/fixed-student-pay.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def profile(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-profile.html',datas)
+                           }
+                return render(request,'pages/fixed-student-profile.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def profile_posts(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-profile-posts.html',datas)
+                           }
+                return render(request,'pages/fixed-student-profile-posts.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 
 @login_required(login_url = 'login')
 def quiz_results(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-quiz-results.html',datas)
+                           }
+                return render(request,'pages/fixed-student-quiz-results.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def quizzes(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-quizzes.html',datas)
+                           }
+                return render(request,'pages/fixed-student-quizzes.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
     
 
 @login_required(login_url = 'login')
 def statement(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-statement.html',datas)
+                           }
+                return render(request,'pages/fixed-student-statement.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 
 @login_required(login_url = 'login')
 def student_take_course(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-student-take-course.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-student-take-course.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+   
 @login_required(login_url = 'login')
 def take_course(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-take-course.html',datas)
+                           }
+                return render(request,'pages/fixed-student-take-course.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+   
 
 @login_required(login_url = 'login')
 def take_quiz(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-take-quiz.html',datas)
+                           }
+                return render(request,'pages/fixed-student-take-quiz.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def view_course(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-view-course.html',datas)
-
+                           }
+                return render(request,'pages/fixed-student-view-course.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
 @login_required(login_url = 'login')
 def account_edit(request):
-    datas = {
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except:
+                print("2")
+                if request.user.instructor:
+                    datas = {
 
-    }
-    return render(request,'pages/fixed-student-account-edit.html',datas)
+                           }
+                return render(request,'pages/fixed-student-account-edit.html',datas)
+        except:
+            print("3")
+            return redirect("/admin/")
+    
