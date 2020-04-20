@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 
 <head>
     <meta charset="utf-8">
@@ -25,25 +25,13 @@
     <link type="text/css" href="/static/assets/css/app.css" rel="stylesheet">
     <link type="text/css" href="/static/assets/css/app.rtl.css" rel="stylesheet">
 
-
-
-
-
-
-
-
+    {% block style %}
+    
+    {% endblock style %}
 
 </head>
 
 <body class="app-messages layout-fluid">
-
-
-
-
-
-
-
-
 
     <div class="preloader">
         <div class="sk-double-bounce">
@@ -110,30 +98,6 @@
     <script src="/static/assets/js/app-settings.js"></script>
 
 
-
-
-
-
-    <!-- Global Settings -->
-    <script src="/static/assets/js/settings.js"></script>
-
-    <!-- Moment.js -->
-    <script src="/static/assets/vendor/moment.min.js"></script>
-    <script src="/static/assets/vendor/moment-range.min.js"></script>
-
-    <!-- Chart.js -->
-    <script src="/static/assets/vendor/Chart.min.js"></script>
-
-    <!-- UI Charts Page JS -->
-    <script src="/static/assets/js/chartjs-rounded-bar.js"></script>
-    <script src="/static/assets/js/chartjs.js"></script>
-
-    <!-- Chart.js Samples -->
-    <script src="/static/assets/js/page.instructor-dashboard.js"></script>
-
-    <!-- List.js -->
-    <script src="/static/assets/vendor/list.min.js"></script>
-    <script src="/static/assets/js/list.js"></script>
 
     {% block script %}
 
