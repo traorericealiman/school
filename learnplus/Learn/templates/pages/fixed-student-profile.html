@@ -14,10 +14,10 @@
                     </div>
                     <ul class="nav nav-tabs-links flex" style="margin-left: 265px;">
                         <li class="nav-item">
-                            <a href="fixed-student-profile.html" class="nav-link active">Courses</a>
+                            <a href="{% url 'profile' %}" class="nav-link active">Courses</a>
                         </li>
                         <li class="nav-item">
-                            <a href="fixed-student-profile-posts.html" class="nav-link">Posts</a>
+                            <a href="{% url 'profile-posts' %}" class="nav-link">Posts</a>
                         </li>
                     </ul>
                 </div>
@@ -53,11 +53,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <a href="fixed-student-take-course.html" class="mr-3">
+                                        <a href="{% url 'take-course' %}" class="mr-3">
                                             <img src="/static/assets/images/vuejs.png" width="100" alt="" class="rounded">
                                         </a>
                                         <div class="flex">
-                                            <h4 class="card-title mb-0"><a href="fixed-student-take-course.html">VueJs</a></h4>
+                                            <h4 class="card-title mb-0"><a href="{% url 'take-course' %}">VueJs</a></h4>
                                             <span class="badge badge-primary">Advanced</span>
                                         </div>
                                     </div>
@@ -86,11 +86,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <a href="fixed-student-take-course.html" class="mr-3">
+                                        <a href="{% url 'take-course' %}" class="mr-3">
                                             <img src="/static/assets/images/nodejs.png" alt="" class="rounded" width="100">
                                         </a>
                                         <div class="flex">
-                                            <h4 class="card-title mb-0"><a href="fixed-student-take-course.html">NodeJs</a></h4>
+                                            <h4 class="card-title mb-0"><a href="{% url 'take-course' %}">NodeJs</a></h4>
                                             <span class="badge badge-success">Beginner</span>
                                         </div>
                                     </div>
@@ -107,11 +107,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
-                                        <a href="fixed-student-take-course.html" class="mr-3">
+                                        <a href="{% url 'take-course' %}" class="mr-3">
                                             <img src="/static/assets/images/github.png" alt="" class="rounded" width="100">
                                         </a>
                                         <div class="media-body">
-                                            <h4 class="card-title mb-0"><a href="fixed-student-take-course.html">GitHub</a></h4>
+                                            <h4 class="card-title mb-0"><a href="{% url 'take-course' %}">GitHub</a></h4>
                                             <span class="badge badge-warning">Intermediate</span>
                                         </div>
                                     </div>

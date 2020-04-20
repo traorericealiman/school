@@ -9,7 +9,7 @@ def index(request):
             try:
                 print("1")
                 if request.user.instructor:
-                    return redirect('dashboard')
+                    return redirect('dashboard') 
             except Exception as e:
                 print(e)
                 print("2")
