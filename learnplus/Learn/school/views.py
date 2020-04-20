@@ -18,6 +18,7 @@ def login(request):
                 if request.user.instructor:
                     return redirect('dashboard')
         except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
     else:

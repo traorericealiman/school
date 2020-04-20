@@ -265,51 +265,30 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item active"
                                             href="{% url 'index_student' %}">Dashboard</a>
-                                        <a class="dropdown-item" href="browse-courses">Browse
-                                            Courses</a>
-                                        <a class="dropdown-item" href=" {% url 'view-course' %} ">View Course</a>
-                                        <a class="dropdown-item" href="{% url 'take-course' %}">Take Course</a>
-                                        <a class="dropdown-item" href="{% url 'take-quiz' %}">Take a Quiz</a>
-                                        <a class="dropdown-item" href="{% url 'quiz-results' %}">Quiz Results</a>
-                                        <a class="dropdown-item" href="{% url 'my-courses' %}">My Courses</a>
-                                        <a class="dropdown-item" href="{% url 'billing' %}">Billing</a>
-                                        <a class="dropdown-item" href="{% url 'pay' %}">Payment</a>
+                                        <a class="dropdown-item" href="{% url 'take-quiz' %}">Quiz</a>
+                                        <a class="dropdown-item" href="{% url 'quiz-results' %}">Résultats</a>
+                                        <a class="dropdown-item" href="{% url 'my-courses' %}">Cours</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href=" {% url 'edit' %}">Edit Account</a>
-                                        <a class="dropdown-item" href="{% url 'edit-basic'%}">Basic
-                                            Information</a>
                                         <a class="dropdown-item" href="{% url 'profile' %}">Profile
                                             &amp; Privacy</a>
-                                        <a class="dropdown-item"
-                                            href="{% url 'subscription' %}">Subscription</a>
-                                        <a class="dropdown-item"
-                                            href="{% url 'upgrade' %}">Upgrade Account</a>
-                                        <a class="dropdown-item"
-                                            href="{% url 'payment' %}">Payment
-                                            Information</a>
-                                        <a class="dropdown-item" href="{% url 'billing' %}">Payment History</a>
-                                        <a class="dropdown-item" href="{% url 'invoice' %}">Student Invoice</a>
                                         <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Community</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Communauté</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{% url 'forum' %}">Forum</a>
                                         <a class="dropdown-item" href="{% url 'forum-thread' %}">Discussion</a>
-                                        <a class="dropdown-item" href="{% url 'forum-ask' %}">Ask Question</a>
+                                        <a class="dropdown-item" href="{% url 'forum-ask' %}">Posez une Question </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'profile' %}">Student Profile -
-                                            Courses</a>
-                                        <a class="dropdown-item" href="{% url 'profile-posts' %}">Student Profile
-                                            - Posts</a>
+                                        <a class="dropdown-item" href="{% url 'profile' %}">Profile Publique</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'help-center' %}">Help Center</a>
                                     </div>
                                 </li>
                             </ul>
@@ -363,111 +342,48 @@
                         </a>
                         <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="account-edit">
-                                    <span class="sidebar-menu-text">Edit Account</span>
+                                <a class="sidebar-menu-button" href="{% url 'edit-profile' %} ">
+                                    <span class="sidebar-menu-text">Profile</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="account-edit-basic">
-                                    <span class="sidebar-menu-text">Basic Information</span>
+                                <a class="sidebar-menu-button" href="{% url 'edit-basic' %} ">
+                                    <span class="sidebar-menu-text">Confidentialité</span>
                                 </a>
                             </li>
                             <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="account-edit-profile">
-                                    <span class="sidebar-menu-text">Profile &amp; Privacy</span>
+                                <a class="sidebar-menu-button" href="">
+                                    <span class="sidebar-menu-text">Profile public</span>
                                 </a>
                             </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="account-billing-subscription">
-                                    <span class="sidebar-menu-text">Subscription</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="account-billing-upgrade">
-                                    <span class="sidebar-menu-text">Upgrade Account</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button"
-                                    href="account-billing-payment-information">
-                                    <span class="sidebar-menu-text">Payment Information</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="billing">
-                                    <span class="sidebar-menu-text">Payment History</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'invoice' %}">
-                                    <span class="sidebar-menu-text">Student Invoice</span>
-                                </a>
-                            </li>
-                            <!-- <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="#} fixed-instructor-invoice">
-                                    <span class="sidebar-menu-text">Instructor Invoice</span>
-                                </a>
-                            </li> -->
-                            <!-- <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="# fixed-instructor-edit-invoice">
-                                    <span class="sidebar-menu-text">Edit Invoice</span>
-                                </a>
-                            </li> -->
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" data-toggle="collapse" href="#messages_menu">
+                        <a class="sidebar-menu-button" href="{% url 'messages' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i> Messages
-                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
+                            <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                         </a>
-                        <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'messages' %}">
-                                    <span class="sidebar-menu-text">Conversation</span>
-                                    <span
-                                        class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="{% url 'messages-2' %}">
-                                    <span class="sidebar-menu-text">Conversation - 2</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
                 <div class="sidebar-heading">Student</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="browse-courses">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i> Browse
-                            Courses
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="view-course">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i> View
-                            Course
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="take-course">
+                        <a class="sidebar-menu-button" href="{% url 'take-course' %} take-course">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
-                            <span class="sidebar-menu-badge badge badge-primary ml-auto">PRO</span>
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="take-quiz">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Take a Quiz
+                        <a class="sidebar-menu-button" href="{% url 'take-quiz' %} take-quiz">
+                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Mes quizs
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="quiz-results">
+                        <a class="sidebar-menu-button" href="{% url 'quiz-results' %} quiz-results">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="my-courses">
+                        <a class="sidebar-menu-button" href="{% url 'my-courses' %}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
                         </a>
                     </li>
@@ -506,28 +422,8 @@
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="{% url 'help-center' %}">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i> Get Help
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button" href="{% url 'deconnexion'%}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i> Logout
-                        </a>
-                    </li>
-                </ul>
-                <div class="sidebar-heading">Layout</div>
-                <ul class="sidebar-menu">
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="{% url 'index_student' %}">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fluid
-                            Layout
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="{% url 'index_student' %}">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dashboard</i> Fixed
-                            Layout
                         </a>
                     </li>
                 </ul>
