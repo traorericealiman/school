@@ -18,5 +18,8 @@ urlpatterns = [
     path('quiz_edit', views.quiz_edit, name='instructor-quiz-edit'),
     path('review_quiz', views.review_quiz, name='instructor-review-quiz'),
     path('quizzes', views.quizzes, name='instructor-quizzes'),
-    # path('statement', views.statement, name='instructor-statement'),    
+    # path('statement', views.statement, name='instructor-statement'),
+    
+    # post url
+    path('post_cours',views.post_cours,name='post_cours')  
 ]
