@@ -647,6 +647,15 @@ def statement(request):
             print("3")
             return redirect("/admin/")
 
+# fonction pour recuperer les donnees d'un cours et enregistrer
+def recuperation(request):
+    title = request.post.get("title")
+    matiere = request.post.get("matiere")
+    date_fin = request.post.get("date_fin")
+    description = request.post.get("description")
+    date_debut = request.post.get("date_debut")
+    duration = request.post.get("duration")
+
 
 
 

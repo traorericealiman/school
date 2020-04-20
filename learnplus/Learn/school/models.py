@@ -63,8 +63,11 @@ class Classe(models.Model):
 
 class Chapitre(models.Model):
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')
+    video = models.FileField(upload_to="ressources/cours", null=True)
+    duree_en_heure = models.PositiveIntegerField(null=True)
+    date_debut = models.DateField(null=True)
+    date_fin = models.DateField(null=True)
     titre = models.CharField(max_length=255)
-    nombreCours = models.IntegerField ()
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)

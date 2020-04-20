@@ -60,7 +60,7 @@ class ClasseAdmin(CustomAdmin):
     ]
 
 class ChapitreAdmin(CustomAdmin):
-    list_display = ('matiere','titre','nombreCours','status')
+    list_display = ('matiere','titre','status')
     list_display_links = ['titre',]
     search_fields = ('titre',)
     ordering = ('titre',)

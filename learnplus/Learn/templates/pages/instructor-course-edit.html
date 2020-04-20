@@ -37,7 +37,7 @@
             </div>
             <div class="media-right">
                 <a href="#" v-if="!isregister"  v-on:click.prevent="courses_add" class="btn btn-success">SAVE</a>
-                <a href="#"   v-if="isregister" disabled v-on:click.prevent="courses_add">SAVE</a>
+                <a href="#"    v-if="isregister" disabled v-on:click.prevent="courses_add">SAVE</a>
             </div>
         </div>
         <div class="row">
@@ -155,7 +155,7 @@
                     </div> -->
                     <div class="custom-file">
                         <input id="file" v-on:change="handleFileUploaded" ref="file" type="file"  class="custom-file-input" >
-                        <label for="file" class="custom-file-label">Présentation de vidéo de cours </label>
+                        <label for="file" class="custom-file-label">Présentation vidéo de cours </label>
                     </div>
                 </div>
                 <div class="card">
@@ -290,16 +290,15 @@ methods: {
                this.isSuccess = false
                this.isregister = false;
            } else {
+            //    permet d'imploder des fichiers
                let formData = new FormData();
                formData.append('file', this.file);
-               formData.append('types', this.types);
-               formData.append('nom', this.nom);
-               formData.append('date_de_debut', this.date_de_debut);
+               formData.append('title', this.title);
+               formData.append('matiere', this.matiere);
+               formData.append('date_fin', this.date_fin);
                formData.append('description', this.description);
-               formData.append('heure_de_debut', this.heure_de_debut);
-               formData.append('chef', this.chef);
-               formData.append('commentaire', this.commentaire);
-               formData.append('developpeur', this.developpeur);
+               formData.append('date_debut', this.date_debut);
+               formData.append('duration', this.duration);
                axios.defaults.xsrfCookieName = 'csrftoken'
                axios.defaults.xsrfHeaderName = 'X-CSRFToken'
                axios.post(this.base_url + 'post_cours',
