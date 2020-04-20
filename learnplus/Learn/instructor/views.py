@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from school import models as school_models
+from quiz import models as quiz_models
+from . import models
+from django.http import JsonResponse 
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -648,13 +652,50 @@ def statement(request):
             return redirect("/admin/")
 
 # fonction pour recuperer les donnees d'un cours et enregistrer
-def recuperation(request):
+def post_cours(request):
     title = request.post.get("title")
     matiere = request.post.get("matiere")
     date_fin = request.post.get("date_fin")
     description = request.post.get("description")
     date_debut = request.post.get("date_debut")
     duration = request.post.get("duration")
+    try:
+        chapitre = school_models.Chapitre.objects.get(titre=title)
+        try:
+            video = request.FILES("file")
+            chapitre.video = video
+        except :
+            pass
+        chapitre.titre = title
+        chapitre.duree_en_heure = duration
+        chaitre.date_debut = date_debut
+        chapitre.date_fin = date_fin
+        matiere = school_models.Matiere.objects.get(id=int(matiere))
+        chapitre.matiere = matiere
+        chapitre.save()
+        success = True 
+        message = 'mis à jour effectué  avec succés'
+    except:
+        chapire = school_models.Chapitre()
+        try:
+            video = request.FILES("file")
+            chapitre.video = video
+        except :
+            pass
+        chapitre.titre = title
+        chapitre.duree_en_heure = duration
+        chaitre.date_debut = date_debut
+        chapitre.date_fin = date_fin
+        matiere = school_models.Matiere.objects.get(id=int(matiere))
+        chapitre.matiere = matiere
+        chapitre.save()
+        success = True 
+        message = 'chapitre ajouté avec succés'
+    data = {'success' : success,
+            'message' : message,
+            'slug': chapitre.slug,
+    }
+    return JsonResponse (data,sase=False)
 
 
 
