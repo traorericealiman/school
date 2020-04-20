@@ -24,7 +24,8 @@
 
 <div class="mdk-drawer-layout__content page ">
 
-    <div class="container-fluid page__container">
+    <div class="container-fluid page__container" id="courses-add">
+        {% csrf_token %}
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
             <li class="breadcrumb-item"><a href="instructor-courses.html">Courses</a></li>
@@ -35,7 +36,8 @@
                 <h1 class="h2">Edit Course</h1>
             </div>
             <div class="media-right">
-                <a href="#" class="btn btn-success">SAVE</a>
+                <a href="#" v-if="!isregister"  v-on:click.prevent="courses_add" class="btn btn-success">SAVE</a>
+                <a href="#"   v-if="isregister" disabled v-on:click.prevent="courses_add">SAVE</a>
             </div>
         </div>
         <div class="row">
@@ -43,23 +45,26 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Basic Information</h4>
+                        <div v-if="isSuccess" class="alert alert-success" role="alert">
+                            ${ message }
+                        </div>
+                        <div v-if="error" class="alert alert-danger" role="alert">
+                            ${ message }
+                        </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" >
 
                         <div class="form-group">
                             <label class="form-label" for="title">Title</label>
                             <input type="text" id="title" class="form-control" placeholder="Write a title"
-                                value="Basics of Vue.js">
+                                value="Basics of Vue.js" v-model="title">
                         </div>
 
                         <div class="form-group mb-0">
                             <label class="form-label">Description</label>
-                            <div style="height: 150px;" data-toggle="quill"
-                                data-quill-placeholder="Quill WYSIWYG editor"
-                                data-quill-modules-toolbar='[["bold", "italic"], ["link", "blockquote", "code", "image"], [{"list": "ordered"}, {"list": "bullet"}]]'>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque necessitatibus
-                                    distinctio adipisci eius, unde dignissimos maxime doloribus quisquam non harum?</p>
-                            </div>
+                             <textarea v-model="description" placeholder="description du cours" >
+
+                             </textarea>
                         </div>
 
                     </div>
@@ -143,14 +148,14 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="embed-responsive embed-responsive-16by9">
+                    <!-- <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item"
                             src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0"
                             allowfullscreen=""></iframe>
-                    </div>
-                    <div class="card-body">
-                        <input type="text" class="form-control"
-                            value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
+                    </div> -->
+                    <div class="custom-file">
+                        <input type="file" id="file" class="custom-file-input" v-model="file">
+                        <label for="file" class="custom-file-label">Présentation de vidéo de cours </label>
                     </div>
                 </div>
                 <div class="card">
@@ -161,8 +166,8 @@
 
                     <form class="card-body" action="#">
                         <div class="form-group">
-                            <label class="form-label" for="category">Category</label>
-                            <select id="category" class="custom-select form-control">
+                            <label class="form-label" for="category">Matiére</label>
+                            <select id="category" class="custom-select form-control" v-model="matiere">
                                 <option value="#">HTML</option>
                                 <option value="#">Angular JS</option>
                                 <option value="#" selected>Vue.js</option>
@@ -172,20 +177,20 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="duration">Duration</label>
-                            <input type="text" id="duration" class="form-control" placeholder="No. of Days" value="10">
+                            <input type="text" id="duration" class="form-control" placeholder="durée en heure" v-model="duration" >
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="start">Start Date</label>
-                            <input id="start" type="text" class="form-control" placeholder="Start Date"
-                                data-toggle="flatpickr" value="01/28/2016">
+                            <input id="start" type="text" class="form-control" placeholder="Date de début"
+                                data-toggle="flatpickr" v-model="date_debut">
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="end">End Date</label>
-                            <input id="end" type="text" class="form-control" placeholder="Start Date"
-                                data-toggle="flatpickr" value="01/28/2016">
+                            <input id="end" type="text" class="form-control" placeholder="Date de fin"
+                                data-toggle="flatpickr" v-model="date_fin">
                         </div>
 
-                        <div class="form-group mb-0">
+                        <!-- <div class="form-group mb-0">
                             <label class="form-label" for="option1">Completion Badge</label>
                             <div>
                                 <div data-toggle="buttons">
@@ -211,7 +216,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>
@@ -247,6 +252,78 @@
 <script src="/static/assets/vendor/flatpickr/flatpickr.min.js"></script>
 <script src="/static/assets/js/flatpickr.js"></script>
 
+<!-- axios -->
+<script src="/static/assets/js/axios.js"></script>
+
+<!-- vue -->
+<script src="/static/assets/js/vue.js"></script>
+
+<script>
+// Block Vue JS  
+new Vue({
+el: '#courses-add',
+data: {
+    title: '',
+    file : '',
+    description:'',
+    date_fin:'',
+    date_debut:'',
+    matiere:'',
+    duration:'',
+   isregister: false,
+   loader: false,
+   isSuccess: false,
+   error: false,
+   base_url: window.location.protocol + "//" + window.location.host + "/",
+},
+delimiters: ["${", "}"],
+mounted() { },
+methods: {
+    courses_add: function () {
+       if (!this.isregister) {
+           this.error = false
+           this.isSuccess = false
+           this.isregister = true
+           if (this.title == "" || this.file == "" || this.description == "" || this.date_fin == "" || this.date_debut == "" || this.matiere == "" || this.duration == "") {
+               this.message = "Veuillez remplir correctement les champs";
+               this.error = true
+               this.isSuccess = false
+               this.isregister = false;
+           } else {
+               axios.defaults.xsrfCookieName = 'csrftoken'
+               axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+               axios.post(this.base_url + 'post', {
+                   username: '' + this.username,
+                   password: '' + this.password,
+               }).then(response => {
+                   console.log(response)
+                   this.isregister = false;
+                   if (response.data.success) {
+                       this.isSuccess = true
+                       this.error = false
+                       this.message = response.data.message
+                       this.success = response.data.success
+                       window.location.replace(this.base_url + response.data.redirect);
+                   } else {
+                       this.error = true
+                       this.message = response.data.message
+                       this.success = response.data.success
+                       this.isSuccess = false
+                   }
+                   console.log("success variable" + this.isSuccess)
+                   // console.log("success variable"+this.error)
+               })
+                   .catch((err) => {
+                       this.isregister = false;
+                       console.log(err);
+                   })
+           }
+       }
+   },
+}
+});
+</script>
     
 {% endblock script %}
+
     
