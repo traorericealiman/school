@@ -7,7 +7,7 @@ class Instructor(models.Model):
     user = models.OneToOneField(User,related_name='instructor',on_delete=models.CASCADE)
     contact = models.CharField(max_length=255)
     adresse = models.CharField(max_length=255)
-    matiere = models.ManyToManyField(school_models.Matiere,related_name='instructor_matiere')
+    classe = models.ForeignKey(school_models.Classe, related_name='instructor_classe', on_delete=models.CASCADE, null=True)
     photo = models.ImageField(upload_to='images/Instructor')
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

@@ -1,24 +1,24 @@
 from django.db import models
 
 # Create your models here.
-class Filiere(models.Model):
-    nom = models.CharField(max_length=255)
-    date_add = models.DateTimeField(auto_now_add=True)
-    date_update = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=True)
+# class Filiere(models.Model):
+#     nom = models.CharField(max_length=255)
+#     date_add = models.DateTimeField(auto_now_add=True)
+#     date_update = models.DateTimeField(auto_now=True)
+#     status = models.BooleanField(default=True)
 
 
-    class Meta:
-        verbose_name = 'Filiere'
-        verbose_name_plural = 'Filieres'
+#     class Meta:
+#         verbose_name = 'Filiere'
+#         verbose_name_plural = 'Filieres'
 
-    def __str__(self):
-        return self.nom
+#     def __str__(self):
+#         return self.nom
 
 class Matiere(models.Model):
     nom = models.CharField(max_length=255)
-    coefficient = models.IntegerField()
-    filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='matiere_filiere',null=True)
+    # coefficient = models.IntegerField()
+    # filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='matiere_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -48,7 +48,7 @@ class Niveau(models.Model):
 class Classe(models.Model):
     niveau = models.ForeignKey(Niveau,on_delete=models.CASCADE,related_name='classe_niveau')
     numeroClasse = models.IntegerField()
-    filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='classe_filiere',null=True)
+    # filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='classe_filiere',null=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -83,7 +83,7 @@ class Chapitre(models.Model):
 
 class Cours(models.Model):
     titre = models.CharField(max_length=255)
-    chapitre = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='cours_chapitre')
+    chapitre = models.ForeignKey(Chapitre,on_delete=models.CASCADE,related_name='cours_chapitre')
     duree = models.CharField(max_length=255)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

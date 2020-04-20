@@ -6,8 +6,7 @@ from quiz import models as quiz_models
 # Create your models here.
 class Student(models.Model):
     user = models.OneToOneField(User,related_name='student_user',on_delete=models.CASCADE)
-    classe = models.ForeignKey(school_models.Classe,on_delete=models.CASCADE,related_name='student_classe')
-    filiere = models.ForeignKey(school_models.Filiere,on_delete=models.CASCADE,related_name='student_filiere',null=True)
+    classe = models.ForeignKey(school_models.Classe,on_delete=models.CASCADE,related_name='student_classe', null=True)
     photo = models.ImageField(upload_to='images/Student')
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

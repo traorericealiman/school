@@ -19,23 +19,14 @@ class CustomAdmin(admin.ModelAdmin):
         self.message_user(request,'la selection a été effectué avec succes')
     desactivate.short_description = "permet de desactiver le champs selectionner"
 
-class FiliereAdmin(CustomAdmin):
+
+class  MatiereAdmin(CustomAdmin):
     list_display = ('nom','status')
     list_display_links = ['nom',]
     search_fields = ('nom',)
     ordering = ('nom',)
     fieldsets = [
-                 ("info filière",{"fields":["nom"]}),
-                 ("standard",{"fields":["status"]})
-    ]
-
-class  MatiereAdmin(CustomAdmin):
-    list_display = ('nom','coefficient','filiere','status')
-    list_display_links = ['nom',]
-    search_fields = ('nom',)
-    ordering = ('nom',)
-    fieldsets = [
-                 ("info matière",{"fields":["nom","coefficient","filiere",]}),
+                 ("info matière",{"fields":["nom"]}),
                  ("standard",{"fields":["status"]})
     ]
 
@@ -50,22 +41,22 @@ class NiveauAdmin(CustomAdmin):
     ]
 
 class ClasseAdmin(CustomAdmin):
-    list_display = ('niveau','numeroClasse','filiere','status')
+    list_display = ('niveau','numeroClasse','status')
     list_display_links = ['niveau',]
     search_fields = ('niveau',)
     ordering = ('niveau',)
     fieldsets = [
-                 ("info classe",{"fields":["niveau","numeroClasse","filiere"]}),
+                 ("info classe",{"fields":["niveau","numeroClasse"]}),
                  ("standard",{"fields":["status"]})
     ]
 
 class ChapitreAdmin(CustomAdmin):
-    list_display = ('matiere','titre','status')
+    list_display = ('matiere','titre','video', 'duree_en_heure', 'date_debut', 'date_fin', 'status')
     list_display_links = ['titre',]
     search_fields = ('titre',)
     ordering = ('titre',)
     fieldsets = [
-                 ("info chapitre",{"fields":["niveau","numeroClasse","filiere"]}),
+                 ("info chapitre",{"fields":["niveau","numeroClasse", "matiere", "video", 'duree_en_heure', 'date_debut', 'date_fin']}),
                  ("standard",{"fields":["status"]})
     ]
 
@@ -84,7 +75,6 @@ def _register(model,admin_class):
     admin.site.register(model,admin_class)
 
 
-_register(models.Filiere, FiliereAdmin)
 _register(models.Matiere, MatiereAdmin)
 _register(models.Niveau, NiveauAdmin)
 _register(models.Classe, ClasseAdmin)
