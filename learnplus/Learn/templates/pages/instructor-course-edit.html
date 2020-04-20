@@ -154,7 +154,7 @@
                             allowfullscreen=""></iframe>
                     </div> -->
                     <div class="custom-file">
-                        <input type="file" id="file" class="custom-file-input" v-model="file">
+                        <input id="file" v-on:change="handleFileUploaded" ref="file" type="file"  class="custom-file-input" >
                         <label for="file" class="custom-file-label">Présentation de vidéo de cours </label>
                     </div>
                 </div>
@@ -290,12 +290,25 @@ methods: {
                this.isSuccess = false
                this.isregister = false;
            } else {
+               let formData = new FormData();
+               formData.append('file', this.file);
+               formData.append('types', this.types);
+               formData.append('nom', this.nom);
+               formData.append('date_de_debut', this.date_de_debut);
+               formData.append('description', this.description);
+               formData.append('heure_de_debut', this.heure_de_debut);
+               formData.append('chef', this.chef);
+               formData.append('commentaire', this.commentaire);
+               formData.append('developpeur', this.developpeur);
                axios.defaults.xsrfCookieName = 'csrftoken'
                axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-               axios.post(this.base_url + 'post', {
-                   username: '' + this.username,
-                   password: '' + this.password,
-               }).then(response => {
+               axios.post(this.base_url + 'post_cours',
+                   formData,
+                   {
+                       headers: {
+                           'Content-Type': 'multipart/form-data',
+                       }
+                   }).then(response => {
                    console.log(response)
                    this.isregister = false;
                    if (response.data.success) {
@@ -320,6 +333,10 @@ methods: {
            }
        }
    },
+   handleFileUploaded() {
+        this.file = this.$refs.file.files[0];
+        console.log(this.file)
+    },
 }
 });
 </script>
