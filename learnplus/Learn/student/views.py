@@ -451,7 +451,7 @@ def my_courses(request):
             return redirect("/admin/")
 
 @login_required(login_url = 'login')
-def pay(request):
+def quiz_list(request):
     if request.user.is_authenticated:
         try:
             try:
@@ -465,7 +465,7 @@ def pay(request):
                     datas = {
 
                            }
-                return render(request,'pages/fixed-student-pay.html',datas)
+                return render(request,'pages/fixed-student-quiz-list.html',datas)
         except Exception as e:
             print(e)
             print("3")

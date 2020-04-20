@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 
@@ -6,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Student - Dashboard - Fixed layout</title>
+    <title>Student - Messages - Fixed layout</title>
 
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots" content="noindex">
@@ -26,19 +25,17 @@
     <link type="text/css" href="/static/assets/css/app.css" rel="stylesheet">
     <link type="text/css" href="/static/assets/css/app.rtl.css" rel="stylesheet">
 
+
+
+
+
+
+
+
+
 </head>
 
-<body class=" fixed-layout">
-
-
-
-
-
-
-
-
-
-
+<body class="app-messages fixed-layout">
 
     <div class="preloader">
         <div class="sk-double-bounce">
@@ -54,7 +51,7 @@
 
         <div id="header" class="mdk-header bg-dark js-mdk-header m-0" data-fixed data-effects="waterfall">
             <div class="mdk-header__content">
-
+        
                 <!-- Navbar -->
                 <nav id="default-navbar" class="navbar navbar-expand navbar-dark bg-primary m-0">
                     <div class="container">
@@ -62,22 +59,22 @@
                         <button class="navbar-toggler d-block" data-toggle="sidebar" type="button">
                             <span class="material-icons">menu</span>
                         </button>
-                
+                    
                         <!-- Brand -->
                         <a href="{% url 'index_student' %}" class="navbar-brand">
                             <img src="/static/assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
                             <span class="d-none d-xs-md-block">LearnPlus</span>
                         </a>
-                
+                    
                         <!-- Search -->
                         <form class="search-form d-none d-md-flex">
                             <input type="text" class="form-control" placeholder="Search">
                             <button class="btn" type="button"><i class="material-icons font-size-24pt">search</i></button>
                         </form>
                         <!-- // END Search -->
-                
+                    
                         <div class="flex"></div>
-                
+                    
                         <!-- Menu -->
                         <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                             <li class="nav-item">
@@ -87,20 +84,20 @@
                                 <a class="nav-link" href="help-center">Get Help</a>
                             </li>
                         </ul>
-                
+                    
                         <!-- Menu -->
                         <ul class="nav navbar-nav flex-nowrap">
-                
+                    
                             <li class="nav-item d-none d-md-flex">
                                 <a href="cart" class="nav-link">
                                     <i class="material-icons">shopping_cart</i>
                                 </a>
                             </li>
-                
-                
-                
-                
-                
+                    
+                    
+                    
+                    
+                    
                             <!-- Notifications dropdown -->
                             <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
                                 <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
@@ -112,13 +109,13 @@
                                     <div data-perfect-scrollbar class="position-relative">
                                         <div class="dropdown-header"><strong>Messages</strong></div>
                                         <div class="list-group list-group-flush mb-0">
-                
+                    
                                             <a href="messages" class="list-group-item list-group-item-action unread">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 minutes ago</small>
-                
+                    
                                                     <span class="ml-auto unread-indicator bg-primary"></span>
-                
+                    
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -131,13 +128,13 @@
                                                     </span>
                                                 </span>
                                             </a>
-                
+                    
                                             <a href="{% url 'messages' %}" class="list-group-item list-group-item-action unread">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 minutes ago</small>
-                
+                    
                                                     <span class="ml-auto unread-indicator bg-primary"></span>
-                
+                    
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -150,17 +147,17 @@
                                                     </span>
                                                 </span>
                                             </a>
-                
+                    
                                         </div>
-                
+                    
                                         <div class="dropdown-header"><strong>System notifications</strong></div>
                                         <div class="list-group list-group-flush mb-0">
-                
+                    
                                             <a href="messages"
                                                 class="list-group-item list-group-item-action border-left-3 border-left-danger">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">3 minutes ago</small>
-                
+                    
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -169,17 +166,17 @@
                                                         </span>
                                                     </span>
                                                     <span class="flex d-flex flex-column">
-                
+                    
                                                         <span class="text-black-70">Your profile information has not
                                                             been synced correctly.</span>
                                                     </span>
                                                 </span>
                                             </a>
-                
+                    
                                             <a href="messages" class="list-group-item list-group-item-action">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 hours ago</small>
-                
+                    
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -194,11 +191,11 @@
                                                     </span>
                                                 </span>
                                             </a>
-                
+                    
                                             <a href="messages" class="list-group-item list-group-item-action">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">1 day ago</small>
-                
+                    
                                                 </span>
                                                 <span class="d-flex">
                                                     <span class="avatar avatar-xs mr-2">
@@ -207,12 +204,12 @@
                                                         </span>
                                                     </span>
                                                     <span class="flex d-flex flex-column">
-                
+                    
                                                         <span class="text-black-70">Your deploy was successful.</span>
                                                     </span>
                                                 </span>
                                             </a>
-                
+                    
                                         </div>
                                     </div>
                                 </div>
@@ -236,77 +233,27 @@
                                 </div>
                             </li>
                             <!-- // END User dropdown -->
-                
+                    
                         </ul>
                         <!-- // END Menu -->
                     </div>
                 </nav>
                 <!-- // END Navbar -->
-
+        
             </div>
         </div>
+        
+        <!-- // END Header -->
 
         <!-- // END Header -->
 
         <!-- Header Layout Content -->
         <div class="mdk-header-layout__content d-flex flex-column">
-
-            <div class="page__header">
-                <div class="navbar bg-dark navbar-dark navbar-expand-sm d-none2 d-md-flex2">
-                    <div class="container">
-
-                        <div class="navbar-collapse collapse" id="navbarsExample03">
-                            <ul class="nav navbar-nav">
-                                <li class="nav-item dropdown active">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Student</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item active" href="{% url 'index_student' %}">Dashboard</a>
-                                        <a class="dropdown-item" href="{% url 'quiz-list' %}">Quiz</a>
-                                        <a class="dropdown-item" href="{% url 'quiz-results' %}">Résultats</a>
-                                        <a class="dropdown-item" href="{% url 'my-courses' %}">Cours</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href=" {% url 'edit' %}">Edit Account</a>
-                                        <a class="dropdown-item" href="{% url 'profile' %}">Profile
-                                            &amp; Privacy</a>
-                                        <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
-                                        <div class="dropdown-divider"></div>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Communauté</a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{% url 'forum' %}">Forum</a>
-                                        <a class="dropdown-item" href="{% url 'forum-thread' %}">Discussion</a>
-                                        <a class="dropdown-item" href="{% url 'forum-ask' %}">Posez une Question </a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'profile' %}">Profile Publique</a>
-                                        <div class="dropdown-divider"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarsExample03"
-                            type="button">
-                            <span class="material-icons">menu</span>
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-
-
-            
-            {% block content %}
-                
-            {% endblock content %}
-                
-
-            
+           
+           {% block content %}
+               
+           {% endblock content %}
+               
         </div>
         <!-- // END Header Layout Content -->
 
@@ -316,6 +263,11 @@
 
 
 
+    
+    {% block online %}
+        
+    {% endblock online %}
+        
 
     <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
         <div class="mdk-drawer__content ">
@@ -325,7 +277,8 @@
                     <ul class="sidebar-menu sm-active-button-bg">
                         <li class="sidebar-menu-item active">
                             <a class="sidebar-menu-button" href="{% url 'index_student' %}">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i> Student
+                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i>
+                                Student
                             </a>
                         </li>
                     </ul>
@@ -366,23 +319,26 @@
                     <div class="sidebar-heading">Student</div>
                     <ul class="sidebar-menu sm-active-button-bg">
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{% url 'take-course' %} ">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
+                            <a class="sidebar-menu-button" href="{% url 'take-course' %}">
+                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take
+                                Course
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{% url 'quiz-list' %} ">
+                            <a class="sidebar-menu-button" href="{% url 'quiz-list' %}">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Mes quizs
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{% url 'quiz-results' %} ">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz Results
+                            <a class="sidebar-menu-button" href="{% url 'quiz-results' %}">
+                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">poll</i> Quiz
+                                Results
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{% url 'my-courses' %}">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My Courses
+                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i> My
+                                Courses
                             </a>
                         </li>
                         <li class="sidebar-menu-item">
@@ -429,8 +385,6 @@
             </div>
         </div>
     </div>
-
-
     <!-- jQuery -->
     <script src="/static/assets/vendor/jquery.min.js"></script>
 
@@ -454,34 +408,15 @@
     <!-- App Settings (safe to remove) -->
     <script src="/static/assets/js/app-settings.js"></script>
 
-
-
-
-
-
-    <!-- Global Settings -->
-    <script src="/static/assets/js/settings.js"></script>
-
-    <!-- Moment.js -->
-    <script src="/static/assets/vendor/moment.min.js"></script>
-    <script src="/static/assets/vendor/moment-range.min.js"></script>
-
-    <!-- Chart.js -->
-    <script src="/static/assets/vendor/Chart.min.js"></script>
-
-    <!-- UI Charts Page JS -->
-    <script src="/static/assets/js/chartjs-rounded-bar.js"></script>
-    <script src="/static/assets/js/chartjs.js"></script>
-
-    <!-- Chart.js Samples -->
-    <script src="/static/assets/js/page.student-dashboard.js"></script>
-
+    <!-- Messages App -->
+    <script src="/static/assets/js/messages.js"></script>
     
     {% block script %}
         
     {% endblock script %}
         
 </body>
+
 
 
 </html>

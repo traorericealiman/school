@@ -373,26 +373,26 @@ def messages(request):
 
 
 
-@login_required(login_url = 'login')
-def messages_2(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.instructor:
-                    datas = {
+# @login_required(login_url = 'login')
+# def messages_2(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.student_user:
+#                     return redirect('index_student')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.instructor:
+#                     datas = {
 
-                           }
-                    return render(request,'pages/instructor-messages-2.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+#                            }
+#                     return render(request,'pages/instructor-messages-2.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
 
 
 
