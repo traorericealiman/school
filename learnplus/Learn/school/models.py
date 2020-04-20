@@ -22,6 +22,12 @@ class Matiere(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True,  blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nom)
+        super(Article, self).save(*args, **kwargs)
+    
 
 
     class Meta:
@@ -36,6 +42,11 @@ class Niveau(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True,  blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nom)
+        super(Article, self).save(*args, **kwargs)
 
 
     class Meta:
@@ -52,6 +63,7 @@ class Classe(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    
 
 
     class Meta:
@@ -71,6 +83,11 @@ class Chapitre(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True,  blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.titre)
+        super(Article, self).save(*args, **kwargs)
 
 
     class Meta:
@@ -88,6 +105,11 @@ class Cours(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True,  blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.titre)
+        super(Article, self).save(*args, **kwargs)
 
 
     class Meta:

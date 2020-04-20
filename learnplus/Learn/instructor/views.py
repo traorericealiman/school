@@ -655,6 +655,7 @@ def recuperation(request):
     description = request.post.get("description")
     date_debut = request.post.get("date_debut")
     duration = request.post.get("duration")
+    
 
 
 

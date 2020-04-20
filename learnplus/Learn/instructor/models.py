@@ -12,6 +12,11 @@ class Instructor(models.Model):
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
+    slug = models.SlugField(unique=True, null=True,  blank=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.user.username)
+        super(Article, self).save(*args, **kwargs)
 
 
     class Meta:
