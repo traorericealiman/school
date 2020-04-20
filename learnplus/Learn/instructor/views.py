@@ -339,7 +339,7 @@ def messages(request):
                     datas = {
 
                            }
-                    return render(request,'pages/instructor-messages.html',datas)
+                    return render(request,'pages/instructor-messages.html',datas) 
         except:
             print("3")
             return redirect("/admin/")
