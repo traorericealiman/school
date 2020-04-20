@@ -10,7 +10,8 @@ def dashboard(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
@@ -33,14 +34,16 @@ def account_edit(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                 return render(request,'pages/instructor-account-edit.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
     
@@ -55,14 +58,16 @@ def account_edit(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                 return render(request,'pages/instructor-browse-courses.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
     
@@ -77,14 +82,16 @@ def account_edit(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                 return render(request,'pages/instructor-cart.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
    
@@ -124,14 +131,16 @@ def courses(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-courses.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -145,14 +154,16 @@ def earnings(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-account-edit.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -168,14 +179,16 @@ def edit_invoice(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-edit-invoice.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -216,14 +229,16 @@ def forum_ask(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-forum-ask.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
     
@@ -239,14 +254,16 @@ def forum_thread(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-forum-thread.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -262,14 +279,16 @@ def invoice(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-invoice.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
     
@@ -286,14 +305,16 @@ def invoice(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-invoice-settings.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
     
@@ -310,14 +331,16 @@ def lesson_add(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-lesson-add.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -333,14 +356,16 @@ def messages(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
-                    return render(request,'pages/instructor-messages.html',datas) 
-        except:
+                    return render(request,'pages/instructor-messages.html',datas)
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
    
@@ -356,14 +381,16 @@ def messages_2(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-messages-2.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -380,14 +407,16 @@ def messages_2(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-my-courses.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
   
 
@@ -403,14 +432,16 @@ def profile(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-profile.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -426,14 +457,16 @@ def quiz_edit(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-quiz-edit.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -449,14 +482,16 @@ def quiz_edit(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-quiz-results.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
     
@@ -472,14 +507,16 @@ def quizzes(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-quizzes.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -495,14 +532,16 @@ def review_quiz(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-review-quiz.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
@@ -518,14 +557,16 @@ def review_quiz(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-take-course.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
 
@@ -542,14 +583,16 @@ def review_quiz(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-take-quiz.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
 
@@ -566,14 +609,16 @@ def review_quiz(request):
 #                 print("1")
 #                 if request.user.student_user:
 #                     return redirect('index_student')
-#             except:
+#             except Exception as e:
+# print(e)
 #                 print("2")
 #                 if request.user.instructor:
 #                     datas = {
 
 #                            }
 #                     return render(request,'pages/instructor-view-course.html',datas)
-#         except:
+#         except Exception as e:
+# print(e)
 #             print("3")
 #             return redirect("/admin/")
 
@@ -589,14 +634,16 @@ def statement(request):
                 print("1")
                 if request.user.student_user:
                     return redirect('index_student')
-            except:
+            except Exception as e:
+                print(e)
                 print("2")
                 if request.user.instructor:
                     datas = {
 
                            }
                     return render(request,'pages/instructor-statement.html',datas)
-        except:
+        except Exception as e:
+            print(e)
             print("3")
             return redirect("/admin/")
 
