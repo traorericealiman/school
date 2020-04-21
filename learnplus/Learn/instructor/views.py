@@ -680,7 +680,7 @@ def post_cours(request):
         success = True 
         message = 'mis à jour effectué  avec succés'
     except:
-        chapire = school_models.Chapitre()
+        chapitre = school_models.Chapitre()
         try:
             video = request.FILES("file")
             chapitre.video = video
@@ -688,7 +688,7 @@ def post_cours(request):
             pass
         chapitre.titre = title
         chapitre.duree_en_heure = duration
-        chaitre.date_debut = date_debut
+        chapitre.date_debut = date_debut
         chapitre.date_fin = date_fin
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
