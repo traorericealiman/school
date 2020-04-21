@@ -48,6 +48,22 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="avatar" class="col-sm-3 col-form-label form-label">Preview</label>
+                                        <div class="col-sm-9">
+                                            <div class="media align-items-center">
+                                                <!-- <div class="media-left">
+                                                    <img src="/static/assets/images/vuejs.png" alt="" width="100" class="rounded">
+                                                </div> -->
+                                                <div class="media-body">
+                                                    <div class="custom-file" style="width: auto;">
+                                                        <input type="file" id="avatar" class="custom-file-input">
+                                                        <label for="avatar" class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="title" class="col-md-3 col-form-label form-label">Title</label>
                                         <div class="col-md-6">
                                             <input id="title" type="text" class="form-control" placeholder="Write an awesome title" v-model="title">
@@ -71,7 +87,10 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" value="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" />
+                                                        <div class="custom-file" style="width: auto;">
+                                                            <input type="file" id="avatar" class="custom-file-input">
+                                                            <label for="avatar" class="custom-file-label">Choose file</label>
+                                                        </div>
                                                         <small class="form-text text-muted d-flex align-items-center">
                                                             <i class="material-icons font-size-16pt mr-1">ondemand_video</i>
                                                             <span class="icon-text">Paste Video</span>
