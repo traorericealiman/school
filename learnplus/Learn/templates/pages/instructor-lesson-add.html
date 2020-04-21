@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/assets/css/dropzone.css">
     <link rel="stylesheet" href="/static/assets/css/dropzone.rtl.css">
     <link rel="stylesheet" href="/static/assets/css/fancytree.css">
-    <link rel="stylesheet" href="/static/assets/css/fancytree.rtl.css">
+    <link rel="stylesheet" href="/static/assets/css/fancytree.rtl.css"> 
 {% endblock style %}
     
 {% block content %}
@@ -16,12 +16,18 @@
         <!-- Header Layout Content -->
                 <div class="mdk-drawer-layout__content page ">
 
-                    <div class="container-fluid page__container">
+                    <div class="container-fluid page__container" id="lesson-add">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
                             <li class="breadcrumb-item active">Courses</li>
                         </ol>
                         <h1 class="h2">Add Lesson</h1>
+                        <div v-if="isSuccess" class="alert alert-success" role="alert">
+                            ${ message }
+                        </div>
+                        <div v-if="error" class="alert alert-danger" role="alert">
+                            ${ message }
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <form action="#">
@@ -29,9 +35,9 @@
                                         <label for="avatar" class="col-sm-3 col-form-label form-label">Preview</label>
                                         <div class="col-sm-9">
                                             <div class="media align-items-center">
-                                                <div class="media-left">
+                                                <!-- <div class="media-left">
                                                     <img src="/static/assets/images/vuejs.png" alt="" width="100" class="rounded">
-                                                </div>
+                                                </div> -->
                                                 <div class="media-body">
                                                     <div class="custom-file" style="width: auto;">
                                                         <input type="file" id="avatar" class="custom-file-input">
@@ -44,13 +50,13 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-md-3 col-form-label form-label">Title</label>
                                         <div class="col-md-6">
-                                            <input id="title" type="text" class="form-control" placeholder="Write an awesome title">
+                                            <input id="title" type="text" class="form-control" placeholder="Write an awesome title" v-model="title">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <!-- <div class="form-group row">
                                         <label for="course" class="col-md-3 col-form-label form-label">Course</label>
                                         <div class="col-md-4">
-                                            <select id="course" class="custom-control custom-select form-control">
+                                            <select id="course" class="custom-control custom-select form-control" v-model="cours">
                                                 <option value="#">HTML</option>
                                                 <option value="#">Angular JS</option>
                                                 <option value="#" selected>Vue.js</option>
@@ -58,7 +64,7 @@
                                                 <option value="#">Design / Concept</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label form-label">Upload Video</label>
                                         <div class="col-md-9">
@@ -72,13 +78,13 @@
                                                         </small>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <div class="form-group">
                                                         <div class="embed-responsive embed-responsive-16by9">
                                                             <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/97243285?title=0&amp;byline=0&amp;portrait=0" allowfullscreen=""></iframe>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -119,6 +125,93 @@
 
     
     {% block script %}
+
+<script src="/static/assets/js/axios.js"></script>
+
+<!-- vue -->
+<script src="/static/assets/js/vue.js"></script>
+
+<script>
+// Block Vue JS  
+new Vue({
+el: '#lesson-add',
+data: {
+    title: '',
+    file : '',
+    description:'',
+    date_fin:'',
+    date_debut:'',
+    matiere:'',
+    duration:'',
+   isregister: false,
+   loader: false,
+   isSuccess: false,
+   error: false,
+   base_url: window.location.protocol + "//" + window.location.host + "/",
+},
+delimiters: ["${", "}"],
+mounted() { },
+methods: {
+    courses_add: function () {
+       if (!this.isregister) {
+           this.error = false
+           this.isSuccess = false
+           this.isregister = true
+           if (this.title == "" || this.file == "" || this.description == "" || this.date_fin == "" || this.date_debut == "" || this.matiere == "" || this.duration == "") {
+               this.message = "Veuillez remplir correctement les champs";
+               this.error = true
+               this.isSuccess = false
+               this.isregister = false;
+           } else {
+            //    permet d'imploder des fichiers
+               let formData = new FormData();
+               formData.append('file', this.file);
+               formData.append('title', this.title);
+               formData.append('matiere', this.matiere);
+               formData.append('date_fin', this.date_fin);
+               formData.append('description', this.description);
+               formData.append('date_debut', this.date_debut);
+               formData.append('duration', this.duration);
+               axios.defaults.xsrfCookieName = 'csrftoken'
+               axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+               axios.post(this.base_url + 'instructor/post_cours',
+                   formData,
+                   {
+                       headers: {
+                           'Content-Type': 'multipart/form-data',
+                       }
+                   }).then(response => {
+                   console.log(response)
+                   this.isregister = false;
+                   if (response.data.success) {
+                       this.isSuccess = true
+                       this.error = false
+                       this.message = response.data.message
+                       this.success = response.data.success
+                       window.location.replace(this.base_url + 'instructor/courses');
+                   } else {
+                       this.error = true
+                       this.message = response.data.message
+                       this.success = response.data.success
+                       this.isSuccess = false
+                   }
+                   console.log("success variable" + this.isSuccess)
+                   // console.log("success variable"+this.error)
+               })
+                   .catch((err) => {
+                       this.isregister = false;
+                       console.log(err);
+                   })
+           }
+       }
+   },
+   handleFileUploaded() {
+        this.file = this.$refs.file.files[0];
+        console.log(this.file)
+    },
+}
+});
+</script>
         <!-- Required by Calendar (fullcalendar) -->
         <script src="/static/assets/vendor/dropzone.min.js"></script>
         <script src="/static/assets/vendor/jquery.fancytree-all.min.js"></script>
