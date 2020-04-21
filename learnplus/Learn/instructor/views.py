@@ -661,6 +661,7 @@ def post_cours(request):
     description = request.POST.get("description")
     date_debut = request.POST.get("date_debut")
     duration = request.POST.get("duration")
+    chapitre = ''
 
     try:
         chapitre = school_models.Chapitre.objects.get(titre=title)
