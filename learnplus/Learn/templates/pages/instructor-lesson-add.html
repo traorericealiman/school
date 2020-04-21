@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 <form action="#">
                                     <div class="form-group row">
-                                        <label for="avatar" class="col-sm-3 col-form-label form-label">Preview</label>
+                                        <label for="avatar" class="col-sm-3 col-form-label form-label">Image</label>
                                         <div class="col-sm-9">
                                             <div class="media align-items-center">
                                                 <!-- <div class="media-left">
@@ -40,7 +40,7 @@
                                                 </div> -->
                                                 <div class="media-body">
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="avatar" class="custom-file-input">
+                                                        <input v-on:change="handleImageUploaded" type="file" id="avatar" class="custom-file-input" v-model="image" accept="image/*">
                                                         <label for="avatar" class="custom-file-label">Choose file</label>
                                                     </div>
                                                 </div>
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="avatar" class="col-sm-3 col-form-label form-label">Preview</label>
+                                        <label for="avatar" class="col-sm-3 col-form-label form-label">fichier PDF</label>
                                         <div class="col-sm-9">
                                             <div class="media align-items-center">
                                                 <!-- <div class="media-left">
@@ -56,7 +56,7 @@
                                                 </div> -->
                                                 <div class="media-body">
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="avatar" class="custom-file-input">
+                                                        <input v-on:change="handlePdfUploaded" type="file" id="avatar" class="custom-file-input" v-model="pdf" accept="application/pdf">
                                                         <label for="avatar" class="custom-file-label">Choose file</label>
                                                     </div>
                                                 </div>
@@ -72,7 +72,7 @@
                                     <!-- <div class="form-group row">
                                         <label for="course" class="col-md-3 col-form-label form-label">Course</label>
                                         <div class="col-md-4">
-                                            <select id="course" class="custom-control custom-select form-control" v-model="cours">
+                                            <select id="course" class="custom-control custom-select form-control">
                                                 <option value="#">HTML</option>
                                                 <option value="#">Angular JS</option>
                                                 <option value="#" selected>Vue.js</option>
@@ -82,20 +82,22 @@
                                         </div>
                                     </div> -->
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label form-label">Upload Video</label>
+                                        <label class="col-md-3 col-form-label form-label">Video</label>
                                         <div class="col-md-9">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <div class="custom-file" style="width: auto;">
-                                                            <input type="file" id="avatar" class="custom-file-input">
+                                                            <input v-on:change="handleFileUploaded" type="file" id="avatar" class="custom-file-input" v-model="file" accept="video/*">
                                                             <label for="avatar" class="custom-file-label">Choose file</label>
                                                         </div>
                                                         <small class="form-text text-muted d-flex align-items-center">
-                                                            <i class="material-icons font-size-16pt mr-1">ondemand_video</i>
-                                                            <span class="icon-text">Paste Video</span>
+                                                            <!-- <i class="material-icons font-size-16pt mr-1">ondemand_video</i> -->
+                                                            <!-- <span class="icon-text">Paste Video</span> -->
                                                         </small>
                                                     </div>
+                                                    <button v-if="!isregister"  v-on:click.prevent="lesson_add" type="button" class="btn btn-success btn-rounded">Enregistrer</button>
+                                                    <button  href="#"   v-if="isregister" disabled v-on:click.prevent="courses_add" class="btn btn-success">SAVE</button>
                                                 </div>
                                                 <!-- <div class="col-md-6">
                                                     <div class="form-group">
@@ -157,11 +159,8 @@ el: '#lesson-add',
 data: {
     title: '',
     file : '',
-    description:'',
-    date_fin:'',
-    date_debut:'',
-    matiere:'',
-    duration:'',
+    image:'',
+    pdf:'',
    isregister: false,
    loader: false,
    isSuccess: false,
@@ -171,12 +170,12 @@ data: {
 delimiters: ["${", "}"],
 mounted() { },
 methods: {
-    courses_add: function () {
+    lesson_add: function () {
        if (!this.isregister) {
            this.error = false
            this.isSuccess = false
            this.isregister = true
-           if (this.title == "" || this.file == "" || this.description == "" || this.date_fin == "" || this.date_debut == "" || this.matiere == "" || this.duration == "") {
+           if (this.title == "" || this.file == "" || this.image == "" || this.pdf == "" ) {
                this.message = "Veuillez remplir correctement les champs";
                this.error = true
                this.isSuccess = false
@@ -186,14 +185,11 @@ methods: {
                let formData = new FormData();
                formData.append('file', this.file);
                formData.append('title', this.title);
-               formData.append('matiere', this.matiere);
-               formData.append('date_fin', this.date_fin);
-               formData.append('description', this.description);
-               formData.append('date_debut', this.date_debut);
-               formData.append('duration', this.duration);
+               formData.append('image', this.matiere);
+               formData.append('pdf', this.date_fin);
                axios.defaults.xsrfCookieName = 'csrftoken'
                axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-               axios.post(this.base_url + 'instructor/post_cours',
+               axios.post(this.base_url + 'instructor/post_lesson',
                    formData,
                    {
                        headers: {
@@ -207,7 +203,7 @@ methods: {
                        this.error = false
                        this.message = response.data.message
                        this.success = response.data.success
-                       window.location.replace(this.base_url + 'instructor/courses');
+                       window.location.replace(this.base_url + 'instructor/lesson');
                    } else {
                        this.error = true
                        this.message = response.data.message
@@ -224,6 +220,16 @@ methods: {
            }
        }
    },
+   handleImageUploaded() {
+        this.file = this.$refs.file.files[0];
+        console.log(this.file)
+    },
+
+   handlePdfUploaded() {
+        this.file = this.$refs.file.files[0];
+        console.log(this.file)
+    },
+
    handleFileUploaded() {
         this.file = this.$refs.file.files[0];
         console.log(this.file)

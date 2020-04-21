@@ -19,5 +19,7 @@ urlpatterns = [
     path('quizzes', views.quizzes, name='instructor-quizzes'),
     
     # post url
-    path('post_cours',views.post_cours,name='post_cours')  
+    path('post_cours',views.post_cours,name='post_cours') ,
+    path('post_lesson',views.post_lesson,name='post_lesson') 
+
 ]

@@ -74,7 +74,7 @@ class Classe(models.Model):
 
     def __str__(self):
         return self.niveau.nom
-
+ 
 class Chapitre(models.Model):
     
     classe = models.ForeignKey(Classe,on_delete=models.CASCADE,related_name='classe_chapitre', null=True)

@@ -705,6 +705,46 @@ def post_cours(request):
     }
     return JsonResponse(data,safe=False)
 
+def post_lesson(request):
+    title = request.POST.get("title")
+
+    try:
+        cours = school_models.Cours.objects.get(titre=title)
+
+        try:
+            video = request.FILES("file")
+            image = request.FILES("image")
+            pdf = request.FILES("pdf")
+            cours.video = video
+            cours.image = image
+            cours.pdf = pdf
+        except :
+            pass
+        cours.titre = title
+        cours.save()
+        success = True 
+        message = 'mis à jour effectué  avec succés'
+    except:
+        cours = school_models.Cours()
+        try:
+            video = request.FILES("file")
+            image = request.FILES("image")
+            pdf = request.FILES("pdf")
+            cours.video = video
+            cours.image = image
+            cours.pdf = pdf
+        except :
+            pass
+        cours.titre = title
+        cours.save()
+        success = True 
+        message = 'cours ajouté avec succés'
+    data = {'success' : success,
+            'message' : message,
+            'slug': cours.slug,
+    }
+    return JsonResponse(data,safe=False)
+
 
 
 
