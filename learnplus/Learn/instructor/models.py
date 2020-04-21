@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from school import models as school_models
+from django.utils.text import slugify
+
 
 # Create your models here.
 class Instructor(models.Model):
@@ -16,7 +18,7 @@ class Instructor(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.user.username)
-        super(Article, self).save(*args, **kwargs)
+        super(Instructor, self).save(*args, **kwargs)
 
 
     class Meta:

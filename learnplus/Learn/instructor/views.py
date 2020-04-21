@@ -113,10 +113,12 @@ def course_edit(request):
             except Exception as e:
                 print(e)
                 print("2")
-                if request.user.instructor:
-                    datas = {
 
-                           }
+                if request.user.instructor:
+                    matiere = school_models.Matiere.objects.filter(status=True)
+                    datas = {
+                        'matiere':matiere,
+                    }
                     return render(request,'pages/instructor-course-edit.html',datas)
         except Exception as e:
             print(e)

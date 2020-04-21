@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.text import slugify
+
 
 # Create your models here.
 # class Filiere(models.Model):
@@ -26,7 +28,7 @@ class Matiere(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.nom)
-        super(Article, self).save(*args, **kwargs)
+        super(Matiere, self).save(*args, **kwargs)
     
 
 
@@ -46,7 +48,7 @@ class Niveau(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.nom)
-        super(Article, self).save(*args, **kwargs)
+        super(Niveau, self).save(*args, **kwargs)
 
 
     class Meta:
@@ -87,7 +89,7 @@ class Chapitre(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titre)
-        super(Article, self).save(*args, **kwargs)
+        super(Chapitre, self).save(*args, **kwargs)
 
 
     class Meta:
@@ -109,7 +111,7 @@ class Cours(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titre)
-        super(Article, self).save(*args, **kwargs)
+        super(Cours, self).save(*args, **kwargs)
 
 
     class Meta:

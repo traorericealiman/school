@@ -6,7 +6,6 @@ urlpatterns = [
     path('account_edit', views.account_edit, name='instructor-account-edit'), 
     path('course_edit', views.course_edit, name='course-edit'),
     path('courses', views.courses, name='instructor-courses'), 
-    # path('earnings', views.earnings, name='earning'),
     path('edit_invoice', views.edit_invoice, name='instructor-edit-invoice'),
     path('forum', views.forum, name='instructor-forum'),
     path('forum_ask', views.forum_ask, name='instructor-forum-ask'),
@@ -18,7 +17,6 @@ urlpatterns = [
     path('quiz_edit', views.quiz_edit, name='instructor-quiz-edit'),
     path('review_quiz', views.review_quiz, name='instructor-review-quiz'),
     path('quizzes', views.quizzes, name='instructor-quizzes'),
-    # path('statement', views.statement, name='instructor-statement'),
     
     # post url
     path('post_cours',views.post_cours,name='post_cours')  

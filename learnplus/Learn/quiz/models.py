@@ -1,5 +1,7 @@
 from django.db import models
 from school import models as school_models
+from django.utils.text import slugify
+
 
 # Create your models here.
 class Quiz(models.Model):
@@ -14,7 +16,7 @@ class Quiz(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.titre)
-        super(Article, self).save(*args, **kwargs)
+        super(Quiz, self).save(*args, **kwargs)
 
 
     class Meta:
@@ -38,7 +40,7 @@ class Devoir(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.sujet)
-        super(Article, self).save(*args, **kwargs)
+        super(Devoir, self).save(*args, **kwargs)
 
 
     class Meta:
