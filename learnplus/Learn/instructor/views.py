@@ -4,6 +4,7 @@ from school import models as school_models
 from quiz import models as quiz_models
 from . import models
 from django.http import JsonResponse 
+from django.db.models import Q
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -141,9 +142,9 @@ def courses(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
-
+                    Chapitre = school_models.Chapitre.objects.filter(Q(status=True) & Q(classe=request.user.instructor.classe))
                     datas = {
-
+                            'Chapitre' : Chapitre ,
                            }
                     return render(request,'pages/instructor-courses.html',datas)
         except Exception as e:
