@@ -76,6 +76,8 @@ class Classe(models.Model):
         return self.niveau.nom
 
 class Chapitre(models.Model):
+    
+    classe = models.ForeignKey(Classe,on_delete=models.CASCADE,related_name='classe_chapitre', null=True)
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')
     video = models.FileField(upload_to="ressources/cours", null=True)
     duree_en_heure = models.PositiveIntegerField(null=True)

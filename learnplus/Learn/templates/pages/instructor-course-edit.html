@@ -37,7 +37,7 @@
             </div>
             <div class="media-right">
                 <a href="#" v-if="!isregister"  v-on:click.prevent="courses_add" class="btn btn-success">SAVE</a>
-                <a href="#"    v-if="isregister" disabled v-on:click.prevent="courses_add">SAVE</a>
+                <button  href="#"   v-if="isregister" disabled v-on:click.prevent="courses_add" class="btn btn-success">SAVE</button>
             </div>
         </div>
         <div class="row">

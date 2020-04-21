@@ -141,6 +141,7 @@ def courses(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+
                     datas = {
 
                            }
@@ -676,6 +677,7 @@ def post_cours(request):
         chapitre.date_fin = date_fin
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
+        chapitre.classe = request.user.instrctor.classe
         chapitre.save()
         success = True 
         message = 'mis à jour effectué  avec succés'
@@ -692,6 +694,7 @@ def post_cours(request):
         chapitre.date_fin = date_fin
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
+        chapitre.classe = request.user.instructor.classe
         chapitre.save()
         success = True 
         message = 'chapitre ajouté avec succés'
