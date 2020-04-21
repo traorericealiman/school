@@ -655,12 +655,12 @@ def statement(request):
 
 # fonction pour recuperer les donnees d'un cours et enregistrer
 def post_cours(request):
-    title = request.post.get("title")
-    matiere = request.post.get("matiere")
-    date_fin = request.post.get("date_fin")
-    description = request.post.get("description")
-    date_debut = request.post.get("date_debut")
-    duration = request.post.get("duration")
+    title = request.POST.get("title")
+    matiere = request.POST.get("matiere")
+    date_fin = request.POST.get("date_fin")
+    description = request.POST.get("description")
+    date_debut = request.POST.get("date_debut")
+    duration = request.POST.get("duration")
 
     try:
         chapitre = school_models.Chapitre.objects.get(titre=title)

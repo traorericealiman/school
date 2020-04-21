@@ -285,7 +285,7 @@ methods: {
                formData.append('duration', this.duration);
                axios.defaults.xsrfCookieName = 'csrftoken'
                axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-               axios.post(this.base_url + 'post_cours',
+               axios.post(this.base_url + 'instructor/post_cours',
                    formData,
                    {
                        headers: {
@@ -299,7 +299,7 @@ methods: {
                        this.error = false
                        this.message = response.data.message
                        this.success = response.data.success
-                       window.location.replace(this.base_url + 'courses');
+                       window.location.replace(this.base_url + 'instructor/courses');
                    } else {
                        this.error = true
                        this.message = response.data.message
