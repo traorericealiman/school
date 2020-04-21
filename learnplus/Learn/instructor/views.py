@@ -672,7 +672,7 @@ def post_cours(request):
             pass
         chapitre.titre = title
         chapitre.duree_en_heure = duration
-        chaitre.date_debut = date_debut
+        chapitre.date_debut = date_debut
         chapitre.date_fin = date_fin
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
@@ -699,7 +699,7 @@ def post_cours(request):
             'message' : message,
             'slug': chapitre.slug,
     }
-    return JsonResponse (data,safe=False)
+    return JsonResponse(data,safe=False)
 
 
 
