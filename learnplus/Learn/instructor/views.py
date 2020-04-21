@@ -699,7 +699,7 @@ def post_cours(request):
             'message' : message,
             'slug': chapitre.slug,
     }
-    return JsonResponse (data,sase=False)
+    return JsonResponse (data,safe=False)
 
 
 
