@@ -105,7 +105,6 @@ class Chapitre(models.Model):
 class Cours(models.Model):
     titre = models.CharField(max_length=255)
     chapitre = models.ForeignKey(Chapitre,on_delete=models.CASCADE,related_name='cours_chapitre')
-    duree = models.CharField(max_length=255)
     image = models.ImageField(upload_to='images/cours' , null=True)
     video = models.FileField(upload_to="ressources/cours",null=True)
     pdf = models.FileField(upload_to="ressources/cours",null=True)

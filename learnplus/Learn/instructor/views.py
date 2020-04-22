@@ -332,7 +332,7 @@ def invoice(request):
 
 
 @login_required(login_url = 'login')
-def lesson_add(request):
+def lesson_add(request, slug):
     if request.user.is_authenticated:
         try:
             try:
@@ -343,8 +343,9 @@ def lesson_add(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+                    chapitre = school_models.Chapitre.objects.get(slug=slug)
                     datas = {
-
+                        'chapitre': chapitre,
                            }
                     return render(request,'pages/instructor-lesson-add.html',datas)
         except Exception as e:
@@ -668,7 +669,7 @@ def post_cours(request):
     try:
         chapitre = school_models.Chapitre.objects.get(titre=title)
         try:
-            video = request.FILES("file")
+            video = request.FILES["file"]
             chapitre.video = video
         except :
             pass
@@ -685,7 +686,7 @@ def post_cours(request):
     except:
         chapitre = school_models.Chapitre()
         try:
-            video = request.FILES("file")
+            video = request.FILES["file"]
             chapitre.video = video
         except :
             pass
@@ -707,14 +708,15 @@ def post_cours(request):
 
 def post_lesson(request):
     title = request.POST.get("title")
+    chapitre = request.POST.get("chapitre")
 
     try:
-        cours = school_models.Cours.objects.get(titre=title)
+        cours = school_models.Cours.objects.get(Q(titre=title) & Q(chapitre__id=int(chapitre)))
 
         try:
-            video = request.FILES("file")
-            image = request.FILES("image")
-            pdf = request.FILES("pdf")
+            video = request.FILES["file"]
+            image = request.FILES["image"]
+            pdf = request.FILES["pdf"]
             cours.video = video
             cours.image = image
             cours.pdf = pdf
@@ -727,21 +729,25 @@ def post_lesson(request):
     except:
         cours = school_models.Cours()
         try:
-            video = request.FILES("file")
-            image = request.FILES("image")
-            pdf = request.FILES("pdf")
+            chapitre = school_models.Chapitre.objects.get(id=int(chapitre))
+            video = request.FILES["file"]
+            image = request.FILES["image"]
+            pdf = request.FILES["pdf"]
             cours.video = video
+            cours.chapitre = chapitre
             cours.image = image
             cours.pdf = pdf
-        except :
-            pass
-        cours.titre = title
-        cours.save()
-        success = True 
-        message = 'cours ajouté avec succés'
-    data = {'success' : success,
-            'message' : message,
-            'slug': cours.slug,
+            cours.titre = title
+            cours.save()
+            success = True 
+            message = 'cours ajouté avec succés'
+        except Exception as e:
+            print(e)
+            success = False
+            message = "Une erreur s'est produite"
+    data = {
+        'success' : success,
+        'message' : message,
     }
     return JsonResponse(data,safe=False)
 
