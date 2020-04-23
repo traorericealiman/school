@@ -73,7 +73,7 @@ class Classe(models.Model):
         verbose_name_plural = 'Classes'
 
     def __str__(self):
-        return self.niveau.nom
+        return self.niveau.nom 
  
 class Chapitre(models.Model):
     
