@@ -72,9 +72,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'forum' %} ">Forum</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="help-center">Get Help</a>
-                            </li>
                         </ul>
                 
                         <!-- Menu -->
@@ -121,7 +118,7 @@
                                                 </span>
                                             </a>
                 
-                                            <a href="{% url 'messages' %}" class="list-group-item list-group-item-action unread">
+                                            <a href="{% url 'messages' user.student_user.classe %}" class="list-group-item list-group-item-action unread">
                                                 <span class="d-flex align-items-center mb-1">
                                                     <small class="text-muted">5 minutes ago</small>
                 
@@ -261,7 +258,7 @@
                                         <a class="dropdown-item" href=" {% url 'edit' %}">Edit Account</a>
                                         <a class="dropdown-item" href="{% url 'profile' %}">Profile
                                             &amp; Privacy</a>
-                                        <a class="dropdown-item" href="{% url 'messages' %}">Messages</a>
+                                        <a class="dropdown-item" href="{% url 'messages' user.student_user.classe  %}">Messages</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
                                 </li>
@@ -346,7 +343,7 @@
                             </ul>
                         </li>
                         <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{% url 'messages' %}">
+                            <a class="sidebar-menu-button" href="{% url 'messages' user.student_user.classe %}">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i> Messages
                                 <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                             </a>
@@ -354,11 +351,6 @@
                     </ul>
                     <div class="sidebar-heading">Student</div>
                     <ul class="sidebar-menu sm-active-button-bg">
-                        <li class="sidebar-menu-item">
-                            <a class="sidebar-menu-button" href="{% url 'take-course' %} ">
-                                <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">class</i> Take Course
-                            </a>
-                        </li>
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{% url 'quiz-list' %} ">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i> Mes quizs

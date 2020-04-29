@@ -35,14 +35,14 @@
                                         {% for i in cours %}
                                     <li class="list-group-item" style="z-index: initial;">
                                         <div class="d-flex align-items-center">
-                                            <a href="{% url 'take-course' %}" class="avatar avatar-4by3 avatar-sm mr-3">
+                                            <a href="{% url 'take-course' i.slug %}" class="avatar avatar-4by3 avatar-sm mr-3">
                                                 <img src="{{i.image.url}}" alt="course" class="avatar-img rounded">
                                             </a>
                                             <div class="flex">
-                                                <a href="{% url 'take-course' %}" class="text-body"><strong>{{i.titre}}</strong></a>
+                                                <a href="{% url 'take-course' i.slug %}" class="text-body"><strong>{{i.titre}}</strong></a>
                                                 <div class="d-flex align-items-center">
                                                     <div class="progress" style="width: 100px;">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <p> {{ i.description }} </p>
                                                     </div>
                                                     <small class="text-muted ml-2">{{i.date_add}}</small>
                                                 </div>
@@ -52,8 +52,7 @@
                                                     <i class="material-icons">more_vert</i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <p>{{i.slug}}</p>
-                                                    <a class="dropdown-item" href="{% url 'take-course' %}">Continue</a>
+                                                    <a class="dropdown-item" href="{% url 'take-course' i.slug %}">Continuer</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +86,7 @@
                                                 <a class="text-body" href="{% url 'quiz-results' %}"><strong>Title of quiz goes here?</strong></a><br>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-black-50 text-uppercase mr-2">Course</small>
-                                                    <a href="{% url 'take-course' %}">Basics of HTML</a>
+                                                    <a href="">Basics of HTML</a>
                                                 </div>
                                             </div>
                                             <div class="media-right text-center d-flex align-items-center">
@@ -103,7 +102,7 @@
                                                 <a class="text-body" href="{% url 'quiz-results' %}"><strong>Directives &amp; Routing</strong></a><br>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-black-50 text-uppercase mr-2">Course</small>
-                                                    <a href="{% url 'take-course' %}">Angular in Steps</a>
+                                                    <a href="">Angular in Steps</a>
                                                 </div>
                                             </div>
                                             <div class="media-right text-center d-flex align-items-center">
@@ -119,7 +118,7 @@
                                                 <a class="text-body" href="{% url 'quiz-results' %}"><strong>Responsive &amp; Retina</strong></a><br>
                                                 <div class="d-flex align-items-center">
                                                     <small class="text-black-50 text-uppercase mr-2">Course</small>
-                                                    <a href="{% url 'take-course' %}">Bootstrap Foundations</a>
+                                                    <a href="">Bootstrap Foundations</a>
                                                 </div>
                                             </div>
                                             <div class="media-right text-center d-flex align-items-center">

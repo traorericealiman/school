@@ -241,26 +241,26 @@ def courses(request):
             print("3")
             return redirect("/admin/")
     
-@login_required(login_url = 'login')
-def dashboard(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.instructor:
-                    return redirect('dashboard')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.student_user:
-                    datas = {
+# @login_required(login_url = 'login')
+# def dashboard(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.instructor:
+#                     return redirect('dashboard')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.student_user:
+#                     datas = {
 
-                           }
-                return render(request,'pages/fixed-student-dashboard.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+#                            }
+#                 return render(request,'pages/fixed-student-dashboard.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def earnings(request):
@@ -591,8 +591,31 @@ def statement(request):
             return redirect("/admin/")
     
 
-@login_required(login_url = 'login')
-def student_take_course(request):
+# @login_required(login_url = 'login')
+# def student_take_course(request, slug):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.instructor:
+#                     return redirect('dashboard')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.student_user:
+#                     cours  = school_models.Cours.objets.get(slug=slug)
+#                     datas = {
+#                         'cours': cours,
+#                     }
+#                 return render(request,'pages/fixed-student-student-take-course.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
+
+
+@login_required(login_url='login')
+def take_course(request, slug):
     if request.user.is_authenticated:
         try:
             try:
@@ -603,31 +626,10 @@ def student_take_course(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
-                    datas = {
-
-                           }
-                return render(request,'pages/fixed-student-student-take-course.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
-   
-@login_required(login_url = 'login')
-def take_course(request,slug):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.instructor:
                     cours = school_models.Cours.objects.get(slug=slug)
-                    return redirect('dashboard')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.student_user:
                     datas = {
-
-                           }
+                        'cours': cours,
+                    }
                 return render(request,'pages/fixed-student-take-course.html',datas)
         except Exception as e:
             print(e)

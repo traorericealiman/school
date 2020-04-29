@@ -11,7 +11,7 @@ class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
         # messages = Message.last_10_messages()
-        salon = data['salon']
+        salon = data['classe']
         messages = Message.objects.filter(salon__nom=salon).order_by('date_add').all()[:20]
         content = {
             'command': 'messages',
@@ -22,7 +22,7 @@ class ChatConsumer(WebsocketConsumer):
 
     def new_message(self, data):
         auteur = data['from']
-        salon = data['salon']
+        salon = data['classe']
         salon_object = Salon.objects.get(nom=salon)
         auteur_user = User.objects.filter(username=auteur)[0]
         message = Message.objects.create(
