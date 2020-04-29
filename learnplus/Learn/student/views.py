@@ -1,7 +1,16 @@
 from django.shortcuts import render,redirect 
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
+from instructor import models as instructor_models
 from django.db.models import Q
+from chat import models as chat_models
+from django.utils.safestring import mark_safe
+import json
+from django.http import JsonResponse 
+
+
+
+
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -404,11 +413,15 @@ def messages(request, classe):
                 print("2")
                 if request.user.student_user:
                     exist_classe = chat_models.Salon.objects.get(classe=request.user.student_user.classe)
+                    info = school_models.Classe.objects.get(id=request.user.student_user.classe.id)
+                    instructor = instructor_models.Instructor.objects.get(classe__id=request.user.student_user.classe.id)
                     user_room = ''                    
                     print(user_room)
                     datas = {
+                        'instructor':instructor,
+                        'info_classe':info,
                         'classe': exist_classe,
-                        'classe_json': mark_safe(json.dumps(classe)),
+                        'classe_json': mark_safe(json.dumps(exist_classe.id)),
                         'username': mark_safe(json.dumps(request.user.username))
                     }
                 return render(request,'pages/fixed-student-messages.html',datas)
@@ -417,26 +430,26 @@ def messages(request, classe):
             print("3")
             return redirect("/admin/")
     
-@login_required(login_url = 'login')
-def messages_2(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.instructor:
-                    return redirect('dashboard')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.student_user:
-                    datas = {
+# @login_required(login_url = 'login')
+# def messages_2(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.instructor:
+#                     return redirect('dashboard')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.student_user:
+#                     datas = {
 
-                           }
-                return render(request,'pages/fixed-student-messages-2.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+#                            }
+#                 return render(request,'pages/fixed-student-messages-2.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
 
 @login_required(login_url = 'login')
 def my_courses(request):

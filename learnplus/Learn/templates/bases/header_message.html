@@ -23,6 +23,7 @@
 
     <!-- App CSS -->
     <link type="text/css" href="/static/assets/css/app.css" rel="stylesheet">
+    <link type="text/css" href="/static/assets/css/styles.css" rel="stylesheet">
     <link type="text/css" href="/static/assets/css/app.rtl.css" rel="stylesheet">
 
 
@@ -216,7 +217,7 @@
                             <li class="nav-item dropdown ml-1 ml-md-3">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"><img
                                         src="{{user.student_user.photo.url}}" alt="Avatar" class="rounded-circle"
-                                        width="40">{{user.username}}</a>
+                                        width="40"></a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{% url 'account-edit' %}">
                                         <i class="material-icons">edit</i> Edit Account
