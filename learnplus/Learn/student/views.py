@@ -608,12 +608,13 @@ def student_take_course(request):
             return redirect("/admin/")
    
 @login_required(login_url = 'login')
-def take_course(request):
+def take_course(request,slug):
     if request.user.is_authenticated:
         try:
             try:
                 print("1")
                 if request.user.instructor:
+                    cours = school_models.Cours.objects.get(slug=slug)
                     return redirect('dashboard')
             except Exception as e:
                 print(e)
