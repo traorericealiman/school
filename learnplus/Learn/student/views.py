@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect 
 from django.contrib.auth.decorators import login_required
+from school import models as school_models
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -223,13 +224,14 @@ def courses(request):
             try:
                 print("1")
                 if request.user.instructor:
-                    return redirect('dashboard')
+                    return redirect('dashboard') 
             except Exception as e:
                 print(e)
                 print("2")
                 if request.user.student_user:
+                   
                     datas = {
-
+                                
                            }
                 return render(request,'pages/fixed-student-courses.html',datas)
         except Exception as e:
@@ -441,8 +443,11 @@ def my_courses(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
+                    chapitre = school_models.Chapitre.objects.filter(status=True)
+                    cours = school_models.Cours.objects.filter(status=True)
                     datas = {
-
+                                'chapitre':chapitre,
+                                'cours':cours
                            }
                 return render(request,'pages/fixed-student-my-courses.html',datas)
         except Exception as e:

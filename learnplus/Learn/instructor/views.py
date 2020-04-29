@@ -111,7 +111,7 @@ def course_add(request):
             try:
                 print("1")
                 if request.user.student_user:
-                    return redirect('index_student')
+                    return redirect('index_student') 
             except Exception as e:
                 print(e)
                 print("2")
