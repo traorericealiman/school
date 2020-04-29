@@ -3,7 +3,7 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 # from channels.generic.websocket import AsyncWebsocketConsumer
 import json
-from . import models
+from .models import Salon, Message
 from django.contrib.auth.models import User
 
 class ChatConsumer(WebsocketConsumer):
@@ -12,7 +12,7 @@ class ChatConsumer(WebsocketConsumer):
     def fetch_messages(self, data):
         # messages = Message.last_10_messages()
         salon = data['classe']
-        messages = Message.objects.filter(salon__nom=salon).order_by('date_add').all()[:20]
+        messages = Message.objects.filter(salon__classe=int(salon)).order_by('date_add').all()[:20]
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
@@ -23,7 +23,7 @@ class ChatConsumer(WebsocketConsumer):
     def new_message(self, data):
         auteur = data['from']
         salon = data['classe']
-        salon_object = Salon.objects.get(nom=salon)
+        salon_object = Salon.objects.get(classe__id=int(salon))
         auteur_user = User.objects.filter(username=auteur)[0]
         message = Message.objects.create(
             auteur=auteur_user,
@@ -45,14 +45,14 @@ class ChatConsumer(WebsocketConsumer):
     
     def message_to_json(self, message):
         try:
-            image = message.auteur.student_user.image.url
+            image = message.auteur.student_user.photo.url
         except:
-            image = message.auteur.instructor.image.url
+            image = message.auteur.instructor.photo.url
         return {
             'auteur' : message.auteur.username,
             'auteur_image' : image,
             'message' : message.message,
-            'date_add' : str(message.date_add)
+            'date_add' : str(message.date_add.year) +"-"+  str(message.date_add.month) +"-"+  str(message.date_add.day) +" "+  str(message.date_add.hour) +":"+  str(message.date_add.minute) +":"+  str(message.date_add.second)
         }
 
     commands = {
@@ -62,7 +62,7 @@ class ChatConsumer(WebsocketConsumer):
     }
     # async def connect(self):
     def connect(self):
-        self.salon = self.scope['url_route']['kwargs']['salon']
+        self.salon = self.scope['url_route']['kwargs']['classe']
         self.room_group_name = 'chat_%s' % self.salon
 
         # Join room group

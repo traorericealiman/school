@@ -455,11 +455,13 @@ def messages(request, classe):
                 print("2")
                 if request.user.instructor:
                     exist_classe = chat_models.Salon.objects.get(classe=request.user.instructor.classe)
+                    info = school_models.Classe.objects.get(id=request.user.instructor.classe.id)
                     user_room = ''                    
                     print(user_room)
                     datas = {
+                        'info_classe': info,
                         'classe': exist_classe,
-                        'classe_json': mark_safe(json.dumps(classe)),
+                        'classe_json': mark_safe(json.dumps(exist_classe.id)),
                         'username': mark_safe(json.dumps(request.user.username))
                     }
                     return render(request,'pages/instructor-messages.html',datas)

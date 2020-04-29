@@ -37,13 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'school.apps.SchoolConfig',
     'student.apps.StudentConfig',
     'instructor.apps.InstructorConfig',
     'config.apps.ConfigConfig',
     'chat.apps.ChatConfig',
     'quiz.apps.QuizConfig',
-    'channels',
 ]
 
 MIDDLEWARE = [
