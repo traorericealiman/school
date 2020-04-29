@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect 
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
+from django.db.models import Q
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -15,8 +16,9 @@ def index(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
+                    cours = school_models.Cours.objects.filter(Q(status=True) & Q(chapitre__classe=request.user.student_user.classe)).order_by('-date_add')[:5]
                     datas = {
-
+                                'cours' : cours ,
                            }
                 return render(request,'pages/fixed-student-dashboard.html',datas)
         except Exception as e:
@@ -446,7 +448,7 @@ def my_courses(request):
                     chapitre = school_models.Chapitre.objects.filter(status=True)
                     cours = school_models.Cours.objects.filter(status=True)
                     datas = {
-                                'chapitre':chapitre,
+                                'chapitre':chapitre, 
                                 'cours':cours
                            }
                 return render(request,'pages/fixed-student-my-courses.html',datas)
