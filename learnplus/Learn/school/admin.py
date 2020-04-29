@@ -51,12 +51,12 @@ class ClasseAdmin(CustomAdmin):
     ]
 
 class ChapitreAdmin(CustomAdmin):
-    list_display = ('matiere','titre','video', 'image', 'duree_en_heure', 'date_debut', 'date_fin', 'status')
+    list_display = ('matiere','titre', 'classe', 'video', 'image', 'duree_en_heure', 'date_debut', 'date_fin', 'status')
     list_display_links = ['titre',]
     search_fields = ('titre',)
     ordering = ('titre',)
     fieldsets = [
-                 ("info chapitre",{"fields":["matiere", "image", "video", 'duree_en_heure', 'date_debut', 'date_fin']}),
+                 ("info chapitre",{"fields":["matiere", "image", "video", 'duree_en_heure', 'date_debut', 'date_fin', 'classe']}),
                  ("standard",{"fields":["status"]})
     ]
 
