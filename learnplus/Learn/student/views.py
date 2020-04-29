@@ -390,7 +390,7 @@ def invoice(request):
             return redirect("/admin/")
 
 @login_required(login_url = 'login')
-def messages(request):
+def messages(request, classe):
     if request.user.is_authenticated:
         try:
             try:
@@ -401,9 +401,14 @@ def messages(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
+                    exist_classe = chat_models.Salon.objects.get(classe=request.user.student_user.classe)
+                    user_room = ''                    
+                    print(user_room)
                     datas = {
-
-                           }
+                        'classe': exist_classe,
+                        'classe_json': mark_safe(json.dumps(classe)),
+                        'username': mark_safe(json.dumps(request.user.username))
+                    }
                 return render(request,'pages/fixed-student-messages.html',datas)
         except Exception as e:
             print(e)

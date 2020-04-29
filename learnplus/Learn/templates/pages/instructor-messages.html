@@ -178,22 +178,14 @@
                 <div class="container-fluid page__container">
                     <form action="#" id="message-reply">
                         <div class="input-group input-group-merge">
-                            <input type="text" class="form-control form-control-appended" autofocus="" required=""
+                            <input type="text" id="chat-message-input" class="form-control form-control-appended" autofocus="" required=""
                                 placeholder="Type message">
                             <div class="input-group-append">
                                 <div class="input-group-text pr-2">
                                     <button class="btn btn-flush" type="button"><i
-                                            class="material-icons">tag_faces</i></button>
+                                         id="chat-message-submit"   class="material-icons">send</i></button>
                                 </div>
-                                <div class="input-group-text pl-0">
-                                    <div class="custom-file custom-file-naked d-flex"
-                                        style="width: 24px; overflow: hidden;">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" style="color: inherit;" for="customFile">
-                                            <i class="material-icons">attach_file</i>
-                                        </label>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </form>
@@ -413,6 +405,136 @@
 
 <!-- Messages App -->
 <script src="/static/assets/js/messages.js"></script>
+<script src="{% static 'assets\js\reconnecting-websocket.js' %}"></script>
+<script>
+    var classe = {{ classe_json }};
+    var username = {{ username }};
+
+    var chatSocket = new ReconnectingWebSocket(
+        'wss://' + window.location.host +
+        '/ws/messages/' + classe + '/');
+
+    chatSocket.onopen = function (e) {
+        fecthMessages();
+    }
+
+    chatSocket.onmessage = function (e) {
+        var data = JSON.parse(e.data);
+        if (data['command'] === 'messages') {
+            for (let i = 0; i < data['messages'].length; i++) {
+                creataMessage(data['messages'][i]);
+                console.log("djdjd")
+            }
+        } else if (data['command'] === 'new_message') {
+            creataMessage(data['message']);
+            console.log('sdd')
+        }
+    };
+
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+        if (e.keyCode === 13) {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        var messageInputDom = document.querySelector('#chat-message-input');
+        var message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'command': 'new_message',
+            'from': username,
+            'classe': classe
+        }));
+
+        messageInputDom.value = '';
+    };
+    function fecthMessages() {
+        chatSocket.send(JSON.stringify({
+            'command': 'fetch_messages',
+            'classe': classe
+        }));
+    }
+
+
+    function creataMessage(data) {
+        var auteur = data['auteur']
+        var msgDivTag = document.createElement('li')
+        msgDivTag.setAttribute('class', 'message d-inline-flex');
+        // var imgTag = document.createElement('img')
+        // var spanTag = document.createElement('span')
+        // spanTag.textContent = message.message
+        if (auteur === username) {
+            msgDivTag.innerHTML = `
     
+                <div class="message__aside">
+                    <a href="instructor-profile.html" class="avatar">
+                        <img src="${data.auteur_image}" alt="people"
+                            class="avatar-img rounded-circle">
+                    </a>
+                </div>
+                <div class="message__body card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex mr-3">
+                                <a href="instructor-profile.html" class="text-body"><strong>
+                                        ${data.auteur}</strong></a>
+                            </div>
+                            <div>
+                                <small class="text-muted">${data.date_add}</small>
+                            </div>
+                        </div>
+                        <span class="text-black-70">${data.message}</span>
+
+                    </div>
+                </div>
+            `;
+        } else {
+            msgDivTag.innerHTML = `
+            <div class="message__aside">
+                <a href="instructor-profile.html" class="avatar">
+                    <img src="${data.auteur_image}" alt="people"
+                        class="avatar-img rounded-circle">
+                </a>
+            </div>
+            <div class="message__body card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="flex mr-3">
+                            <a href="instructor-profile.html"
+                                class="text-body"><strong>${data.auteur}</strong></a>
+                        </div>
+                        <div>
+                            <small class="text-muted">${data.date_add}</small>
+                        </div>
+                    </div>
+                    <span class="text-black-70">${data.message}</span>
+
+                </div>
+            </div>
+            `;
+        }
+        // // var div = document.createElement('div');
+        // // div.setAttribute('class', 'post block bc2');
+        // div.innerHTML = `
+        //     <div class="parent">
+        //         <div class="child">${a}</div>
+        //         <div class="child">+</div>
+        //         <div class="child">${b}</div>
+        //         <div class="child">=</div>
+        //         <div class="child">${a + b}</div>
+        //     </div>
+        // `;
+        // document.getElementById('posts').appendChild(div);
+        // // msgDivTag.appendChild(imgTag)
+        // msgDivTag.appendChild(spanTag)
+        document.querySelector('#chat-log').appendChild(msgDivTag);
+    }
+</script>
 {% endblock script %}
     

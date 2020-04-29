@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'student.apps.StudentConfig',
     'instructor.apps.InstructorConfig',
     'config.apps.ConfigConfig',
+    'chat.apps.ChatConfig',
     'quiz.apps.QuizConfig',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -74,7 +76,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Learn.wsgi.application'
 
-
+ASGI_APPLICATION = "Learn.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 

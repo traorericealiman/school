@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
 from quiz import models as quiz_models
+from chat import models as chat_models
 from . import models
+from django.utils.safestring import mark_safe
+import json
 from django.http import JsonResponse 
 from django.db.models import Q
 
@@ -440,7 +443,7 @@ def lesson_edit(request, slug, id):
 
 
 @login_required(login_url = 'login')
-def messages(request):
+def messages(request, classe):
     if request.user.is_authenticated:
         try:
             try:
@@ -451,9 +454,14 @@ def messages(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+                    exist_classe = chat_models.Salon.objects.get(classe=request.user.instructor.classe)
+                    user_room = ''                    
+                    print(user_room)
                     datas = {
-
-                           }
+                        'classe': exist_classe,
+                        'classe_json': mark_safe(json.dumps(classe)),
+                        'username': mark_safe(json.dumps(request.user.username))
+                    }
                     return render(request,'pages/instructor-messages.html',datas)
         except Exception as e:
             print(e)
