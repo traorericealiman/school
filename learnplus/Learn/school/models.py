@@ -19,8 +19,8 @@ from django.utils.text import slugify
 
 class Matiere(models.Model):
     nom = models.CharField(max_length=255)
-    # coefficient = models.IntegerField()
-    # filiere = models.ForeignKey(Filiere,on_delete=models.CASCADE,related_name='matiere_filiere',null=True)
+    image = models.ImageField(upload_to="images/matiere/", null=True)
+    description = models.TextField(default="Description du cours")
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
@@ -81,6 +81,8 @@ class Chapitre(models.Model):
     matiere = models.ForeignKey(Matiere,on_delete=models.CASCADE,related_name='matiere_chapitre')
     video = models.FileField(upload_to="ressources/cours", null=True)
     duree_en_heure = models.PositiveIntegerField(null=True)
+    image = models.ImageField(upload_to="images/chapitres", null=True)
+    description = models.TextField(default="Description du chapitre")
     date_debut = models.DateField(null=True)
     date_fin = models.DateField(null=True)
     titre = models.CharField(max_length=255)

@@ -29,22 +29,22 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Accueil</a></li>
             <li class="breadcrumb-item"><a href="{% url 'instructor-courses' %}">Chapitre</a></li>
-            <li class="breadcrumb-item active">Mofication de chapitre</li>
+            <li class="breadcrumb-item active">Ajouter un chapitre</li>
         </ol>
         <div class="media align-items-center mb-headings">
             <div class="media-body">
-                <h1 class="h2">Editer le chapitre</h1>
+                <h1 class="h2">Information du chapitre</h1>
             </div>
             <div class="media-right">
-                <a href="#" v-if="!isregister"  v-on:click.prevent="courses_add" class="btn btn-success">Enregistrer</a>
-                <button  href="#"   v-if="isregister" disabled v-on:click.prevent="courses_add" class="btn btn-success">Enregistrer</button>
+                <button  v-if="!isregister"  v-on:click.prevent="courses_add" class="btn btn-success">Enregistrer</button>
+                <button     v-if="isregister" disabled v-on:click.prevent="courses_add" class="btn btn-success">Enregistrer</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Informations basiques</h4>
+                        <h4 class="card-title">Informations de base</h4>
                         <div v-if="isSuccess" class="alert alert-success" role="alert">
                             ${ message }
                         </div>
@@ -65,63 +65,16 @@
                             </textarea>
                         </div>
                         <br>
-                        <label class="form-label">Image</label>
-                        <br>
-                        <p>valeur actuelle</p>
-                        <div class="media-left">
-                        <img :src="image" width="100" class="rounded" alt="image">
-                        </div>
                         <div class="form-group mb-0 custom-file">
+                            <label class="form-label">Image</label>
                             <input v-on:change="handleImageUploaded" ref="files" type="file" accept="image/*" class="custom-file-input">
                             <label for="file" class="custom-file-label">Choisissez votre image</label>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Leçons</h4>
-                    </div>
-                    <div class="card-body">
-                        <!-- <p><a href="" class="btn btn-primary">Add Lesson <i
-                                    class="material-icons">add</i></a></p> -->
-                        <div class="nestable" id="nestable-handles-primary">
-                            <ul class="nestable-list">
-                                
-                                {% for l in chapitre.cours_chapitre.all %}
-                                    
-                                <li class="nestable-item nestable-item-handle" data-id="2">
-                                    <div class="nestable-content">
-                                        <div class="media align-items-center">
-                                            <div class="media-left">
-                                                <img src="{{l.image.url}}" alt="" width="100" class="rounded">
-                                            </div>
-                                            <div class="media-body">
-                                                <h5 class="card-title h6 mb-0">
-                                                    <a href="">{{l.titre}}</a>
-                                                </h5>
-                                                <small class="text-muted">{{l.date_update}}</small>
-                                            </div>
-                                            <div class="media-right">
-                                                <a href="{% url 'instructor-lesson-edit' chapitre.id l.slug %}" class="btn btn-white btn-sm"><i
-                                                        class="material-icons">edit</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item"
-                            src="{{ chapitre.video.url }}" 
-                            allowfullscreen=""></iframe>
-                    </div>
                     <div class="custom-file">
                         <input id="file" v-on:change="handleFileUploaded" ref="file" type="file"  accept="video/*" class="custom-file-input" >
                         <label for="file" class="custom-file-label">Présentation vidéo de cours </label>
@@ -129,8 +82,8 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Meta</h4>
-                        <p class="card-subtitle">Extra Options </p>
+                        <h4 class="card-title">Autres</h4>
+                        <p class="card-subtitle">informations</p>
                     </div>
 
                     <form class="card-body" action="#">
@@ -138,28 +91,24 @@
                             <label class="form-label" for="category">Matiére</label>
                             <select id="category" class="custom-select form-control" v-model="matiere"> 
                                 {% for ma in matiere %}
-                                <option value="{{ ma.id }}">{{ ma.nom }}</option>
-                                {% endfor %}
+                                    <option value="{{ ma.id }}">{{ ma.nom }}</option>
+                                {% endfor %}   
                             </select>
                         </div>
-                        <p class="" for="category">Valeur actuelle :  ${ matiere }</p>
                         <div class="form-group">
-                            <label class="form-label" for="duration">Duration</label>
+                            <label class="form-label" for="duration">Durée</label>
                             <input type="text" id="duration" class="form-control" placeholder="durée en heure" v-model="duration" >
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="start">Start Date</label>
+                            <label class="form-label" for="start">Date de debut</label>
                             <input id="start" type="text" class="form-control" placeholder="Date de début"
                                 data-toggle="flatpickr" v-model="date_debut">
-                            
                         </div>
-                        <p class="" for="category">Valeur actuelle : ${ date_debut }</p>
                         <div class="form-group">
-                            <label class="form-label" for="end">End Date</label>
+                            <label class="form-label" for="end">Date de fin</label>
                             <input id="end" type="text" class="form-control" placeholder="Date de fin"
                                 data-toggle="flatpickr" v-model="date_fin">
                         </div>
-                        <p class="" for="category">Valeur actuelle : ${ date_fin }</p>
 
                     </form>
                 </div>
@@ -195,15 +144,14 @@
 new Vue({
 el: '#courses-add',
 data: {
-    title: '{{ chapitre.titre }}',
-    file : '{{ chapitre.video.url }}',
-    description:'{{ chapitre.description }}',
-    image: '{{ chapitre.image.url }}',
-    date_fin: '{{ chapitre.date_fin }}',
-    date_debut: '{{ chapitre.date_debut }}',
-    matiere: '{{ chapitre.matiere }}',
-    duration: '{{ chapitre.duree_en_heure }}',
-    id: '{{ chapitre.id }}',
+    title: '',
+    file : '',
+    image: '',
+    description:'',
+    date_fin:'',
+    date_debut:'',
+    matiere:'',
+    duration:'',
    isregister: false,
    loader: false,
    isSuccess: false,
@@ -228,7 +176,6 @@ methods: {
                let formData = new FormData();
                formData.append('file', this.file);
                formData.append('title', this.title);
-               formData.append('id', this.id);
                formData.append('image', this.image);
                formData.append('matiere', this.matiere);
                formData.append('date_fin', this.date_fin);

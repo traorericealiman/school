@@ -26,7 +26,7 @@ class  MatiereAdmin(CustomAdmin):
     search_fields = ('nom',)
     ordering = ('nom',)
     fieldsets = [
-                 ("info matière",{"fields":["nom"]}),
+                 ("info matière",{"fields":["nom", "image", "description"]}),
                  ("standard",{"fields":["status"]})
     ]
 
@@ -51,12 +51,12 @@ class ClasseAdmin(CustomAdmin):
     ]
 
 class ChapitreAdmin(CustomAdmin):
-    list_display = ('matiere','titre','video', 'duree_en_heure', 'date_debut', 'date_fin', 'status')
+    list_display = ('matiere','titre','video', 'image', 'duree_en_heure', 'date_debut', 'date_fin', 'status')
     list_display_links = ['titre',]
     search_fields = ('titre',)
     ordering = ('titre',)
     fieldsets = [
-                 ("info chapitre",{"fields":["matiere", "video", 'duree_en_heure', 'date_debut', 'date_fin']}),
+                 ("info chapitre",{"fields":["matiere", "image", "video", 'duree_en_heure', 'date_debut', 'date_fin']}),
                  ("standard",{"fields":["status"]})
     ]
 
@@ -66,7 +66,7 @@ class CoursAdmin(CustomAdmin):
     search_fields = ('chapitre',)
     ordering = ('chapitre',)
     fieldsets = [
-                 ("info cours",{"fields":["chapitre","titre"]}),
+                 ("info cours",{"fields":["chapitre","titre", "image", "video", "pdf"]}),
                  ("standard",{"fields":["status"]})
     ]
 

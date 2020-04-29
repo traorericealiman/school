@@ -19,8 +19,9 @@ def dashboard(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+                    matiere = school_models.Matiere.objects.filter(status=True)
                     datas = {
-
+                        'matiere':matiere,
                     }
                     return render(request,'pages/instructor-dashboard.html',datas)
         except Exception as e:
@@ -104,7 +105,7 @@ def account_edit(request):
 
 
 @login_required(login_url = 'login')
-def course_edit(request):
+def course_add(request):
     if request.user.is_authenticated:
         try:
             try:
@@ -119,6 +120,34 @@ def course_edit(request):
                     matiere = school_models.Matiere.objects.filter(status=True)
                     datas = {
                         'matiere':matiere,
+                    }
+                    return render(request,'pages/instructor-course-add.html',datas)
+        except Exception as e:
+            print(e)
+            print("3")
+            return redirect("/admin/")
+
+
+
+@login_required(login_url = 'login')
+def course_edit(request, slug):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except Exception as e:
+                print(e)
+                print("2")
+
+                if request.user.instructor:
+                    matiere = school_models.Matiere.objects.filter(status=True)
+                    chapitre = school_models.Chapitre.objects.get(slug=slug)
+
+                    datas = {
+                        'matiere':matiere,
+                        'chapitre':chapitre,
                     }
                     return render(request,'pages/instructor-course-edit.html',datas)
         except Exception as e:
@@ -154,6 +183,32 @@ def courses(request):
 
 
 
+
+
+@login_required(login_url = 'login')
+def matiere(request, slug):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except Exception as e:
+                print(e)
+                print("2")
+                if request.user.instructor:
+                    Chapitre = school_models.Chapitre.objects.filter(Q(status=True) & Q(classe=request.user.instructor.classe) & Q(matiere__slug=slug))
+                    datas = {
+                            'Chapitre' : Chapitre ,
+                           }
+                    return render(request,'pages/instructor-cours-chap.html',datas)
+        except Exception as e:
+            print(e)
+            print("3")
+            return redirect("/admin/")
+
+
+
 @login_required(login_url = 'login')
 def earnings(request):
     if request.user.is_authenticated:
@@ -179,26 +234,26 @@ def earnings(request):
 
 
 
-@login_required(login_url = 'login')
-def edit_invoice(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.instructor:
-                    datas = {
+# @login_required(login_url = 'login')
+# def edit_invoice(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.student_user:
+#                     return redirect('index_student')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.instructor:
+#                     datas = {
 
-                           }
-                    return render(request,'pages/instructor-edit-invoice.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+#                            }
+#                     return render(request,'pages/instructor-edit-invoice.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
 
 
 
@@ -279,26 +334,26 @@ def forum_thread(request):
 
 
 
-@login_required(login_url = 'login')
-def invoice(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.student_user:
-                    return redirect('index_student')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.instructor:
-                    datas = {
+# @login_required(login_url = 'login')
+# def invoice(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.student_user:
+#                     return redirect('index_student')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.instructor:
+#                     datas = {
 
-                           }
-                    return render(request,'pages/instructor-invoice.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+#                            }
+#                     return render(request,'pages/instructor-invoice.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
     
 
 
@@ -348,6 +403,33 @@ def lesson_add(request, slug):
                         'chapitre': chapitre,
                            }
                     return render(request,'pages/instructor-lesson-add.html',datas)
+        except Exception as e:
+            print(e)
+            print("3")
+            return redirect("/admin/")
+
+
+
+@login_required(login_url = 'login')
+def lesson_edit(request, slug, id):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except Exception as e:
+                print(e)
+                print("2")
+                if request.user.instructor:
+                    chapitre = school_models.Chapitre.objects.get(id=id)
+                    cours = school_models.Cours.objects.get(slug=slug)
+
+                    datas = {
+                        'chapitre': chapitre,
+                        'cours': cours,
+                    }
+                    return render(request,'pages/instructor-lesson-edit.html',datas)
         except Exception as e:
             print(e)
             print("3")
@@ -474,6 +556,30 @@ def quiz_edit(request):
 
                            }
                     return render(request,'pages/instructor-quiz-edit.html',datas)
+        except Exception as e:
+            print(e)
+            print("3")
+            return redirect("/admin/")
+
+
+
+
+@login_required(login_url = 'login')
+def quiz_add(request):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.student_user:
+                    return redirect('index_student')
+            except Exception as e:
+                print(e)
+                print("2")
+                if request.user.instructor:
+                    datas = {
+
+                           }
+                    return render(request,'pages/instructor-quiz-add.html',datas)
         except Exception as e:
             print(e)
             print("3")
@@ -657,6 +763,8 @@ def statement(request):
             return redirect("/admin/")
 
 # fonction pour recuperer les donnees d'un cours et enregistrer
+
+""" Add and update chapitre """
 def post_cours(request):
     title = request.POST.get("title")
     matiere = request.POST.get("matiere")
@@ -664,22 +772,27 @@ def post_cours(request):
     description = request.POST.get("description")
     date_debut = request.POST.get("date_debut")
     duration = request.POST.get("duration")
+    id = request.POST.get("id")
     chapitre = ''
 
     try:
-        chapitre = school_models.Chapitre.objects.get(titre=title)
+        chapitre = school_models.Chapitre.objects.get(id=id)
         try:
             video = request.FILES["file"]
+            image = request.FILES["image"]
             chapitre.video = video
+            chapitre.image = image
+            chapitre.save()
         except :
             pass
         chapitre.titre = title
         chapitre.duree_en_heure = duration
         chapitre.date_debut = date_debut
         chapitre.date_fin = date_fin
+        chapitre.description = description
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
-        chapitre.classe = request.user.instrctor.classe
+        chapitre.classe = request.user.instructor.classe
         chapitre.save()
         success = True 
         message = 'mis à jour effectué  avec succés'
@@ -687,13 +800,17 @@ def post_cours(request):
         chapitre = school_models.Chapitre()
         try:
             video = request.FILES["file"]
+            video = request.FILES["image"]
             chapitre.video = video
+            chapitre.image = image
+            chapitre.save()
         except :
             pass
         chapitre.titre = title
         chapitre.duree_en_heure = duration
         chapitre.date_debut = date_debut
         chapitre.date_fin = date_fin
+        chapitre.description = description
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
         chapitre.classe = request.user.instructor.classe
@@ -706,12 +823,38 @@ def post_cours(request):
     }
     return JsonResponse(data,safe=False)
 
+
+
+""" delete chapitre"""
+def delete_chapitre(request):
+    id = request.POST.get("id")
+    try:
+        chapitre = school_models.Chapitre.objects.get(id=int(id))
+        chapitre.delete()
+        success = True
+        message = "La leçon a bien été supprimée"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "Une erreur s'est produite"
+    data = {
+        'success' : success,
+        'message' : message,
+    }
+    return JsonResponse(data,safe=False)
+
+
+
+
+
+""" add and update lesson """
 def post_lesson(request):
     title = request.POST.get("title")
     chapitre = request.POST.get("chapitre")
+    id = request.POST.get("id")
 
     try:
-        cours = school_models.Cours.objects.get(Q(titre=title) & Q(chapitre__id=int(chapitre)))
+        cours = school_models.Cours.objects.get(Q(id=int(id)) & Q(chapitre__id=int(chapitre)))
 
         try:
             video = request.FILES["file"]
@@ -753,4 +896,19 @@ def post_lesson(request):
 
 
 
-
+""" delete lesson"""
+def delete_lesson(request):
+    id = request.POST.get("id")
+    try:
+        lesson = school_models.Cours.objects.get(id=int(id))
+        lesson.delete()
+        success = True
+        message = "La leçon a bien été supprimée"
+    except Exception as e:
+        success = False
+        message = "Une erreur s'est produite"
+    data = {
+        'success' : success,
+        'message' : message,
+    }
+    return JsonResponse(data,safe=False)

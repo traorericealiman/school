@@ -74,12 +74,6 @@
                             </button>
                             <div class="text-black-70">Ohh no! No courses to display. Add some courses.</div>
                         </div>
-                        <div v-if="isSuccess" class="alert alert-success" role="alert">
-                            ${ message }
-                        </div>
-                        <div v-if="error" class="alert alert-danger" role="alert">
-                            ${ message }
-                        </div>
 
                         <div class="row">
                             {% for i in Chapitre %}
@@ -93,12 +87,12 @@
                                             </a>
                                             <div class="flex" style="min-width: 200px;">
                                                 <!-- <h5 class="card-title text-base m-0"><a href="{% url 'course-edit' i.slug %}"><strong>Learn Vue.js</strong></a></h5> -->
-                                                <h4 class="card-title mb-1"><a href="{% url 'course-edit' i.slug %}">{{i.matiere}}</a></h4>
+                                                <h4 class="card-title mb-1"><a href="{% url 'course-edit' i.slug %}">{{i.titre}}</a></h4>
                                                 <div class="d-flex align-items-center py-1 border-bottom">
                                                     <small class="text-black-70 mr-2">{{i.duree_en_heure}} heure</small>
                                                     <small class="text-black-50">Debut: {{i.date_debut}}</small>
                                                 </div>
-                                                <p class="text-black-70">{{i.titre}}</p>
+                                                <p class="text-black-70">{{i.description}}</p>
                                                 
                                                 {% for c in i.cours_chapitre.all %}
                                                     
@@ -130,7 +124,8 @@
                                             <a  class="dropdown-item" href="{% url 'course-edit' i.slug %}">Edit course</a>
                                             <a style="color: darkgreen;" class="dropdown-item" href="{% url 'instructor-lesson-add' i.slug %}">Ajouter une leçon</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item text-danger" href="javascript:;" v-on:click.prevent="delete_chapitre({{ i.id }})">Delete course</a>
+                                            <a class="dropdown-item text-danger" href="javascript:;" v-on:click.prevent="delete_chapitre({{ i.id }})">Delete
+                                                course</a>
                                         </div>
                                     </div>
                                 </div>
@@ -174,9 +169,10 @@
 
     {% endblock content %}
 
-    
-    {% block script %}
 
+
+    {% block script %}
+    
     <script src="/static/assets/js/axios.js"></script>
     
     <!-- vue -->
@@ -187,7 +183,7 @@
         new Vue({
             el: '#chapitre',
             data: {
-                id : '',
+                id: '',
                 isregister: false,
                 loader: false,
                 isSuccess: false,
@@ -198,9 +194,9 @@
             mounted() { },
             methods: {
                 delete_chapitre: function (id) {
-                    if (confirm("Voulez-vous vraiment supprimer ce chapitre? Vous supprimerez par la même occasion les cours y figurant")){
+                    if (confirm("Voulez-vous vraiment supprimer ce chapitre? Vous supprimerez par la même occasion les cours y figurant")) {
                         console.log(id);
-                        this.id=id;
+                        this.id = id;
                         let formData = new FormData();
                         formData.append('id', id);
                         axios.defaults.xsrfCookieName = 'csrftoken'
@@ -238,8 +234,5 @@
             }
         });
     </script>
-        
+    
     {% endblock script %}
-        
-
-   
