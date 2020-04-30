@@ -1,7 +1,7 @@
 from django.db import models
 from school import models as school_models
 from django.utils.text import slugify
-
+from datetime import datetime
 
 # Create your models here.
 class Quiz(models.Model):
@@ -15,7 +15,7 @@ class Quiz(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.titre)
+        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
         super(Quiz, self).save(*args, **kwargs)
 
 
@@ -39,7 +39,7 @@ class Devoir(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.sujet)
+        self.slug = '-'.join((slugify(self.sujet), slugify(datetime.now().microsecond)))
         super(Devoir, self).save(*args, **kwargs)
 
 

@@ -11,6 +11,7 @@ class Instructor(models.Model):
     adresse = models.CharField(max_length=255)
     classe = models.ForeignKey(school_models.Classe, related_name='instructor_classe', on_delete=models.CASCADE, null=True)
     photo = models.ImageField(upload_to='images/Instructor')
+    bio = models.TextField(default="Votre bio")
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)

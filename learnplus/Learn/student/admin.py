@@ -25,7 +25,7 @@ class StudentAdmin(CustomAdmin):
     search_fields = ('user',)
     ordering = ('user',)
     fieldsets = [
-                 ("info éléve",{"fields":["user","classe","filiere","photo"]}),
+                 ("info éléve",{"fields":["user","classe","photo"]}),
                  ("standard",{"fields":["status"]})
     ]
     def image_view(self,obj):

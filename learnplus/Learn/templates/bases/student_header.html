@@ -83,7 +83,7 @@
                                         src="{{user.student_user.photo.url}}" alt="Avatar" class="rounded-circle"
                                         width="40"></a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{% url 'account-edit' %}">
+                                    <a class="dropdown-item" href="{% url 'edit' %}">
                                         <i class="material-icons">edit</i> Edit Account
                                     </a>
                                     <a class="dropdown-item" href="{% url 'profile' %}">
@@ -128,9 +128,9 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href=" {% url 'edit' %}">Edit Account</a>
+                                        <a class="dropdown-item" href=" {% url 'edit' %}">Profile</a>
                                         <a class="dropdown-item" href="{% url 'profile' %}">Profile
-                                            &amp; Privacy</a>
+                                            &amp; Public</a>
                                         <a class="dropdown-item" href="{% url 'messages' user.student_user.classe  %}">Messages</a>
                                         <div class="dropdown-divider"></div>
                                     </div>
@@ -139,7 +139,6 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Communauté</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{% url 'forum' %}">Forum</a>
-                                        <a class="dropdown-item" href="{% url 'forum-thread' %}">Discussion</a>
                                         <a class="dropdown-item" href="{% url 'forum-ask' %}">Posez une Question </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{% url 'profile' %}">Profile Publique</a>
@@ -199,17 +198,12 @@
                             </a>
                             <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="{% url 'edit-profile' %} ">
+                                    <a class="sidebar-menu-button" href="{% url 'edit' %} ">
                                         <span class="sidebar-menu-text">Profile</span>
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="{% url 'edit-basic' %} ">
-                                        <span class="sidebar-menu-text">Confidentialité</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="">
+                                    <a class="sidebar-menu-button" href="{% url 'profile' %}">
                                         <span class="sidebar-menu-text">Profile public</span>
                                     </a>
                                 </li>
@@ -218,7 +212,6 @@
                         <li class="sidebar-menu-item">
                             <a class="sidebar-menu-button" href="{% url 'messages' user.student_user.classe %}">
                                 <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i> Messages
-                                <span class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
                             </a>
                         </li>
                     </ul>
@@ -252,23 +245,8 @@
                                     </a>
                                 </li>
                                 <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="{% url 'forum-thread' %} ">
-                                        <span class="sidebar-menu-text">Discussion</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" href="{% url 'forum-ask' %} ">
                                         <span class="sidebar-menu-text">Ask Question</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="{% url 'profile' %}">
-                                        <span class="sidebar-menu-text">Student Profile - Courses</span>
-                                    </a>
-                                </li>
-                                <li class="sidebar-menu-item">
-                                    <a class="sidebar-menu-button" href="{% url 'profile-posts' %}">
-                                        <span class="sidebar-menu-text">Student Profile - Posts</span>
                                     </a>
                                 </li>
                             </ul>

@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from datetime import datetime
+
 
 
 # Create your models here.
@@ -27,7 +29,7 @@ class Matiere(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.nom)
+        self.slug = '-'.join((slugify(self.nom), slugify(datetime.now().microsecond)))
         super(Matiere, self).save(*args, **kwargs)
     
 
@@ -47,7 +49,7 @@ class Niveau(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.nom)
+        self.slug = '-'.join((slugify(self.nom), slugify(datetime.now().microsecond)))
         super(Niveau, self).save(*args, **kwargs)
 
 
@@ -73,7 +75,7 @@ class Classe(models.Model):
         verbose_name_plural = 'Classes'
 
     def __str__(self):
-        return self.niveau.nom
+        return (str(self.niveau.nom)+ " "+ str(self.numeroClasse))
  
 class Chapitre(models.Model):
     
@@ -92,7 +94,7 @@ class Chapitre(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.titre)
+        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
         super(Chapitre, self).save(*args, **kwargs)
 
 
@@ -117,7 +119,7 @@ class Cours(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.titre)
+        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
         super(Cours, self).save(*args, **kwargs)
 
 

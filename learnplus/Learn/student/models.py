@@ -10,6 +10,7 @@ class Student(models.Model):
     user = models.OneToOneField(User,related_name='student_user',on_delete=models.CASCADE)
     classe = models.ForeignKey(school_models.Classe,on_delete=models.CASCADE,related_name='student_classe', null=True)
     photo = models.ImageField(upload_to='images/Student')
+    bio = models.TextField(default="Votre bio")
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
