@@ -16,25 +16,12 @@
                                 <div class="embed-responsive embed-responsive-16by9">
                                     <iframe class="embed-responsive-item" src="{{cours.video.url}}" allowfullscreen=""></iframe>
                                 </div>
+                                <div class="card-body">
+                                    {{ cours.description}}
+                                </div>
                             </div>
 
-                            <!-- Lessons -->
-                            <ul class="card list-group list-group-fit">
-                                <li class="list-group-item">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <div class="text-muted">1.</div>
-                                        </div>
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="{{cours.pdf.url}}" allowfullscreen=""></iframe>
-                                        </div>
-                                        <div class="media-right">
-                                            <small class="text-muted-light">2:03</small>
-                                        </div>
-                                    </div>
-                                </li>
-                               
-                            </ul>
+                            
                         </div>
                         <div class="col-md-4">
                             <div class="card">
@@ -65,7 +52,7 @@
                                                 <i class="material-icons text-muted-light">schedule</i>
                                             </div>
                                             <div class="media-body">
-                                                &nbsp; {{cours.date_add}} 
+                                                &nbsp; {{ cours.date_add }} 
                                             </div>
                                         </div>
                                     </li>
@@ -76,6 +63,13 @@
                             <a href="fixed-student-help-center.html" class="btn btn-default btn-block">
                                 <i class="material-icons btn__icon--left">help</i> Forum
                             </a>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="{{cours.pdf.url}}" allowfullscreen=""></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

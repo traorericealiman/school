@@ -8,7 +8,7 @@
 
                 <div class="container page__container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Accueil</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                     <h1 class="h2">Dashboard</h1>
@@ -41,10 +41,8 @@
                                             <div class="flex">
                                                 <a href="{% url 'take-course' i.slug %}" class="text-body"><strong>{{i.titre}}</strong></a>
                                                 <div class="d-flex align-items-center">
-                                                    <div class="progress" style="width: 100px;">
-                                                        <p> {{ i.description }} </p>
-                                                    </div>
                                                     <small class="text-muted ml-2">{{i.date_add}}</small>
+                                                    <small class="text-muted ml-2">{{ i.description }}</small>
                                                 </div>
                                             </div>
                                             <div class="dropdown ml-3">
@@ -57,7 +55,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    {% endfor%}
+                                        {% endfor%}
                                    
 
                                 </ul>

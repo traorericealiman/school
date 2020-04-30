@@ -5,18 +5,12 @@
 
                 <div class="container page__container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
-                        <li class="breadcrumb-item active">My Courses</li>
+                        <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Accueil</a></li>
+                        <li class="breadcrumb-item active">Mes cours</li>
                     </ol>
                     <div class="media mb-headings align-items-center">
                         <div class="media-body">
-                            <h1 class="h2">My Courses</h1>
-                        </div>
-                        <div class="media-right">
-                            <div class="btn-group btn-group-sm">
-                                <a href="#" class="btn btn-white active"><i class="material-icons">list</i></a>
-                                <a href="#" class="btn btn-white"><i class="material-icons">dashboard</i></a>
-                            </div>
+                            <h1 class="h2">Mes cours</h1>
                         </div>
                     </div>
                     <div class="card-columns">
@@ -31,13 +25,11 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="card-title m-0"><a href="{% url 'take-course' i.slug %}">{{i.titre}}</a></h4>
-                                        <small class="text-muted">{{i.cours.all.count}}</small>
+                                        <small class="text-muted">{{ i.description }}</small><br>
+                                        <small class="text-muted"> Chapitre : {{ i.chapitre.titre }}</small>
                                     </div>
                                    
                                 </div>
-                            </div>
-                            <div class="progress rounded-0">
-                                <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <div class="card-footer bg-white">
                                 <a href="{% url 'take-course' i.slug %}" class="btn btn-primary btn-sm">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
