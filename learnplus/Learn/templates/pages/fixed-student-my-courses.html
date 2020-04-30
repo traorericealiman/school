@@ -20,18 +20,18 @@
                         </div>
                     </div>
                     <div class="card-columns">
-                        {% for i in chapitre %}
+                        {% for i in cours %}
                         <div class="card">
                             <div class="card-header">
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="{% url 'take-course' %}">
-                                            <img src="/static/assets/images/vuejs.png" alt="Card image cap" width="100" class="rounded">
+                                        <a href="{% url 'take-course' i.slug %}">
+                                            <img src="{{i.image.url}}" alt="Card image cap" width="100" class="rounded">
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="card-title m-0"><a href="{% url 'take-course' %}">{{i.titre}}</a></h4>
-                                        <small class="text-muted">{{i.cours_chapitre.all.count}}</small>
+                                        <h4 class="card-title m-0"><a href="{% url 'take-course' i.slug %}">{{i.titre}}</a></h4>
+                                        <small class="text-muted">{{i.cours.all.count}}</small>
                                     </div>
                                    
                                 </div>
@@ -40,32 +40,10 @@
                                 <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                             <div class="card-footer bg-white">
-                                <a href="{% url 'take-course' %}" class="btn btn-primary btn-sm">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
+                                <a href="{% url 'take-course' i.slug %}" class="btn btn-primary btn-sm">Continue <i class="material-icons btn__icon--right">play_circle_outline</i></a>
                             </div>
                         </div>
                         {% endfor %}
-                        <!-- <div class="card">
-                            <div class="card-header">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <a href="{% url 'take-course' %}">
-                                            <img src="/static/assets/images/gulp.png" alt="Card image cap" width="100" class="rounded">
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h4 class="card-title m-0"><a href="#">Npm &amp; Gulp Advanced Workflow</a></h4>
-                                        <small class="text-muted">Lessons: 7 of 7</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="progress rounded-0">
-                                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="card-footer bg-white ">
-                                <a href="{% url 'take-course' %}" class="btn btn-success btn-sm">Completed <i class="material-icons btn__icon--right">check</i></a>
-                                <a href="{% url 'take-course' %}" class="btn btn-white btn-sm">Restart <i class="material-icons btn__icon--right">replay</i> </a>
-                            </div>
-                        </div> -->
                     </div>
 
                     <!-- Pagination -->

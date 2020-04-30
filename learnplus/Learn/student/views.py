@@ -185,26 +185,27 @@ def billing(request):
             print("3")
             return redirect("/admin/")
     
-@login_required(login_url = 'login')
-def browse_courses(request):
-    if request.user.is_authenticated:
-        try:
-            try:
-                print("1")
-                if request.user.instructor:
-                    return redirect('dashboard')
-            except Exception as e:
-                print(e)
-                print("2")
-                if request.user.student_user:
-                    datas = {
-
-                           }
-                return render(request,'pages/fixed-student-browse-courses.html',datas)
-        except Exception as e:
-            print(e)
-            print("3")
-            return redirect("/admin/")
+# @login_required(login_url = 'login')
+# def browse_courses(request):
+#     if request.user.is_authenticated:
+#         try:
+#             try:
+#                 print("1")
+#                 if request.user.instructor:
+#                     return redirect('dashboard')
+#             except Exception as e:
+#                 print(e)
+#                 print("2")
+#                 if request.user.student_user:
+#                     cours = school_models.Cours.objects.filter(Q(status=True) & Q(chapitre__classe=request.user.student_user.classe))
+#                     datas = {
+#                                 'all_cours' : all_cours ,
+#                            }
+#                 return render(request,'pages/fixed-student-browse-courses.html',datas)
+#         except Exception as e:
+#             print(e)
+#             print("3")
+#             return redirect("/admin/")
    
 
 @login_required(login_url = 'login')
@@ -465,9 +466,11 @@ def my_courses(request):
                 if request.user.student_user:
                     chapitre = school_models.Chapitre.objects.filter(status=True)
                     cours = school_models.Cours.objects.filter(status=True)
+                    all_cours = school_models.Cours.objects.filter(Q(status=True) & Q(chapitre__classe=request.user.student_user.classe))
                     datas = {
                                 'chapitre':chapitre, 
-                                'cours':cours
+                                'cours':cours,
+                                'all_cours': all_cours,
                            }
                 return render(request,'pages/fixed-student-my-courses.html',datas)
         except Exception as e:
@@ -640,8 +643,10 @@ def take_course(request, slug):
                 print("2")
                 if request.user.student_user:
                     cours = school_models.Cours.objects.get(slug=slug)
+                    instructor = instructor_models.Instructor.objects.get(classe__id=request.user.student_user.classe.id)
                     datas = {
                         'cours': cours,
+                        'instructor' : instructor,
                     }
                 return render(request,'pages/fixed-student-take-course.html',datas)
         except Exception as e:
