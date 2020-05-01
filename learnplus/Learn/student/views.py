@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 import json
 from django.http import JsonResponse 
 from django.contrib.auth.models import User
+from . import models
 
 
 
@@ -740,12 +741,12 @@ def update_profil(request):
             student.photo = image 
             student.save()
 
-        except expression as identifier:
+        except:
             pass
         success = True 
         message = "vos informations ont été modifié avec succés"
 
-    except expression as identifier:
+    except:
         success = False
         message = "une erreur est subvenue lors de la mise à jour"
     data = {
