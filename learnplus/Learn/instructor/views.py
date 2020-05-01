@@ -776,7 +776,7 @@ def statement(request):
 
 """ Add and update chapitre """
 def post_cours(request):
-    title = request.POST.get("title")
+    title = request.POST.get("title") 
     matiere = request.POST.get("matiere")
     date_fin = request.POST.get("date_fin")
     description = request.POST.get("description")

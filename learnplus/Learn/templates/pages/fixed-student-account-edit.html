@@ -1,7 +1,7 @@
 {% extends 'bases/student_header.html'%}
 {% block content %}
 
-            <div class="page ">
+            <div class="page" id="profil">
 
                 <div class="container page__container">
                     <ol class="breadcrumb">
@@ -9,6 +9,12 @@
                         <li class="breadcrumb-item active">Edit Account</li>
                     </ol>
                     <h1 class="h2">Edit Account</h1>
+                    <div v-if="isSuccess" class="alert alert-success" role="alert">
+                        ${ message }
+                    </div>
+                    <div v-if="error" class="alert alert-danger" role="alert">
+                        ${ message }
+                    </div>
 
                     <div class="card">
                         <ul class="nav nav-tabs nav-tabs-card">
@@ -21,19 +27,19 @@
                         </ul>
                         <div class="tab-content card-body">
                             <div class="tab-pane active" id="first">
-                                <form action="#" class="form-horizontal">
+                                <form action="#" class="form-horizontal"> 
                                     <div class="form-group row">
                                         <label for="avatar" class="col-sm-3 col-form-label form-label">Avatar</label>
                                         <div class="col-sm-9">
                                             <div class="media align-items-center">
                                                 <div class="media-left">
                                                     <div class="icon-block rounded">
-                                                        <i class="material-icons text-muted-light md-36">photo</i>
+                                                        <img src="{{user.student_user.photo.url}}" alt="Avatar" width="80">
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="custom-file" style="width: auto;">
-                                                        <input type="file" id="avatar" class="custom-file-input">
+                                                        <input type="file" id="avatar" class="custom-file-input" ref="file" type="file" accept="image/*" v-on:change="handleImageUploaded">
                                                         <label for="avatar" class="custom-file-label">Choisissez votre photo</label>
                                                     </div>
                                                 </div>
@@ -45,10 +51,10 @@
                                         <div class="col-sm-8">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control" placeholder="Nom" >
+                                                    <input id="name" type="text" class="form-control" placeholder="{{user.last_name}}" v-model="nom">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" placeholder="Prénoms" >
+                                                    <input type="text" class="form-control" placeholder="{{user.first_name}}" v-model="prenom">
                                                 </div>
                                             </div>
                                         </div>
@@ -62,7 +68,7 @@
                                                         <i class="material-icons md-18 text-muted">mail</i>
                                                     </div>
                                                 </div>
-                                                <input type="text" id="email" class="form-control" placeholder="Email Address" value="contact@mosaicpro.biz" disabled>
+                                                <input type="text" id="email" class="form-control" placeholder="Email Address" value="{{user.email}}" disabled v-model="email">
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +76,7 @@
                                         <label for="website" class="col-sm-3 col-form-label form-label">Bio</label>
                                         <div class="col-sm-8 col-md-8">
                                             <div class="input-group">
-                                                <textarea type="text" id="website" class="form-control" placeholder="Votre bio" ></textarea>
+                                                <textarea type="text" id="website" class="form-control" placeholder="Votre bio" v-model="bio"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +85,8 @@
                                         <div class="col-sm-8 offset-sm-3">
                                             <div class="media align-items-center">
                                                 <div class="media-left">
-                                                    <a href="#" class="btn btn-success">Mettre à jour</a>
+                                                    <a href="#" class="btn btn-success" v-if="!isregister" v-on:click.prevent="profil">Mettre à jour</a>
+                                                    <a href="#" class="btn btn-success" v-if="isregister" disabled >Mettre à jour</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,3 +154,96 @@
             </div>
 
     {% endblock content %}
+
+            {% block script %}
+    <script src="/static/assets/js/axios.js"></script>
+    
+    <!-- vue -->
+    <script src="/static/assets/js/vue.js"></script> 
+    <script>
+        // Block Vue JS  
+        new Vue({
+        el: '#profil',
+        data: {
+            nom: '{{user.last_name}}',
+            prenom: '{{user.first_name}}',
+            file : '{{user.student_user.photo.url}}',
+            email:'{{user.email}}',
+            bio : '{{ user.student_user.bio }}',
+           isregister: false,
+           loader: false,
+           isSuccess: false,
+           error: false,
+           base_url: window.location.protocol + "//" + window.location.host + "/",
+        },
+        delimiters: ["${", "}"],
+        mounted() { },
+        methods: {
+            profil: function () {
+               if (!this.isregister) {
+                   this.error = false
+                   this.isSuccess = false
+                   this.isregister = true
+                   if (this.nom == "{{user.last_name}}" && this.prenom == "{{user.first_name}}" && this.email == "{{user.email}}" && this.bio == "{{ user.student_user.bio }}" && this.file == "{{user.student_user.photo.url}}" ) {
+                       this.message = "aucune modification";
+                       this.error = true
+                       this.isSuccess = false
+                       this.isregister = false;
+                   } else {
+                    //    permet d'imploder des fichiers
+                       let formData = new FormData();
+                       formData.append('nom', this.nom);
+                       formData.append('prenom', this.prenom);
+                       formData.append('file', this.file);
+                       formData.append('email', this.email);
+                       formData.append('bio', this.bio);
+                       axios.defaults.xsrfCookieName = 'csrftoken'
+                       axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+                       axios.post(this.base_url + 'student/update_profil',
+                           formData,
+                           {
+                               headers: {
+                                   'Content-Type': 'multipart/form-data',
+                               }
+                           }).then(response => {
+                           console.log(response)
+                           this.isregister = false;
+                           if (response.data.success) {
+                               this.isSuccess = true
+                               this.error = false
+                               this.message = response.data.message
+                               this.success = response.data.success
+                           } else {
+                               this.error = true
+                               this.message = response.data.message
+                               this.success = response.data.success
+                               this.isSuccess = false
+                           }
+                           console.log("success variable" + this.isSuccess)
+                           // console.log("success variable"+this.error)
+                       })
+                           .catch((err) => {
+                               this.isregister = false;
+                               console.log(err);
+                           })
+                   }
+               }
+           },
+           handleImageUploaded() {
+                this.image = this.$refs.file.files[0];
+                console.log(this.image)
+            },
+        }
+        });
+        </script>
+        
+            <!-- Required by Calendar (fullcalendar) -->
+            <script src="/static/assets/vendor/dropzone.min.js"></script>
+            <script src="/static/assets/vendor/jquery.fancytree-all.min.js"></script>
+            
+            <!-- Init -->
+            <script src="/static/assets/js/fancytree.js"></script>
+    
+            
+        {% endblock script %}
+            

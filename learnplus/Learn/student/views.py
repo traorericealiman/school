@@ -7,6 +7,7 @@ from chat import models as chat_models
 from django.utils.safestring import mark_safe
 import json
 from django.http import JsonResponse 
+from django.contrib.auth.models import User
 
 
 
@@ -717,5 +718,40 @@ def account_edit(request):
             print(e)
             print("3")
             return redirect("/admin/")
-    
 
+        
+def update_profil(request):
+    nom = request.POST.get("nom")
+    prenom = request.POST.get("prenom")
+    email = request.POST.get("email")
+    bio = request.POST.get("bio")
+
+    try:
+        user = User.objects.get(username=request.user.username)
+        user.last_name = nom
+        user.first_name = prenom
+        user.email = email
+        user.save()
+        student = models.Student.objects.get(user__id=request.user.id)
+        student.bio = bio
+        student.save()
+        try:
+            image = request.FILES["file"]
+            student.photo = image 
+            student.save()
+
+        except expression as identifier:
+            pass
+        success = True 
+        message = "vos informations ont été modifié avec succés"
+
+    except expression as identifier:
+        success = False
+        message = "une erreur est subvenue lors de la mise à jour"
+    data = {
+        "success" : success,
+        "message" : message,
+        }
+    return JsonResponse(data,safe=False)
+
+    
