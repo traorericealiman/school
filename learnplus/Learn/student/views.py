@@ -27,8 +27,12 @@ def index(request):
                 print("2")
                 if request.user.student_user:
                     cours = school_models.Cours.objects.filter(Q(status=True) & Q(chapitre__classe=request.user.student_user.classe)).order_by('-date_add')[:5]
+                    forum = forum_models.Sujet.objects.filter(cours__chapitre__classe=request.user.student_user.classe)[:5]
+                    forum_count = forum_models.Sujet.objects.filter(cours__chapitre__classe=request.user.student_user.classe).count()
                     datas = {
-                                'cours' : cours ,
+                                'cours': cours,
+                                'forum': forum,
+                                'forum_count': forum_count,
                            }
                 return render(request,'pages/fixed-student-dashboard.html',datas)
         except Exception as e:

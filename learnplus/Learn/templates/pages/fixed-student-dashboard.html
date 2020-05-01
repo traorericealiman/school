@@ -150,76 +150,41 @@
 
                                 <ul class="list-group list-group-fit">
 
-
+                                    
+                                    {% if forum_count > 0 %}
+                                    
+                                    {% for i in forum %}
+                                    
                                     <li class="list-group-item forum-thread">
                                         <div class="media align-items-center">
                                             <div class="media-left">
                                                 <div class="forum-icon-wrapper">
-                                                    <a href="{% url 'forum-thread' %}" class="forum-thread-icon">
+                                                    <a href="{% url 'forum-thread' i.slug %}" class="forum-thread-icon">
                                                         <i class="material-icons">description</i>
                                                     </a>
-                                                    <a href="{% url 'profile' %}" class="forum-thread-user">
-                                                        <img src="/static/assets/images/people/50/guy-1.jpg" alt="" width="20" class="rounded-circle">
+                                                    <a href="#" class="forum-thread-user">
+                                                        <img src="{{ i.user.student_user.photo.url }}" alt="" width="20" class="rounded-circle">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="media-body">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="{% url 'profile' %}" class="text-body"><strong>Luci Bryant</strong></a>
-                                                    <small class="ml-auto text-muted">5 min ago</small>
+                                                    <a href="#" class="text-body"><strong>{{ i.user.last_name }} {{ i.user.first_name }}</strong></a>
+                                                    <small class="ml-auto text-muted">{{ i.date_add }}</small>
                                                 </div>
-                                                <a class="text-black-70" href="{% url 'forum-thread' %}">Am I learning the right way?</a>
+                                                <a class="text-black-70" href="{% url 'forum-thread' i.slug %}">{{ i.titre }}</a>
                                             </div>
                                         </div>
                                     </li>
+                                    {% endfor %}
+                                    
+                                    {% else %}
+                                    <div class="alert alert-info" role="alert">
+                                        Pas de sujet, Soyez le premier à ajouter un sujet 😀!!!
+                                    </div>
+                                    {% endif %}
 
-
-
-                                    <li class="list-group-item forum-thread">
-                                        <div class="media align-items-center">
-                                            <div class="media-left">
-                                                <div class="forum-icon-wrapper">
-                                                    <a href="{% url 'forum-thread' %}" class="forum-thread-icon">
-                                                        <i class="material-icons">description</i>
-                                                    </a>
-                                                    <a href="{% url 'profile' %}" class="forum-thread-user">
-                                                        <img src="/static/assets/images/people/50/guy-2.jpg" alt="" width="20" class="rounded-circle">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="{% url 'profile' %}" class="text-body"><strong>Magnus Goldsmith</strong></a>
-                                                    <small class="ml-auto text-muted">7 min ago</small>
-                                                </div>
-                                                <a class="text-black-70" href="{% url 'forum-thread' %}">Can someone help me with the basic Setup?</a>
-                                            </div>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li class="list-group-item forum-thread">
-                                        <div class="media align-items-center">
-                                            <div class="media-left">
-                                                <div class="forum-icon-wrapper">
-                                                    <a href="{% url 'forum-thread' %}" class="forum-thread-icon">
-                                                        <i class="material-icons">description</i>
-                                                    </a>
-                                                    <a href="{% url 'profile' %}" class="forum-thread-user">
-                                                        <img src="/static/assets/images/people/50/woman-1.jpg" alt="" width="20" class="rounded-circle">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="{% url 'profile' %}" class="text-body"><strong>Katelyn Rankin</strong></a>
-                                                    <small class="ml-auto text-muted">12 min ago</small>
-                                                </div>
-                                                <a class="text-black-70" href="{% url 'forum-thread' %}">I think this is the right way?</a>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        
 
 
                                 </ul>
