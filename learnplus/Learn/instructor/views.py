@@ -8,6 +8,8 @@ from django.utils.safestring import mark_safe
 import json
 from django.http import JsonResponse 
 from django.db.models import Q
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 @login_required(login_url = 'login')
@@ -933,3 +935,71 @@ def delete_lesson(request):
         'message' : message,
     }
     return JsonResponse(data,safe=False)
+
+def update_profil(request):
+    nom = request.POST.get("nom")
+    prenom = request.POST.get("prenom")
+    email = request.POST.get("email")
+    bio = request.POST.get("bio")
+
+    try:
+        user = User.objects.get(username=request.user.username)
+        user.last_name = nom
+        user.first_name = prenom
+        user.email = email
+        user.save()
+        instructor = models.Instructor.objects.get(user__id=request.user.id)
+        instructor.bio = bio
+        instructor.save()
+        try:
+            image = request.FILES["file"]
+            instructor.photo = image 
+            instructor.save()
+
+        except:
+            pass
+        success = True 
+        message = "vos informations ont été modifié avec succés"
+
+    except:
+        success = False
+        message = "une erreur est subvenue lors de la mise à jour"
+    data = {
+        "success" : success,
+        "message" : message,
+        }
+    return JsonResponse(data,safe=False)
+
+        
+def update_password(request):
+    last_password = request.POST.get("last_password")
+    new_password = request.POST.get("new_password")
+    confirm_password = request.POST.get("confirm_password")
+
+    try:
+        if not request.user.check_password(last_password):
+            success = False
+            message = "Ancien mot de passe incorrect"
+        elif new_password != confirm_password:
+            success = False
+            message = "Les mots de passe ne sont pas identiques"
+        else:
+            user = User.objects.get(username=request.user.username)
+            username = user.username
+            user.password = new_password
+            user.set_password(user.password)
+            user.save()
+            user = authenticate(username=username, password=new_password)
+            login(request, user)
+            success = True 
+            message = "Mot de passe modfifié avec succès"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "une erreur est subvenue lors de la mise à jour"
+    data = {
+        "success" : success,
+        "message" : message,
+        }
+    return JsonResponse(data,safe=False)
+

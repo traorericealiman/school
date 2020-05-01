@@ -24,6 +24,10 @@ urlpatterns = [
     path('post_cours',views.post_cours,name='post_cours') ,
     path('delete_chapitre',views.delete_chapitre,name='delete_chapitre') ,
     path('delete_lesson',views.delete_lesson,name='delete_lesson') ,
-    path('post_lesson',views.post_lesson,name='post_lesson') 
+    path('post_lesson',views.post_lesson,name='post_lesson'),
+
+     ########## post ###############
+    path('update_profil', views.update_profil, name='update_profil'),
+    path('update_password', views.update_password, name='update_password'),
 
 ]
