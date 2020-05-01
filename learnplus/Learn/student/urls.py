@@ -16,8 +16,9 @@ urlpatterns = [
     path('cart', views.cart, name='cart'),
     # path('earnings', views.earnings, name='earnings'),
     path('forum', views.forum, name='forum'),
+    path('forum_lesson/<slug>', views.forum_lesson, name='forum-lesson'),
     path('forum_ask', views.forum_ask, name='forum-ask'),
-    path('forum_thread', views.forum_thread, name='forum-thread'),
+    path('forum_thread/<slug>', views.forum_thread, name='forum-thread'),
     path('help_center', views.help_center, name='help-center'),
     path('messages/<str:classe>/', views.messages, name='messages'),
     path('my_courses', views.my_courses, name='my-courses'),
@@ -29,6 +30,11 @@ urlpatterns = [
     path('take_course/<slug>', views.take_course, name='take-course'),
     path('take_quiz', views.take_quiz, name='take-quiz'),
     path('view_course', views.view_course, name='view-course'),
+
+
+    ########## post ###############
     path('update_profil', views.update_profil, name='update_profil'),
+    path('update_password', views.update_password, name='update_password'),
+    path('post_forum', views.post_forum, name='post_forum'),
 
 ]

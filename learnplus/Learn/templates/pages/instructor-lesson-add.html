@@ -63,7 +63,14 @@
                                     <div class="form-group row">
                                         <label for="title" class="col-md-3 col-form-label form-label">Title</label>
                                         <div class="col-md-6">
-                                            <input id="title" type="text" class="form-control" placeholder="Write an awesome title" v-model="title">
+                                            <input id="title" type="text" class="form-control" placeholder="Titre de la leçon" v-model="title">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="title" class="col-md-3 col-form-label form-label">Description</label>
+                                        <div class="col-md-6">
+                                            <textarea class="form-control" placeholder="Description de la leçon" v-model="description"></textarea>
+                                            <input id="title" type="text" >
                                         </div>
                                     </div>
                                     <!-- <div class="form-group row">
@@ -110,31 +117,6 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Files</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <form id="my-awesome-dropzone" action="#" class="dropzone"></form>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div data-toggle="tree">
-                                            <ul >
-                                                <li class="folder expanded">
-                                                    lesson files
-                                                    <ul>
-                                                        <li>lesson-1-install.zip</li>
-                                                        <li>lesson-1-steps.zip</li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -158,6 +140,7 @@ data: {
     title: '',
     file : '',
     image:'',
+    description: '',
     pdf:'',
     chapitre : '{{ chapitre.id }}',
    isregister: false,
@@ -174,7 +157,7 @@ methods: {
            this.error = false
            this.isSuccess = false
            this.isregister = true
-           if (this.title == "" || this.file == "" || this.image == "" || this.pdf == "" ) {
+           if (this.title == "" || this.file == "" || this.description == "" || this.image == "" || this.pdf == "" ) {
                this.message = "Veuillez remplir correctement les champs";
                this.error = true
                this.isSuccess = false
@@ -184,6 +167,7 @@ methods: {
                let formData = new FormData();
                formData.append('file', this.file);
                formData.append('title', this.title);
+               formData.append('description', this.description);
                formData.append('image', this.image);
                formData.append('pdf', this.pdf);
                formData.append('chapitre', this.chapitre);

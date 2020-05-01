@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect 
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
+from forum import models as forum_models
 from instructor import models as instructor_models
 from django.db.models import Q
 from chat import models as chat_models
@@ -9,9 +10,7 @@ import json
 from django.http import JsonResponse 
 from django.contrib.auth.models import User
 from . import models
-
-
-
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -296,6 +295,7 @@ def earnings(request):
             return redirect("/admin/")
 
 
+
 @login_required(login_url = 'login')
 def forum(request):
     if request.user.is_authenticated:
@@ -316,6 +316,34 @@ def forum(request):
             print(e)
             print("3")
             return redirect("/admin/")
+
+
+
+
+
+@login_required(login_url = 'login')
+def forum_lesson(request, slug):
+    if request.user.is_authenticated:
+        try:
+            try:
+                print("1")
+                if request.user.instructor:
+                    return redirect('dashboard')
+            except Exception as e:
+                print(e)
+                print("2")
+                if request.user.student_user:
+                    lesson = school_models.Cours.objects.get(slug=slug)
+                    datas = {
+                        'lesson':lesson,
+                    }
+                return render(request,'pages/fixed-student-forum-lesson.html',datas)
+        except Exception as e:
+            print(e)
+            print("3")
+            return redirect("/admin/")
+
+
 
 @login_required(login_url = 'login')
 def forum_ask(request):
@@ -338,8 +366,11 @@ def forum_ask(request):
             print("3")
             return redirect("/admin/")
 
+
+
+
 @login_required(login_url = 'login')
-def forum_thread(request):
+def forum_thread(request, slug):
     if request.user.is_authenticated:
         try:
             try:
@@ -350,9 +381,10 @@ def forum_thread(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
+                    forum = forum_models.Sujet.objects.get(slug=slug)
                     datas = {
-
-                           }
+                        "forum": forum,
+                    }
                 return render(request,'pages/fixed-student-forum-thread.html',datas)
         except Exception as e:
             print(e)
@@ -752,6 +784,69 @@ def update_profil(request):
     data = {
         "success" : success,
         "message" : message,
+        }
+    return JsonResponse(data,safe=False)
+
+        
+def update_password(request):
+    last_password = request.POST.get("last_password")
+    new_password = request.POST.get("new_password")
+    confirm_password = request.POST.get("confirm_password")
+
+    try:
+        if not request.user.check_password(last_password):
+            success = False
+            message = "Ancien mot de passe incorrect"
+        elif new_password != confirm_password:
+            success = False
+            message = "Les mots de passe ne sont pas identiques"
+        else:
+            user = User.objects.get(username=request.user.username)
+            username = user.username
+            user.password = new_password
+            user.set_password(user.password)
+            user.save()
+            user = authenticate(username=username, password=new_password)
+            login(request, user)
+            success = True 
+            message = "Mot de passe modfifié avec succès"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "une erreur est subvenue lors de la mise à jour"
+    data = {
+        "success" : success,
+        "message" : message,
+        }
+    return JsonResponse(data,safe=False)
+
+    
+
+        
+def post_forum(request):
+    titre = request.POST.get("titre")
+    question = request.POST.get("question")
+    lesson = request.POST.get("lesson")
+    val = ""
+    try:
+        lesson = school_models.Cours.objects.get(id=int(lesson))
+        forum = forum_models.Sujet()
+        forum.titre = titre
+        forum.question = question
+        forum.cours = lesson
+        forum.user = request.user
+        forum.save()
+        val = forum.slug
+        success = True 
+        message = "Votre sujet a bien été ajouté!"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "une erreur est subvenue lors de la soumission"
+    data = {
+        "success" : success,
+        "message": message,
+        "forum": val,
         }
     return JsonResponse(data,safe=False)
 

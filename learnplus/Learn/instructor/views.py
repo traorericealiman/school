@@ -797,8 +797,16 @@ def post_cours(request):
             pass
         chapitre.titre = title
         chapitre.duree_en_heure = duration
-        chapitre.date_debut = date_debut
-        chapitre.date_fin = date_fin
+        try:
+            chapitre.date_debut = date_debut
+            chapitre.save()
+        except:
+            pass
+        try:
+            chapitre.date_fin = date_fin
+            chapitre.save()
+        except:
+            pass
         chapitre.description = description
         matiere = school_models.Matiere.objects.get(id=int(matiere))
         chapitre.matiere = matiere
@@ -861,6 +869,7 @@ def delete_chapitre(request):
 def post_lesson(request):
     title = request.POST.get("title")
     chapitre = request.POST.get("chapitre")
+    description = request.POST.get("description")
     id = request.POST.get("id")
 
     try:
@@ -873,9 +882,10 @@ def post_lesson(request):
             cours.video = video
             cours.image = image
             cours.pdf = pdf
-        except :
+        except:
             pass
         cours.titre = title
+        cours.description = description
         cours.save()
         success = True 
         message = 'mis à jour effectué  avec succés'
@@ -889,6 +899,7 @@ def post_lesson(request):
             cours.video = video
             cours.chapitre = chapitre
             cours.image = image
+            cours.description = description
             cours.pdf = pdf
             cours.titre = title
             cours.save()

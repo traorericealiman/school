@@ -73,7 +73,7 @@
             loader: false,
             isSuccess: false,
             error: false,
-            base_url: window.location.protocol + "//" + window.location.host + "/",
+            base_url: window.location.protocol + "//" + window.location.host ,
         },
         delimiters: ["${", "}"],
         mounted() { },
@@ -91,7 +91,7 @@
                     } else {
                         axios.defaults.xsrfCookieName = 'csrftoken'
                         axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-                        axios.post(this.base_url + 'post', {
+                        axios.post(this.base_url + '/post', {
                             username: '' + this.username,
                             password: '' + this.password,
                         }).then(response => {
@@ -102,7 +102,15 @@
                                 this.error = false
                                 this.message = response.data.message
                                 this.success = response.data.success
-                                window.location.replace(this.base_url + response.data.redirect);
+                                var url_string = window.location.href; //window.location.href
+                                var url = new URL(url_string);
+                                var next = url.searchParams.get("next");
+                                console.log(next);
+                                if (next != ""){
+                                    window.location.replace(this.base_url + next);
+                                }else{
+                                window.location.replace(this.base_url + "/" + response.data.redirect);
+                                }
                             } else {
                                 this.error = true
                                 this.message = response.data.message

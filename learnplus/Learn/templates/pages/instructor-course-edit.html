@@ -197,11 +197,11 @@ el: '#courses-add',
 data: {
     title: '{{ chapitre.titre }}',
     file : '{{ chapitre.video.url }}',
-    description:'{{ chapitre.description }}',
+    description:`{{ chapitre.description }}`,
     image: '{{ chapitre.image.url }}',
     date_fin: '{{ chapitre.date_fin }}',
     date_debut: '{{ chapitre.date_debut }}',
-    matiere: '{{ chapitre.matiere }}',
+    matiere: '{{ chapitre.matiere.id }}',
     duration: '{{ chapitre.duree_en_heure }}',
     id: '{{ chapitre.id }}',
    isregister: false,
@@ -218,10 +218,10 @@ methods: {
            this.error = false
            this.isSuccess = false
            this.isregister = true
-           if (this.title == "" || this.file == "" || this.description == "" || this.date_fin == "" || this.date_debut == "" || this.matiere == "" || this.duration == "" || this.image == "") {
-               this.message = "Veuillez remplir correctement les champs";
-               this.error = true
-               this.isSuccess = false
+           if (this.title == "{{ chapitre.titre }}" && this.file == "{{ chapitre.file.url }}" && this.description == `{{ chapitre.description }}` && this.date_fin == "{{ chapitre.date_fin }}" && this.date_debut == "{{ chapitre.date_debut }}" && this.matiere == "{{ chapitre.matiere.id }}" && this.duration == "{{ chapitre.duration }}" && this.image == "{{ chapitre.image.url }}") {
+               this.message = "Aucun changement";
+               this.error = true;
+               this.isSuccess = false;
                this.isregister = false;
            } else {
             //    permet d'imploder des fichiers
