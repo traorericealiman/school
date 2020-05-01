@@ -29,4 +29,6 @@ urlpatterns = [
     path('take_course/<slug>', views.take_course, name='take-course'),
     path('take_quiz', views.take_quiz, name='take-quiz'),
     path('view_course', views.view_course, name='view-course'),
+    path('update_profil', views.update_profil, name='update_profil'),
+
 ]
