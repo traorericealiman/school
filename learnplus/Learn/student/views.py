@@ -652,7 +652,7 @@ def take_course(request, slug):
         except Exception as e:
             print(e)
             print("3")
-            return redirect("/admin/")
+            return redirect('my_courses')
    
 
 @login_required(login_url = 'login')
@@ -718,3 +718,4 @@ def account_edit(request):
             print("3")
             return redirect("/admin/")
     
+
