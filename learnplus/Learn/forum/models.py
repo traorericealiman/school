@@ -9,7 +9,7 @@ from django.utils.text import slugify
 class Sujet(models.Model):
     
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user_sujet')
-    cours = models.ForeignKey('school.Cours',on_delete=models.CASCADE,related_name='cours_forum')
+    cours = models.ForeignKey('school.Cours',on_delete=models.CASCADE,related_name='cours_forum', null=True)
     question = models.TextField()
     titre = models.CharField(max_length=255)
     date_add = models.DateTimeField(auto_now_add=True)

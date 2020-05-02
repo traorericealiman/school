@@ -28,3 +28,13 @@ class Instructor(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+    @property
+    def get_u_type(self):
+        try:
+            user = User.objects.get(id=self.user.id)
+            cheick = user.instructor
+            return True
+        except:
+            return False

@@ -312,9 +312,12 @@ def forum(request):
                 print(e)
                 print("2")
                 if request.user.student_user:
+                    forum_general = forum_models.Sujet.objects.filter(cours=None)
+                    forum = forum_models.Sujet.objects.filter(cours__chapitre__classe=request.user.student_user.classe)
                     datas = {
-
-                           }
+                        'forum_general': forum_general,
+                        'forum': forum,
+                    }
                 return render(request,'pages/fixed-student-forum.html',datas)
         except Exception as e:
             print(e)
@@ -855,3 +858,26 @@ def post_forum(request):
     return JsonResponse(data,safe=False)
 
     
+def post_forum_g(request):
+    titre = request.POST.get("titre")
+    question = request.POST.get("question")
+    val = ""
+    try:
+        forum = forum_models.Sujet()
+        forum.titre = titre
+        forum.question = question
+        forum.user = request.user
+        forum.save()
+        val = forum.slug
+        success = True 
+        message = "Votre sujet a bien été ajouté!"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "une erreur est subvenue lors de la soumission"
+    data = {
+        "success" : success,
+        "message": message,
+        "forum": val,
+        }
+    return JsonResponse(data,safe=False)

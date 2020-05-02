@@ -68,7 +68,7 @@
                         <div class="form-group mb-0 custom-file">
                             <label class="form-label">Image</label>
                             <input v-on:change="handleImageUploaded" ref="files" type="file" accept="image/*" class="custom-file-input">
-                            <label for="file" class="custom-file-label">Choisissez votre image</label>
+                            <label for="image" class="custom-file-label">Choisissez votre image</label>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="custom-file">
-                        <input id="file" v-on:change="handleFileUploaded" ref="file" type="file"  accept="video/*" class="custom-file-input" >
-                        <label for="file" class="custom-file-label">Présentation vidéo de cours </label>
+                        <input  v-on:change="handleFileUploaded" ref="file" type="file"  accept="video/*" class="custom-file-input" >
+                        <label for="video" class="custom-file-label">Présentation vidéo de cours </label>
                     </div>
                 </div>
                 <div class="card">

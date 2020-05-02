@@ -36,5 +36,6 @@ urlpatterns = [
     path('update_profil', views.update_profil, name='update_profil'),
     path('update_password', views.update_password, name='update_password'),
     path('post_forum', views.post_forum, name='post_forum'),
+    path('post_forum_g', views.post_forum_g, name='post_forum_g'),
 
 ]

@@ -35,12 +35,9 @@
                                         <label for="avatar" class="col-sm-3 col-form-label form-label">Image</label>
                                         <div class="col-sm-9">
                                             <div class="media align-items-center">
-                                                <!-- <div class="media-left">
-                                                    <img src="/static/assets/images/vuejs.png" alt="" width="100" class="rounded">
-                                                </div> -->
                                                 <div class="custom-file">
                                                     <input v-on:change="handleImageUploaded" ref="file" type="file" accept="image/*" class="custom-file-input">
-                                                    <label for="file" class="custom-file-label">Choisissez votre image</label>
+                                                    <label for="image" class="custom-file-label">Choisissez votre image</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -55,7 +52,7 @@
                                                 <div class="custom-file">
                                                     <input v-on:change="handlePdfUploaded" ref="files" type="file" accept="application/pdf"
                                                         class="custom-file-input">
-                                                    <label for="file" class="custom-file-label">Choisissez votre PDF</label>
+                                                    <label for="pdf" class="custom-file-label">Choisissez votre PDF</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -70,7 +67,6 @@
                                         <label for="title" class="col-md-3 col-form-label form-label">Description</label>
                                         <div class="col-md-6">
                                             <textarea class="form-control" placeholder="Description de la leçon" v-model="description"></textarea>
-                                            <input id="title" type="text" >
                                         </div>
                                     </div>
                                     <!-- <div class="form-group row">
@@ -94,7 +90,7 @@
                                                         <div class="custom-file">
                                                             <input v-on:change="handleFileUploaded" ref='fichier' type="file" accept="video/*"
                                                                 class="custom-file-input">
-                                                            <label for="file" class="custom-file-label">Choisissez la vidée</label>
+                                                            <label for="video" class="custom-file-label">Choisissez la vidée</label>
                                                         </div>
                                                         <small class="form-text text-muted d-flex align-items-center">
                                                             <!-- <i class="material-icons font-size-16pt mr-1">ondemand_video</i> -->

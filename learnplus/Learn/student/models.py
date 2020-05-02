@@ -28,6 +28,15 @@ class Student(models.Model):
     def __str__(self):
         return self.user.username
 
+    @property
+    def get_u_type(self):
+        try:
+            user = User.objects.get(id=self.user.id)
+            cheick = user.student_user
+            return True
+        except:
+            return False
+
 class StudentReponse(models.Model):
     question = models.ForeignKey(quiz_models.Question,on_delete=models.CASCADE,related_name='StudentReponse_question')
     reponse = models.ForeignKey(quiz_models.Reponse,on_delete=models.CASCADE,related_name='reponse_StudentReponse')

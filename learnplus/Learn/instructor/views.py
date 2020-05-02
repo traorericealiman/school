@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
 from quiz import models as quiz_models
+from forum import models as forum_models
 from chat import models as chat_models
 from . import models
 from django.utils.safestring import mark_safe
@@ -276,9 +277,12 @@ def forum(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+                    forum_general = forum_models.Sujet.objects.filter(cours=None)
+                    forum = forum_models.Sujet.objects.filter(cours__chapitre__classe=request.user.instructor.classe)
                     datas = {
-
-                           }
+                        'forum_general': forum_general,
+                        'forum': forum,
+                    }
                     return render(request,'pages/instructor-forum.html',datas)
         except Exception as e:
             print(e)
@@ -315,7 +319,7 @@ def forum_ask(request):
 
 
 @login_required(login_url = 'login')
-def forum_thread(request):
+def forum_thread(request, slug):
     if request.user.is_authenticated:
         try:
             try:
@@ -326,9 +330,10 @@ def forum_thread(request):
                 print(e)
                 print("2")
                 if request.user.instructor:
+                    forum = forum_models.Sujet.objects.get(slug=slug)
                     datas = {
-
-                           }
+                        "forum": forum,
+                    }
                     return render(request,'pages/instructor-forum-thread.html',datas)
         except Exception as e:
             print(e)
@@ -789,6 +794,13 @@ def post_cours(request):
 
     try:
         chapitre = school_models.Chapitre.objects.get(id=id)
+        chapitre.titre = title
+        chapitre.duree_en_heure = duration
+        chapitre.description = description
+        matiere = school_models.Matiere.objects.get(id=int(matiere))
+        chapitre.matiere = matiere
+        chapitre.classe = request.user.instructor.classe
+        chapitre.save()
         try:
             video = request.FILES["file"]
             image = request.FILES["image"]
@@ -797,8 +809,6 @@ def post_cours(request):
             chapitre.save()
         except :
             pass
-        chapitre.titre = title
-        chapitre.duree_en_heure = duration
         try:
             chapitre.date_debut = date_debut
             chapitre.save()
@@ -809,18 +819,13 @@ def post_cours(request):
             chapitre.save()
         except:
             pass
-        chapitre.description = description
-        matiere = school_models.Matiere.objects.get(id=int(matiere))
-        chapitre.matiere = matiere
-        chapitre.classe = request.user.instructor.classe
-        chapitre.save()
         success = True 
         message = 'mis à jour effectué  avec succés'
     except:
         chapitre = school_models.Chapitre()
         try:
             video = request.FILES["file"]
-            video = request.FILES["image"]
+            image = request.FILES["image"]
             chapitre.video = video
             chapitre.image = image
             chapitre.save()
@@ -837,9 +842,10 @@ def post_cours(request):
         chapitre.save()
         success = True 
         message = 'chapitre ajouté avec succés'
-    data = {'success' : success,
-            'message' : message,
-            'slug': chapitre.slug,
+    data = {
+        'success' : success,
+        'message' : message,
+        'slug': chapitre.slug,
     }
     return JsonResponse(data,safe=False)
 
@@ -1003,3 +1009,28 @@ def update_password(request):
         }
     return JsonResponse(data,safe=False)
 
+"""  Post forum """
+
+def post_forum(request):
+    titre = request.POST.get("titre")
+    question = request.POST.get("question")
+    val = ""
+    try:
+        forum = forum_models.Sujet()
+        forum.titre = titre
+        forum.question = question
+        forum.user = request.user
+        forum.save()
+        val = forum.slug
+        success = True 
+        message = "Votre sujet a bien été ajouté!"
+    except Exception as e:
+        print(e)
+        success = False
+        message = "une erreur est subvenue lors de la soumission"
+    data = {
+        "success" : success,
+        "message": message,
+        "forum": val,
+        }
+    return JsonResponse(data,safe=False)

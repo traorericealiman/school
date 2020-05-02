@@ -36,7 +36,11 @@
                                                         <i class="material-icons">description</i>
                                                     </a>
                                                     <a href="#" class="forum-thread-user">
+                                                        {% if i.user.student_user.get_u_type %}
                                                         <img src="{{ i.user.student_user.photo.url }}" alt="" width="20" class="rounded-circle">
+                                                        {% elif i.user.instructor.get_u_type %}
+                                                        <img src="{{ i.user.instructor.photo.url }}" alt="" width="20" class="rounded-circle">
+                                                        {% endif %}
                                                     </a>
                                                 </div>
                                             </div>

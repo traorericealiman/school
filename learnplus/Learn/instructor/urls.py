@@ -10,7 +10,7 @@ urlpatterns = [
     path('matiere/<slug>', views.matiere, name='instructor-matiere'), 
     path('forum', views.forum, name='instructor-forum'),
     path('forum_ask', views.forum_ask, name='instructor-forum-ask'),
-    path('forum_thread', views.forum_thread, name='instructor-forum-thread'),
+    path('forum_thread/<slug>', views.forum_thread, name='instructor-forum-thread'),
     path('lesson-add/<slug>', views.lesson_add, name='instructor-lesson-add'),
     path('lesson-edit/<id>/<slug>', views.lesson_edit, name='instructor-lesson-edit'),
     path('messages/<str:classe>/', views.messages, name='instructor-messages'),
@@ -29,5 +29,6 @@ urlpatterns = [
      ########## post ###############
     path('update_profil', views.update_profil, name='update_profil'),
     path('update_password', views.update_password, name='update_password'),
+    path('post_forum', views.post_forum, name='instructor_post_forum'),
 
 ]
