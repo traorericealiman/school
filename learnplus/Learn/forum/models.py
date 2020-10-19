@@ -18,7 +18,7 @@ class Sujet(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.titre), slugify(self.date_add)))
         super(Sujet, self).save(*args, **kwargs)
 
 
@@ -42,7 +42,7 @@ class Reponse(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.sujet.titre), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.sujet.titre), slugify(self.date_add)))
         super(Reponse, self).save(*args, **kwargs)
 
 

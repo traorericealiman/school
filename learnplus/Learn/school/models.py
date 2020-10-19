@@ -29,7 +29,7 @@ class Matiere(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.nom), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.nom), slugify(self.date_add)))
         super(Matiere, self).save(*args, **kwargs)
     
 
@@ -49,7 +49,7 @@ class Niveau(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.nom), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.nom), slugify(self.date_add)))
         super(Niveau, self).save(*args, **kwargs)
 
 
@@ -94,7 +94,7 @@ class Chapitre(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.titre), slugify(self.date_add)))
         super(Chapitre, self).save(*args, **kwargs)
 
 
@@ -119,7 +119,7 @@ class Cours(models.Model):
     slug = models.SlugField(unique=True, null=True,  blank=True)
 
     def save(self, *args, **kwargs):
-        self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
+        self.slug = '-'.join((slugify(self.titre), slugify(self.date_add)))
         super(Cours, self).save(*args, **kwargs)
 
 

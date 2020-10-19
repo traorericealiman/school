@@ -37,19 +37,3 @@ class Student(models.Model):
         except:
             return False
 
-class StudentReponse(models.Model):
-    question = models.ForeignKey(quiz_models.Question,on_delete=models.CASCADE,related_name='StudentReponse_question')
-    reponse = models.ForeignKey(quiz_models.Reponse,on_delete=models.CASCADE,related_name='reponse_StudentReponse')
-    student = models.ForeignKey(Student,on_delete=models.CASCADE,related_name='student_studentreponse')
-    is_True = models.BooleanField()
-    date_add = models.DateTimeField(auto_now_add=True)
-    date_update = models.DateTimeField(auto_now=True)
-    status = models.BooleanField(default=True)
-
-
-    class Meta:
-        verbose_name = 'StudentReponse'
-        verbose_name_plural = 'StudentReponses'
-
-    def __str__(self):
-        return self.is_True
