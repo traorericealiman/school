@@ -5,7 +5,7 @@
         <div class="container-fluid page__container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url 'index_student' %}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{% url 'quiz-list' %}">Quiz</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'quiz-list'%}">Quiz</a></li>
                 <li class="breadcrumb-item active">{{ quiz.titre }}</li>
             </ol>
             
@@ -76,58 +76,5 @@
 {% endblock %}
 
 {% block script %}
-<script>
-// Add JavaScript for handling quiz functionality
-document.addEventListener('DOMContentLoaded', function() {
-    let currentQuestion = 1;
-    const totalQuestions = {{ total_questions }};
-    let correctAnswers = 0;
-    let wrongAnswers = 0;
-    
-    function updateStats() {
-        document.getElementById('correct-answers').textContent = correctAnswers;
-        document.getElementById('wrong-answers').textContent = wrongAnswers;
-        document.getElementById('remaining').textContent = totalQuestions - (correctAnswers + wrongAnswers);
-    }
-    
-    function showNextQuestion() {
-        if (currentQuestion < totalQuestions) {
-            document.getElementById(question-${currentQuestion}).style.display = 'none';
-            currentQuestion++;
-            document.getElementById(question-${currentQuestion}).style.display = 'block';
-        } else {
-            // Quiz completed - redirect to results
-            window.location.href = "{% url 'quiz-results' %}";
-        }
-    }
-    
-    // Add event listeners for submit and skip buttons
-    document.querySelectorAll('.submit-answer').forEach(button => {
-        button.addEventListener('click', function() {
-            const questionCard = this.closest('.question-card');
-            const checkboxes = questionCard.querySelectorAll('input[type="checkbox"]:checked');
-            let isCorrect = true;
-            
-            checkboxes.forEach(checkbox => {
-                if (checkbox.dataset.correct !== "True") {
-                    isCorrect = false;
-                }
-            });
-            
-            if (isCorrect) {
-                correctAnswers++;
-            } else {
-                wrongAnswers++;
-            }
-            
-            updateStats();
-            showNextQuestion();
-        });
-    });
-    
-    document.querySelectorAll('.skip-question').forEach(button => {
-        button.addEventListener('click', showNextQuestion);
-    });
-});
-</script>
+
 {% endblock %}

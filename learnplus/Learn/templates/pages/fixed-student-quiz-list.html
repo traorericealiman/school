@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="table-responsive border-bottom" data-toggle="lists"
-                            data-lists-values='["js-lists-values-type", "js-lists-values-title", "js-lists-values-date"]'>
+                            data-lists-values='["js-lists-values-type", "js-lists-values-title", "js-lists-values-date", "js-lists-values-class"]'>
         
                             <div class="search-form search-form--light mb-3">
                                 <input type="text" class="form-control search" placeholder="Search">
@@ -31,6 +31,8 @@
                                         <th>Type</th>
                                         <th>Title</th>
                                         <th style="width: 100px;">Date</th>
+                                        <th style="width: 100px;">Date limite</th> 
+                                        <th style="width: 100px;">Statut</th>                                
                                         <th style="width: 24px;">Details</th>
                                     </tr>
                                 </thead>
@@ -41,10 +43,24 @@
                                         <td><span class="js-lists-values-title">{{ item.title }}</span></td>
                                         <td><small class="text-muted js-lists-values-date">{{ item.date }}</small></td>
                                         <td>
-                                            {% if item.type == 'Quiz' %}
-                                                <a href="{% url 'take-quiz' item.slug %}" class="btn btn-sm btn-primary">Commencer</a>
+                                            {% if item.date_limite %}
+                                                <small class="text-muted">{{ item.date_limite|date:"d M Y" }}</small>
                                             {% else %}
-                                                <a href="{% url 'take-devoir' item.slug %}" class="btn btn-sm btn-success">Commencer</a>
+                                                <small class="text-muted">non defini</small>
+                                            {% endif %}
+                                        </td>  
+                                        <td>
+                                            <span class="badge {% if item.status == 'Terminé' %}badge-danger{% else %}badge-success{% endif %}">
+                                                {{ item.status }}
+                                            </span>
+                                        </td>                                                              
+                                        <td>
+                                            {% if item.type == 'Quiz' %}
+                                                <form action="{% url 'take-quiz' %}" method="post" style="display:inline;">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="quiz_id" value="{{ item.id }}">
+                                                    <button type="submit" class="btn btn-sm btn-primary">Commencer</button>
+                                                </form>
                                             {% endif %}
                                         </td>
                                     </tr>

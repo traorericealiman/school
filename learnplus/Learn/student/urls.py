@@ -28,8 +28,7 @@ urlpatterns = [
     path('quiz_results', views.quiz_results, name='quiz-results'),
     path('quizzes', views.quizzes, name='quizzes'),
     path('take_course/<slug>', views.take_course, name='take-course'),
-    path('take_quiz', views.take_quiz, name='take-quiz'),
-
+    path('take_quiz/', views.take_quiz, name='take-quiz'),
     path('submit_quiz/<slug:quiz_slug>/', views.submit_quiz, name='submit-quiz'),
     path('quiz_results/', views.quiz_results, name='quiz-results'),  # Pour voir tous les résultats
     path('quiz_results/<int:result_id>/', views.quiz_results, name='quiz-result-detail'),

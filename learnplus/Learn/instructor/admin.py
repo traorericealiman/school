@@ -30,7 +30,11 @@ class InstructorAdmin(CustomAdmin):
     ]
 
     def image_view(self, obj):
-        return mark_safe("<img src='{url}' width='100px' height='50px'>".format(url=obj.photo.url))
+        if obj.photo and hasattr(obj.photo, 'url'):  # Vérifie si une image est associée
+            return mark_safe(f"<img src='{obj.photo.url}' width='100px' height='50px'>")
+        return "Pas d'image"  # Message à afficher si aucune image n'est associée
+
+    image_view.short_description = "Photo"
 
     def matieres_list(self, obj):
         return ", ".join([matiere.nom for matiere in obj.matieres.all()]) 

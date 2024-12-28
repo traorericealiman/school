@@ -1,6 +1,5 @@
 from sqlite3 import Date
 from django.db import models
-from school import models as school_models
 from django.utils.text import slugify
 from datetime import datetime
 from django.contrib.auth.models import User
@@ -9,6 +8,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Quiz(models.Model):
     instructor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)  # Changed from instructeur
+    classe = models.ForeignKey("school.Classe", on_delete=models.CASCADE, related_name='quizzes', null=True, blank=True)  # Utilisation de la chaîne "school.Classe"
     date = models.CharField(max_length=255, default=Date.today)  # Défaut : date actuelle
     titre = models.CharField(max_length=255)
     image = models.ImageField(upload_to='quiz_images/', null=True, blank=True)
@@ -17,7 +17,12 @@ class Quiz(models.Model):
     date_update = models.DateTimeField(auto_now=True)
     status = models.BooleanField(default=True)
     slug = models.SlugField(unique=True, null=True,  blank=True)
+    date_limite = models.DateField(null=True, blank=True, verbose_name="Date limite")
+    questions = models.ManyToManyField('Question', related_name='related_quizzes', blank=True)  # Nom unique pour éviter les conflits
 
+    def get_total_questions(self):
+        return self.questions.count()
+    
     def save(self, *args, **kwargs):
         self.slug = '-'.join((slugify(self.titre), slugify(datetime.now().microsecond)))
         super(Quiz, self).save(*args, **kwargs)
@@ -59,7 +64,7 @@ class Question(models.Model):
         ('qcm', 'QCM'),
         ('question-reponse', 'Question-Réponse'),
     ]
-    quiz = models.ForeignKey(Quiz, related_name='questions', on_delete=models.CASCADE, null=True, blank=True)
+    quiz = models.ForeignKey(Quiz, related_name='related_questions', on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=255, null=True, blank=True)
     question_type = models.CharField(max_length=50, choices=QUESTION_TYPES, null=True, blank=True)
     score = models.IntegerField(default=0)

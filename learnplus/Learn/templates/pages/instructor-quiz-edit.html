@@ -47,6 +47,29 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="quiz_timeframe" class="col-sm-3 col-form-label form-label">Timeframe:</label>
+                    <div class="col-sm-9">
+                        <div class="form-inline">
+                            <div class="form-group mr-2">
+                                <input type="number" id="quiz_time_value" name="time_value" class="form-control text-center"
+                                       value="{{ time_value }}" style="width: 80px;" min="1">
+                            </div>
+                            <div class="form-group">
+                                <select id="quiz_time_unit" name="time_unit" class="custom-select">
+                                    <option value="hour" {% if time_unit == 'hour' %}selected{% endif %}>Hours</option>
+                                    <option value="minutes" {% if time_unit == 'minutes' %}selected{% endif %}>Minutes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="quiz_date_limite" class="col-sm-3 col-form-label form-label">Date limite:</label>
+                    <div class="col-sm-9 col-md-4">
+                        <input id="quiz_date_limite" name="date_limite" type="date" class="form-control" value="{{ quiz.date_limite|date:'Y-m-d' }}">
+                    </div>
+                </div>                                
                 <div class="form-group row mb-0">
                     <div class="col-sm-9 offset-sm-3">
                         <button type="submit" class="btn btn-success">Save</button>
@@ -106,5 +129,9 @@
             reader.readAsDataURL(input.files[0]); // Lire le fichier comme URL de données
         }
     }
+      // Obtenir la date actuelle et la formater au format YYYY-MM-DD
+      const today = new Date().toISOString().split('T')[0];
+    // Définir la date minimale dans le champ de saisie
+    document.getElementById('quiz_date_limite').setAttribute('min', today);
 </script>
 {% endblock script %}

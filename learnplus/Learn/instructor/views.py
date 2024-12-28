@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
@@ -112,10 +112,8 @@ def course_add(request):
             if hasattr(request.user, 'student_user') and request.user.student_user:
                 return redirect('index_student')
             if hasattr(request.user, 'instructor') and request.user.instructor:
-                # Récupérer l'instance de l'instructeur associée à l'utilisateur connecté
-                instructor = request.user.instructor  # Supposons que vous avez une relation 'instructor' sur le modèle User
+                instructor = request.user.instructor 
 
-                # Récupérer uniquement les matières assignées à cet instructeur
                 matiere = school_models.Matiere.objects.filter(instructors=instructor, status=True)
                 datas = {
                     'matiere': matiere,
@@ -530,46 +528,79 @@ def quiz_edit(request, quiz_id):
     quiz = get_object_or_404(quiz_models.Quiz, id=quiz_id, instructor=request.user)
 
     if request.method == 'POST':
-        # Mettre à jour les informations du quiz
+        # Mettre à jour les informations de base du quiz
         quiz.titre = request.POST.get('titre')
         quiz.cours_id = request.POST.get('cours')  # Assurez-vous que ce champ est dans le formulaire
         if 'image' in request.FILES:
             quiz.image = request.FILES['image']
-        quiz.save()
 
-        # Rediriger après mise à jour
+        # Mise à jour de la durée
+        time_value = request.POST.get('time_value', 0)
+        time_unit = request.POST.get('time_unit', 'hour')
+        try:
+            temps = int(time_value)
+            if time_unit == 'hour':
+                temps *= 60  # Convertir en minutes si l'unité est heure
+            quiz.temps = temps
+        except ValueError:
+            return redirect('instructor-quiz-edit', quiz_id=quiz.id)
+
+        # Mise à jour de la date limite
+        date_limite = request.POST.get('date_limite')
+        if date_limite:
+            try:
+                quiz.date_limite = datetime.strptime(date_limite, '%Y-%m-%d').date()
+                if quiz.date_limite < datetime.now().date():
+                    messages.error(request, "La date limite doit être une date future.")
+                    return redirect('instructor-quiz-edit', quiz_id=quiz.id)
+            except ValueError:
+                messages.error(request, "Format de date limite invalide.")
+                return redirect('instructor-quiz-edit', quiz_id=quiz.id)
+
+        quiz.save()
         return redirect('instructor-quizzes')
+
+    # Préparer les données pour l'affichage
     if request.user.is_authenticated:
         if hasattr(request.user, 'instructor') and request.user.instructor:
             instructor = request.user.instructor
-            # Récupérer les questions associées au quiz
             matiere = school_models.Matiere.objects.filter(instructors=instructor, status=True)
             questions = quiz.questions.all()
 
-            # Passer les données au template
             datas = {
                 'quiz': quiz,
                 'matiere': matiere,
                 'questions': questions,
-
+                'time_value': quiz.temps // 60 if quiz.temps >= 60 else quiz.temps,  # Convertir en heures si nécessaire
+                'time_unit': 'hour' if quiz.temps >= 60 else 'minutes',  # Déterminer l'unité
             }
             return render(request, 'pages/instructor-quiz-edit.html', datas)
+
 
 @login_required(login_url='login')
 def quiz_add(request):
     if request.method == 'POST':
-        # Récupération des données du formulaire
         titre = request.POST.get('titre')
         image = request.FILES.get('image', None)
+        date_limite = request.POST.get('date_limite')  # Récupération de la date limite
         time_value = request.POST.get('time_value', 0)
         time_unit = request.POST.get('time_unit', 'hour')
 
         # Vérifier si l'utilisateur est un instructeur
         try:
-            instructor = request.user.instructor  # Accès à l'instructeur via la relation OneToOneField
+            instructor = request.user.instructor
+            classe = instructor.classe  # Récupérer la classe de l'instructeur
         except models.Instructor.DoesNotExist:
-            messages.error(request, "Vous devez être un instructeur pour créer un quiz.")
             return redirect('quiz_add')
+
+        # Validation de la date limite
+        if date_limite:
+            try:
+                date_limite_parsed = datetime.strptime(date_limite, '%Y-%m-%d').date()
+                if date_limite_parsed < date.today():
+                    return redirect('quiz_add')
+            except ValueError:
+                return redirect('quiz_add')
 
         # Conversion de la durée en minutes
         try:
@@ -584,69 +615,29 @@ def quiz_add(request):
 
         # Création du Quiz
         quiz = quiz_models.Quiz.objects.create(
-            instructor=request.user,  # L'utilisateur est passé directement
+            instructor=request.user,
             titre=titre,
             image=image,
             temps=temps,
-            slug=slug
+            slug=slug,
+            date_limite=date_limite,  # Ajout de la date limite ici
+            classe=classe,
         )
         quiz.save()
 
-        return redirect('instructor-quizzes')    
-    if request.method == 'POST':
-        # Récupération des données du formulaire
-        titre = request.POST.get('titre')
-        image = request.FILES.get('image', None)
-        date = request.POST.get('date')
-        time_value = request.POST.get('time_value', 0)
-        time_unit = request.POST.get('time_unit', 'hour')
-
-        # Vérifier si l'utilisateur est un instructeur
-        try:
-            instructor = request.user.instructor  # Accès à l'instructeur via la relation OneToOneField
-        except models.Instructor.DoesNotExist:
-            messages.error(request, "Vous devez être un instructeur pour créer un quiz.")
-            return redirect('quiz_add')
-
-        # Conversion de la durée en minutes
-        try:
-            temps = int(time_value)
-            if time_unit == 'hour':
-                temps *= 60
-        except ValueError:
-            temps = 0
-
-        # Génération manuelle du slug
-        slug = '-'.join(titre.lower().replace(' ', '-').replace('.', '').replace(',', '').split()) + f"-{datetime.now().microsecond}"
-
-        # Création du Quiz
-        quiz = quiz_models.Quiz.objects.create(
-            instructor=request.user,  # L'utilisateur est passé directement
-            date=datetime.now().strftime('%Y-%m-%d'),  # Format YYYY-MM-DD pour le champ date
-            titre=titre,
-            image=image,
-            temps=temps,
-            slug=slug
-        )
-        quiz.save()
-
-        # Message de succès et redirection
-        messages.success(request, "Quiz créé avec succès.")
         return redirect('instructor-quizzes')
-    
+
+    # Préparer les données pour l'affichage de la page
     if request.user.is_authenticated:
         if hasattr(request.user, 'instructor') and request.user.instructor:
             instructor = request.user.instructor
             matiere = school_models.Matiere.objects.filter(instructors=instructor, status=True)
-
             datas = {
                 'matiere': matiere,
             }
-
             return render(request, 'pages/instructor-quiz-add.html', datas)
 
     return redirect('login')
-
 
 
 # @login_required(login_url = 'login')

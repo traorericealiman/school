@@ -34,7 +34,8 @@
                     <h4 class="card-title mb-0">
                         <a href="{% url 'instructor-add_question' quiz.id %}">{{ quiz.titre }}</a>
                     </h4>
-                    <small class="text-muted">Created on {{ quiz.date_add|date:"d M Y" }}</small>
+                    <small class="text-muted">Created on {{ quiz.date_add|date:"d M Y" }}</small><br>
+                    <small class="text-muted">End on {{ quiz.date_limite|date:"d M Y" }}</small>
                 </div>
             </div>
             <div class="card-footer text-center">

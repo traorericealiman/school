@@ -1,3 +1,4 @@
+from datetime import date
 from django.shortcuts import render,redirect 
 from django.contrib.auth.decorators import login_required
 from school import models as school_models
@@ -513,92 +514,53 @@ def my_courses(request):
 
 @login_required(login_url='login')
 def quiz_list(request):
-    try:
-        if hasattr(request.user, 'instructor'):
-            messages.warning(request, "Les instructeurs n'ont pas accès à cette page.")
-            return redirect('dashboard')
-        
-        if hasattr(request.user, 'student_user'):
-            quizzes = Quiz.objects.filter(status=True).select_related('cours')
-            devoirs = Devoir.objects.filter(status=True).select_related('chapitre')
+    if hasattr(request.user, 'student_user'):
+        student_classe = request.user.student_user.classe
 
-            items = []
-            for quiz in quizzes:
-                items.append({
-                    "type": "Quiz",
-                    "title": quiz.titre,
-                    "date": quiz.date,
-                    "slug": quiz.slug,
-                    "cours": quiz.cours.titre,
-                    "temps": f"{quiz.temps} minutes",
-                    "status": "En cours" if quiz.status else "Terminé"
-                })
+        quizzes = Quiz.objects.filter(instructor__instructor__classe=student_classe, status=True)
 
-            for devoir in devoirs:
-                items.append({
-                    "type": "Devoir",
-                    "title": devoir.sujet,
-                    "date": devoir.dateDebut.strftime("%Y-%m-%d %H:%M"),
-                    "slug": devoir.slug,
-                    "chapitre": devoir.chapitre.titre,
-                    "deadline": devoir.dateFermeture.strftime("%Y-%m-%d %H:%M"),
-                    "coefficient": devoir.coefficient
-                })
+        items = []
+        for quiz in quizzes:
+            if quiz.date_limite and quiz.date_limite < date.today():
+                status = "Terminé"
+            else:
+                status = "En cours"
+            items.append({
+                "type": "Quiz",
+                "title": quiz.titre,
+                "date": quiz.date,
+                "date_limite": quiz.date_limite,  # Inclure la date limite
+                "slug": quiz.slug,
+                "temps": f"{quiz.temps} minutes",
+                "status": status,  # Ajouter le statut
+            })
 
-            items.sort(key=lambda x: x['date'], reverse=True)
+        context = {
+            "items": items,
+            "total_quiz": len(items),
+        }
+        return render(request, 'pages/fixed-student-quiz-list.html', context)
 
-            context = {
-                "items": items,
-                "total_quiz": len([item for item in items if item['type'] == 'Quiz']),
-                "total_devoirs": len([item for item in items if item['type'] == 'Devoir'])
-            }
-            return render(request, 'pages/fixed-student-quiz-list.html', context)
+    return redirect('login')
 
-        messages.error(request, "Vous n'êtes pas autorisé à accéder à cette page.")
-        return redirect('login')
-
-    except Exception as e:
-        print(f"Erreur dans quiz_list: {str(e)}")
-        messages.error(request, "Une erreur est survenue. Veuillez réessayer plus tard.")
-        return redirect('index_student')
-    
-    
 
 @login_required(login_url='login')
-def take_quiz(request, slug):
-    try:
-        if hasattr(request.user, 'instructor'):
-            return redirect('dashboard')
-        
-        if hasattr(request.user, 'student_user'):
-            quiz = get_object_or_404(Quiz.objects.select_related('cours'), 
-                                   slug=slug, status=True)
-            
-            questions = quiz.quiz_question.filter(
-                status=True
-            ).prefetch_related(
-                'question_reponse'
-            ).order_by('?')
-            
-            if not quiz.status:
-                return redirect('quiz-list')
+def take_quiz(request):
+    quiz = get_object_or_404(Quiz, status=True)
 
-            data = {
-                'quiz': quiz,
-                'questions': questions,
-                'total_questions': questions.count(),
-                'temps_restant': quiz.temps * 60,
-                'cours': quiz.cours
-            }
-            
-            return render(request, 'pages/fixed-student-take-quiz.html', data)
+    if hasattr(request.user, 'student_user') and request.user.student_user:
+        print("Condition passée")
 
-        return redirect('login')
+        total_questions = quiz.get_total_questions() 
+        print(total_questions)
 
-    except Exception as e:
-        print(f"Erreur dans take_quiz: {str(e)}")
-        return redirect('quiz-list')
-    
+        datas = {
+            'quiz': quiz,
+            'total_questions': total_questions, 
+        }
+        return render(request, 'pages/fixed-student-take-quiz.html', datas)
+
+    return redirect('login')
 
 
 @login_required(login_url='login')
